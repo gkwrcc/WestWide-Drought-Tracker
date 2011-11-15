@@ -112,7 +112,7 @@ class Plot():
         #print data[:]
 
         # Set notmal period 1891-2010
-        normal_range = np.array(dataFile.variables['data'][87:117,closestLat,closestLon])
+        normal_range = np.array(dataFile.variables['data'][86:116,closestLat,closestLon])
         normal = normal_range.mean() 
         if normal == -9999.0:
             normal = ''
@@ -223,9 +223,10 @@ class Plot():
             data = data/100.
  
         # Set normal range 1981-2010
-        normal_range = np.array(dataFile.variables['data'][87:117,closestLat,closestLon])
+        normal_range = np.array(dataFile.variables['data'][86:116,closestLat,closestLon])
         normal = normal_range.mean() 
 
+        #print normal
         # Convert precip to correct format
         if self.variable == 'pon':
             normal = normal/100.
