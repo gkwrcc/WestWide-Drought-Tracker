@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>WWDT</title>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <link rel="stylesheet" type="text/css" href="/media/extjs/resources/css/ext-all.css"/>
+  <script type="text/javascript" src="/media/extjs/adapter/ext/ext-base.js"></script>
+  <script type="text/javascript" src="/media/extjs/ext-all.js"></script>
+  <script type="text/javascript" src="/media/js/Ext.ux.GMapPanel3.js"></script>
+  <script type="text/javascript" src="/media/js/interface.js"></script>
+  <link type="text/css" href="/media/css/style.css" rel="stylesheet" media="all"/>
+</head>
+
+<body>
+  <div align="center"> <FONT SIZE="6" COLOR="Grey">WestWide Drought Tracker</FONT></div>
+  
+    {% if errors %}
+        {% for error in errors %}
+          <script type="text/javascript"> alert('{{ error}}')</script>
+        {% endfor%}
+    {% endif %} 
+
+  <div id="about" class="x-hidden">
+    <h3>Concept</h3>
+    <p>This dynamic website was created to allow easy access and delineation to a spatial suite of drought data.</p>
+  </div>
+
+  <div id="contact" class="x-hidden">
+    <br><h3>General Feedback</h3>
+    <p>Click on the feedback button above to open a form to send feedback.</p><br>
+    <h3>Dr. John Abatzoglou</h3>
+    <p>Email: jabatzoglou@uidaho.edu</p><br />
+
+    <h3>Dr. Kelly Redmond </h3>
+    <p>Email: Kelly.Redmond@dri.edu</p>
+
+  </div>
+
+  <div id="use" class="x-hidden">
+    <h3>Location Selection</h3>
+    <p>Click on the map to generate draggable red markers. Drag the markers to any location within the contiguous lower 48. This will automatically fill in the Latitude/Longitude form fields in the Point Select accordion menu to the left of the Google Map tabbed panel.</p><br />
+
+    <h3>Data Options</h3>
+    <p>Select a variable, start year, end year, month, and month span using the drop down combobox menus. Note - running average is an option field and takes user input in the for of an integer only (e.g. 5 for five year running average).</p><br />
+
+    <h3>Getting the Product</h3>
+    <p>Press the submit button and a new tab will be loaded containing the results.</p>
+  </div>
+  <div id="variables" class="x-hidden">
+    <h3><a href="http://lwf.ncdc.noaa.gov/oa/climate/research/prelim/drought/spi.html"
+    style="color: 3366FF" target="_blank">SPI</a></h3>
+
+    <p>Standardized Precipitation Index is a drought measurement where negative values
+    represent drought and positive values represent wet conditions.</p><br />
+
+    <h3><a href="http://www.drought.noaa.gov/palmer.html" style="color: 3366FF" target=
+    "_blank">PDSI</a></h3>
+
+    <p>Palmer Drought Severity Index is a measure of dryness where negative values
+    represent drought and positive values reflect excess rain.</p><br />
+
+    <h3><a href="http://www.ncdc.noaa.gov/oa/climate/research/prelim/drought/palmer.html"
+    style="color: 3366FF" target="_blank">Palmer Z-Index</a></h3>
+
+    <p>Palmer Z-Index is a measure of monthly moisture conditions where negative values
+    represent drought conditions and positive values represent wetness.</p><br />
+
+    <h3><a href=
+     "http://journals.ametsoc.org/doi/full/10.1175/1520-0442%282004%29017%3C2335%3AASPDSI%3E2.0.CO%3B2"
+    style="color: 3366FF" target="_blank">Self Calibrated PDSI</a></h3>
+
+    <p>Self Calibrated Palmer Drought Serverity Index is created by replacing constant
+    empirical values- mainly extreme events- with dynamically calculated values that are
+    more spatially explicit.</p><br />
+  </div>
+ 
+</body>
+</html>
