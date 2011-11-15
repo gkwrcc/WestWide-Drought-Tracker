@@ -1,3 +1,4 @@
+import os
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -9,6 +10,8 @@ from matplotlib.ticker import ScalarFormatter
 from matplotlib.mlab import movavg
 from matplotlib.ticker import MultipleLocator
 from scipy.io import netcdf as netcdf
+
+from settings import WWDTNETCDF_DIR
 
 class Plot():
     '''This class accesses and delineates climate data '''
@@ -47,9 +50,11 @@ class Plot():
         ''' Finds and processes data to send text values to screen '''
 
         if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi':
-            dataFile = netcdf.netcdf_file('/media/drought/WWDTNETCDF/%s/%s_%s_PRISM.nc'%(self.variable, self.variable, self.month), 'r')
+	    filename = os.path.join(WWDTNETCDF_DIR, self.variable, '%s_%s_PRISM.nc' % (self.variable, self.month))
         else:
-            dataFile = netcdf.netcdf_file('/media/drought/WWDTNETCDF/%s%s/%s%s_%s_PRISM.nc'%(self.variable, self.span, self.variable, self.span, self.month), 'r')
+            filename = os.path.join(WWDTNETCDF_DIR, '%s%s' % (self.variable, self.span), '%s%s_%s_PRISM.nc' % (self.variable, self.span, self.month))
+
+	dataFile = netcdf.netcdf_file(filename, 'r')
 
         # Get closest Lat/Lon      
         closestLat = self.Index(dataFile.variables['latitude'], self.lat)
@@ -163,9 +168,11 @@ class Plot():
 
         #print 'opening data...'
         if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi':
-            dataFile = netcdf.netcdf_file('/media/drought/WWDTNETCDF/%s/%s_%s_PRISM.nc'%(self.variable, self.variable, self.month), 'r')
+	    filename = os.path.join(WWDTNETCDF_DIR, self.variable, '%s_%s_PRISM.nc' % (self.variable, self.month))
         else:
-            dataFile = netcdf.netcdf_file('/media/drought/WWDTNETCDF/%s%s/%s%s_%s_PRISM.nc'%(self.variable, self.span, self.variable, self.span, self.month), 'r')
+            filename = os.path.join(WWDTNETCDF_DIR, '%s%s' % (self.variable, self.span), '%s%s_%s_PRISM.nc' % (self.variable, self.span, self.month))
+
+	dataFile = netcdf.netcdf_file(filename, 'r')
 
         # Get closest Lat/Lon      
         closestLat = self.Index(dataFile.variables['latitude'], self.lat)
