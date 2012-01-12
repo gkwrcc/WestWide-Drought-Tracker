@@ -61,7 +61,10 @@ class Plot():
         closestLon = self.Index(dataFile.variables['longitude'], self.lon)
 
         # Set Current Dates
-        currentYear = datetime.now().year
+        
+        
+        # currentYear = datetime.now().year
+        currentYear = 2011
         currentDay = datetime.now().day
         currentMonth = datetime.now().month
 
@@ -179,7 +182,9 @@ class Plot():
         closestLon = self.Index(dataFile.variables['longitude'], self.lon)
 
         # Set Current dates
-        currentYear = datetime.now().year
+        #currentYear = datetime.now().year
+        
+        currentYear = 2011
         currentDay = datetime.now().day
         currentMonth = datetime.now().month
 
