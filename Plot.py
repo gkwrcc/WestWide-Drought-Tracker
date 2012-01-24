@@ -175,11 +175,25 @@ class Plot():
         else:
             filename = os.path.join(WWDTNETCDF_DIR, '%s%s' % (self.variable, self.span), '%s%s_%s_PRISM.nc' % (self.variable, self.span, self.month))
 
+        # Open netcdf for data and elevation
 	dataFile = netcdf.netcdf_file(filename, 'r')
+	elevationFile = netcdf.netcdf_file(ELEVATION_DATA, 'r')
+
 
         # Get closest Lat/Lon      
         closestLat = self.Index(dataFile.variables['latitude'], self.lat)
         closestLon = self.Index(dataFile.variables['longitude'], self.lon)
+        
+        # Get closest Lat/Lon for elevation
+        eclosestLat = self.Index(elevationFile.variables['lat'], self.lat)
+        eclosestLon = self.Index(elevationFile.variables['lon'], self.lon)
+
+        # Set elevation based on coordinates
+        elevationData =  elevationFile.variables['elevation']
+        elevation = elevationData[eclosestLat, eclosestLon]
+
+        
+        
 
         # Set Current dates
         #currentYear = datetime.now().year
@@ -267,32 +281,32 @@ class Plot():
 
         # Setup plots based on Variable    
         if self.variable == 'pdsi':
-            ax.set_title(u'Palmer Drought Severity Index at %4.2f\u00b0N, %4.2f\u00b0W, %s ' % (self.lat, self.lon, monthList[self.month-1]))
+            ax.set_title(u'Palmer Drought Severity Index at %4.2f\u00b0N, %4.2f\u00b0W, Elevation:(%4.2f Meters) - %s ' % (self.lat, self.lon, elevation, monthList[self.month-1]), fontsize=10)
             ax.set_ylabel("PDSI")
             topColor, bottomColor = 'green', 'gold'
 
         if self.variable == 'scpdsi':
-            ax.set_title(u'Self Calibrated PDSI at %4.2f\u00b0N, %4.2f\u00b0W, %s ' % (self.lat, self.lon, monthList[self.month-1]))
+            ax.set_title(u'Self Calibrated PDSI at %4.2f\u00b0N, %4.2f\u00b0W, Elevation:(%4.2f Meters) - %s ' % (self.lat, self.lon, elevation, monthList[self.month-1]), fontsize=10)
             ax.set_ylabel("SCPDSI")
             topColor, bottomColor = 'green', 'gold'
  
         if self.variable == 'pzi':
-            ax.set_title(u'Palmer Z-Index at %4.2f\u00b0N, %4.2f\u00b0W, %s ' % (self.lat, self.lon, monthList[self.month-1]))
+            ax.set_title(u'Palmer Z-Index at %4.2f\u00b0N, %4.2f\u00b0W, Elevation:(%4.2f Meters) - %s ' % (self.lat, self.lon, elevation, monthList[self.month-1]), fontsize=10)
             ax.set_ylabel("PZI")
             topColor, bottomColor = 'green', 'gold'    
             
         if self.variable == 'mdn':
-            ax.set_title(u'Mean Temperature at %4.2f\u00b0N, %4.2f\u00b0W - %s-Months Ending in %s' % (self.lat, self.lon, self.span, monthList[self.month-1]), fontsize=11)
+            ax.set_title(u'Mean Temperature at %4.2f\u00b0N, %4.2f\u00b0W, Elevation:(%4.2f Meters) - %s-Months Ending in %s' % (self.lat, self.lon, elevation, self.span, monthList[self.month-1]), fontsize=10)
             ax.set_ylabel(u"Temperature \u00b0F")
             topColor, bottomColor = 'red', 'blue'
    
         if self.variable == 'spi':
-            ax.set_title(u'Standardized Precipitation Index at %4.2f\u00b0N, %4.2f\u00b0W - %s-Months Ending in %s' % (self.lat, self.lon, self.span, monthList[self.month-1]), fontsize=12)
+            ax.set_title(u'Standardized Precipitation Index at %4.2f\u00b0N, %4.2f\u00b0W, Elevation:(%4.2f Meters) - %s-Months Ending in %s' % (self.lat, self.lon, elevation, self.span, monthList[self.month-1]), fontsize=9)
             ax.set_ylabel(u"SPI")
             topColor, bottomColor = 'blue', 'red'
           
         if self.variable == 'pon':
-            ax.set_title(u'Precipitation at %4.2f\u00b0N, %4.2f\u00b0W - %s-Months Ending in %s' % (self.lat, self.lon, self.span, monthList[self.month-1]), fontsize=16)
+            ax.set_title(u'Standardized Precipitation Index at %4.2f\u00b0N, %4.2f\u00b0W, Elevation:(%4.2f Meters) - %s-Months Ending in %s' % (self.lat, self.lon, elevation, self.span, monthList[self.month-1]), fontsize=9)
             ax.set_ylabel("Inches")
             ax.set_ybound(max(data))
             ax.axhline(y=normal, color="black", label='Normal Period: 1981-2010') 
