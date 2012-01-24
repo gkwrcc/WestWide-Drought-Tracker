@@ -11,7 +11,7 @@ from matplotlib.mlab import movavg
 from matplotlib.ticker import MultipleLocator
 from scipy.io import netcdf as netcdf
 
-from settings import WWDTNETCDF_DIR
+from settings import WWDTNETCDF_DIR, ELEVATION_DATA
 
 class Plot():
     '''This class accesses and delineates climate data '''
