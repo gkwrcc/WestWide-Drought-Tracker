@@ -145,9 +145,9 @@ class Plot():
         if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi':
             newList.append("Year,Data")
         elif self.variable == 'pon':
-            newList.append("Year,Data,Percent of Normal")
+            newList.append("Year,Precipitation (Inches),Percent of Normal")
         elif self.variable == 'mdn':
-            newList.append("Year,Data,Departure from Normal")
+            newList.append("Year,Temperature (Degrees F),Departure from Normal")
 
         # Loop through data and send it to screen in a csv format
         start_point = 0
