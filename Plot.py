@@ -163,6 +163,8 @@ class Plot():
             for item in years:
                 newList.append('%4s,%4.2f,%4.2f'%(item, data[start_point], inv_data[start_point]))
                 start_point+=1
+
+        dataFile.close()
         return newList
 
 
@@ -191,6 +193,7 @@ class Plot():
         # Set elevation based on coordinates
         elevationData =  elevationFile.variables['elevation']
         elevation = elevationData[eclosestLat, eclosestLon]
+        elevationFile.close()
 
         
         
@@ -420,6 +423,7 @@ class Plot():
         # Add figure to canvas
         canvas = FigureCanvas(plt.figure(1))      
         #canvas.close()
+        dataFile.close()
         return canvas
         
      
