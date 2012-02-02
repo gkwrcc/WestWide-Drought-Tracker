@@ -153,7 +153,7 @@ class Plot():
         start_point = 0
         if self.variable == 'pon':
             for item in years:
-                newList.append('%4s,%4.2f,%4.2f'%(item, data[start_point], normal))
+                newList.append('%4s,%4.2f,%4.2f'%(item, data[start_point], data[start_point]/normal*100))
                 start_point+=1    
         elif self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi': 
             for item in years:
@@ -304,7 +304,7 @@ class Plot():
             topColor, bottomColor = 'red', 'blue'
    
         if self.variable == 'spi':
-            ax.set_title(u'Standardized Precipitation Index at %4.2f\u00b0N, %4.2f\u00b0W, Elevation:(%4.2f Meters) - %s-Months Ending in %s' % (self.lat, self.lon, elevation, self.span, monthList[self.month-1]), fontsize=9)
+            ax.set_title(u'Precipitation at %4.2f\u00b0N, %4.2f\u00b0W, Elevation:(%4.2f Meters) - %s-Months Ending in %s' % (self.lat, self.lon, elevation, self.span, monthList[self.month-1]), fontsize=9)
             ax.set_ylabel(u"SPI")
             topColor, bottomColor = 'blue', 'red'
           
