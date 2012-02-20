@@ -220,7 +220,9 @@ Ext.onReady(function () {
             [2008, "2008"],
             [2009, "2009"],
             [2010, "2010"],
-            [2011, "2011"] ]
+            [2011, "2011"],
+            [2012, "2012"]
+            ]
     });
 
     // Process when Submit button is pressed
