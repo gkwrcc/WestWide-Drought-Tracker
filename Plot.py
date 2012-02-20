@@ -63,8 +63,8 @@ class Plot():
         # Set Current Dates
         
         
-        # currentYear = datetime.now().year
-        currentYear = 2011
+        currentYear = datetime.now().year
+        #currentYear = 2011
         currentDay = datetime.now().day
         currentMonth = datetime.now().month
 
@@ -199,9 +199,9 @@ class Plot():
         
 
         # Set Current dates
-        #currentYear = datetime.now().year
+        currentYear = datetime.now().year
         
-        currentYear = 2011
+        #currentYear = 2011
         currentDay = datetime.now().day
         currentMonth = datetime.now().month
 
