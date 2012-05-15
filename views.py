@@ -50,10 +50,11 @@ def bargraph_panel(request):
 
         if 'end_year' in request.GET:
             endYear = request.GET['end_year']
-            if endYear > datetime.datetime.now().year:
-                endYear = (datetime.datetime.now().year -1)
-            else:
-                endYear = int(endYear)
+            endYear = int(endYear)
+            #if endYear > datetime.datetime.now().year:
+            #    endYear = (datetime.datetime.now().year -1)
+            #else:
+            #    endYear = int(endYear)
 
         #if 'variable' in request.GET:
         #    variable = int(request.GET['variable'])
