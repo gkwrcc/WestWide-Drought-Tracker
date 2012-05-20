@@ -278,6 +278,13 @@ Ext.onReady(function () {
             }
 
             // Span Checker
+            if (Ext.getCmp('span_select').getValue() >= 13 && Ext.getCmp('variable_select').getValue() != 3) {
+                Ext.MessageBox.alert('Span Error', 'Month spans greater than 12 are only for SPI datasets, please chose a month span of 12 or less months.');
+                SPAN = NULL;
+            } else {
+                SPAN = Ext.getCmp('span_select').getValue()
+                
+            }
             if (Ext.getCmp('span_select').getValue() > 72) {
                 SPAN = NULL;
             } else {
