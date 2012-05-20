@@ -236,7 +236,7 @@ Ext.onReady(function () {
             
             // Latitude Form Checker
             if (Ext.getCmp('map_lat').getValue() < 24.0625 || Ext.getCmp('map_lat').getValue() > 49.89659882) {
-                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the lower contiguous 48<br>Longitude: ' + Ext.getCmp('map_lat').getValue() + ' out of bounds.');
+                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the lower contiguous 48');
                 LAT = NULL;
             } else {
                 LAT = Ext.getCmp('map_lat').getValue()
@@ -244,7 +244,7 @@ Ext.onReady(function () {
 
             // Longitude Form Checker
             if (Ext.getCmp('map_lon').getValue() < -125.02083588 || Ext.getCmp('map_lon').getValue() > -66.52440643) {
-                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the lower contiguous 48<br>Longitude: ' + Ext.getCmp('map_lon').getValue() + ' out of bounds.');
+                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the lower contiguous 48');
                 LON = NULL;
             } else {
                 LON = Ext.getCmp('map_lon').getValue()
