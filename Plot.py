@@ -72,7 +72,7 @@ class Plot():
             data = np.array(dataFile.variables['data'][self.startYear-1895: ,closestLat,closestLon])   
         else:
             data = np.array(dataFile.variables['data'][self.startYear-1895:-(currentYear-self.endYear),closestLat,closestLon])
-            if self.month > currentMonth:
+            if self.month >= currentMonth:
                 data = np.array(dataFile.variables['data'][self.startYear-1895:len(years)+1,closestLat,closestLon])
 
         # Convert Precip to inches
@@ -105,7 +105,7 @@ class Plot():
                 else:
                     data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:-(currentYear-self.endYear),closestLat,closestLon])
                     years = np.arange(self.startYear+v, self.endYear+1, 1)
-                    if self.month > currentMonth:
+                    if self.month >= currentMonth:
                         data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:len(years)+1,closestLat,closestLon])     
             value+=1
         
@@ -210,7 +210,7 @@ class Plot():
             data = np.array(dataFile.variables['data'][self.startYear-1895: ,closestLat,closestLon])   
         else:
             data = np.array(dataFile.variables['data'][self.startYear-1895:-(currentYear-self.endYear),closestLat,closestLon])
-            if self.month > currentMonth:
+            if self.month >= currentMonth:
                 data = np.array(dataFile.variables['data'][self.startYear-1895:len(years)+1,closestLat,closestLon])
         
  
@@ -246,7 +246,7 @@ class Plot():
                 else:
                     data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:-(currentYear-self.endYear),closestLat,closestLon])
                     years = np.arange(self.startYear+v, self.endYear+1, 1) 
-                    if self.month > currentMonth:
+                    if self.month >= currentMonth:
                         data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:len(years)+1,closestLat,closestLon])   
             value+=1
 
