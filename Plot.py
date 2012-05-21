@@ -60,20 +60,26 @@ class Plot():
         closestLat = self.Index(dataFile.variables['latitude'], self.lat)
         closestLon = self.Index(dataFile.variables['longitude'], self.lon)
 
-        # Set Current Dates     
+        # Set Current Dates
         currentYear = datetime.now().year
         currentDay = datetime.now().day
         currentMonth = datetime.now().month
 
         # Determine what year the data ends in and set year
-        years = np.arange(self.startYear, self.endYear+1, 1)
+        #if self.endYear == currentYear:
+        #    data = np.array(dataFile.variables['data'][self.startYear-1895: ,closestLat,closestLon])
+        #    print data[:]
+               
+        #else:
+        #    data = np.array(dataFile.variables['data'][self.startYear-1895:-(currentYear-self.endYear),closestLat,closestLon])
+        #    print data[:]
+        #years = np.arange(self.startYear, self.endYear+1, 1)
+      
 
-        if self.endYear == currentYear:
-            data = np.array(dataFile.variables['data'][self.startYear-1895: ,closestLat,closestLon])   
-        else:
-            data = np.array(dataFile.variables['data'][self.startYear-1895:-(currentYear-self.endYear),closestLat,closestLon])
-            if self.month >= currentMonth:
-                data = np.array(dataFile.variables['data'][self.startYear-1895:len(years)+1,closestLat,closestLon])
+        # Updated list sequencing index
+        #
+        years = np.arange(self.startYear, self.endYear+1, 1)
+        data = np.array(dataFile.variables['data'][self.startYear-1895:len(years),closestLat,closestLon])
 
         # Convert Precip to inches
         if self.variable == 'pon':
@@ -99,14 +105,8 @@ class Plot():
             if data[v] == -9999.0:
                 v+=1
             else:
-                if self.endYear == currentYear:
-                    data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:,closestLat,closestLon])
-                    years = np.arange(self.startYear+v, self.endYear+1, 1)
-                else:
-                    data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:-(currentYear-self.endYear),closestLat,closestLon])
-                    years = np.arange(self.startYear+v, self.endYear+1, 1)
-                    if self.month >= currentMonth:
-                        data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:len(years)+1,closestLat,closestLon])     
+                years = np.arange(self.startYear+v, self.endYear+1, 1)
+                data = np.array(dataFile.variables['data'][self.startYear-1895:len(years),closestLat,closestLon])
             value+=1
         
         # Convert C to F
@@ -197,21 +197,23 @@ class Plot():
         elevation = elevationData[eclosestLat, eclosestLon]
         elevationFile.close()
 
+        
+        
 
         # Set Current dates
         currentYear = datetime.now().year
+        
+        #currentYear = 2011
         currentDay = datetime.now().day
         currentMonth = datetime.now().month
 
-        # Get Data
-        years = np.arange(self.startYear, self.endYear+1, 1)
 
-        if self.endYear == currentYear:
-            data = np.array(dataFile.variables['data'][self.startYear-1895: ,closestLat,closestLon])   
-        else:
-            data = np.array(dataFile.variables['data'][self.startYear-1895:len(years),closestLat,closestLon])
-            if self.month >= currentMonth:
-                data = np.array(dataFile.variables['data'][self.startYear-1895:len(years)+1,closestLat,closestLon])
+        #
+        # Start here when selecting len of arrary
+        #
+
+        years = np.arange(self.startYear, self.endYear+1, 1)
+        data = np.array(dataFile.variables['data'][self.startYear-1895:len(years),closestLat,closestLon])
         
  
         print len(data), len(years)
@@ -241,14 +243,17 @@ class Plot():
                 v+=1
             else:
                 if self.endYear == currentYear:
-                    data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:,closestLat,closestLon])
                     years = np.arange(self.startYear+v, self.endYear+1, 1)
+                    data = np.array(dataFile.variables['data'][self.startYear-1895+v:len(years),closestLat,closestLon])
+
                 else:
                     data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:-(currentYear-self.endYear),closestLat,closestLon])
                     years = np.arange(self.startYear+v, self.endYear+1, 1) 
                     if self.month >= currentMonth:
-                        data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:len(years)+1,closestLat,closestLon])   
+                        data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:len(years),closestLat,closestLon])   
             value+=1
+
+        
 
         # Convert C to F
         if self.variable == 'mdn':
@@ -258,6 +263,10 @@ class Plot():
         if self.variable == 'pon':
             data = data/100.
  
+        # Prints Data
+        #print data[:]
+
+
         # Set normal range 1981-2010
         normal_range = np.array(dataFile.variables['data'][86:116,closestLat,closestLon])
         normal = normal_range.mean() 
@@ -329,6 +338,7 @@ class Plot():
                 ax.set_title(u'Precipitation, %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (monthList[self.month-1], self.lat, abs(self.lon), elevation)) 
             else:
                 ax.set_title(u'Precipitation, %s-Months Ending in %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (self.span, monthList[self.month-1], self.lat, abs(self.lon), elevation))
+            #ax.set_title(u'Precipitation at %4.2f\u00b0N, %4.2f\u00b0W, Elevation:(%4.2f Meters) - %s-Months Ending in %s' % (self.lat, self.lon, elevation, self.span, monthList[self.month-1]), fontsize=9)
             ax.set_ylabel("Inches")
             ax.set_ybound(max(data))
             ax.axhline(y=normal, color="black", label='Normal Period: 1981-2010') 
@@ -456,5 +466,4 @@ if __name__ == '__main__':
     month = 1
     span = 1
     runavg = 5
-
 
