@@ -209,7 +209,7 @@ class Plot():
         if self.endYear == currentYear:
             data = np.array(dataFile.variables['data'][self.startYear-1895: ,closestLat,closestLon])   
         else:
-            data = np.array(dataFile.variables['data'][self.startYear-1895:-(currentYear-self.endYear),closestLat,closestLon])
+            data = np.array(dataFile.variables['data'][self.startYear-1895:len(years),closestLat,closestLon])
             if self.month >= currentMonth:
                 data = np.array(dataFile.variables['data'][self.startYear-1895:len(years)+1,closestLat,closestLon])
         
