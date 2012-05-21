@@ -60,21 +60,21 @@ class Plot():
         closestLat = self.Index(dataFile.variables['latitude'], self.lat)
         closestLon = self.Index(dataFile.variables['longitude'], self.lon)
 
-        # Set Current Dates
-        
-        
+        # Set Current Dates     
         currentYear = datetime.now().year
-        #currentYear = 2011
         currentDay = datetime.now().day
         currentMonth = datetime.now().month
 
         # Determine what year the data ends in and set year
+        years = np.arange(self.startYear, self.endYear+1, 1)
+
         if self.endYear == currentYear:
             data = np.array(dataFile.variables['data'][self.startYear-1895: ,closestLat,closestLon])   
         else:
             data = np.array(dataFile.variables['data'][self.startYear-1895:-(currentYear-self.endYear),closestLat,closestLon])
-        years = np.arange(self.startYear, self.endYear+1, 1)
-      
+            if self.month > currentMonth:
+                data = np.array(dataFile.variables['data'][self.startYear-1895:len(years)+1,closestLat,closestLon])
+
         # Convert Precip to inches
         if self.variable == 'pon':
             data = data/100.
@@ -104,7 +104,9 @@ class Plot():
                     years = np.arange(self.startYear+v, self.endYear+1, 1)
                 else:
                     data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:-(currentYear-self.endYear),closestLat,closestLon])
-                    years = np.arange(self.startYear+v, self.endYear+1, 1)    
+                    years = np.arange(self.startYear+v, self.endYear+1, 1)
+                    if self.month > currentMonth:
+                        data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:len(years)+1,closestLat,closestLon])     
             value+=1
         
         # Convert C to F
@@ -195,22 +197,25 @@ class Plot():
         elevation = elevationData[eclosestLat, eclosestLon]
         elevationFile.close()
 
-        
-        
 
         # Set Current dates
         currentYear = datetime.now().year
-        
-        #currentYear = 2011
         currentDay = datetime.now().day
         currentMonth = datetime.now().month
+
+        # Get Data
+        years = np.arange(self.startYear, self.endYear+1, 1)
 
         if self.endYear == currentYear:
             data = np.array(dataFile.variables['data'][self.startYear-1895: ,closestLat,closestLon])   
         else:
             data = np.array(dataFile.variables['data'][self.startYear-1895:-(currentYear-self.endYear),closestLat,closestLon])
-        years = np.arange(self.startYear, self.endYear+1, 1)
+            if self.month > currentMonth:
+                data = np.array(dataFile.variables['data'][self.startYear-1895:len(years)+1,closestLat,closestLon])
+        
  
+        print len(data), len(years)
+
         # Convert Precip to if there are any -9999.00 values to exclude if data selection is for all years
         if self.variable == 'pon':
             data = data/100.
@@ -240,7 +245,9 @@ class Plot():
                     years = np.arange(self.startYear+v, self.endYear+1, 1)
                 else:
                     data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:-(currentYear-self.endYear),closestLat,closestLon])
-                    years = np.arange(self.startYear+v, self.endYear+1, 1)    
+                    years = np.arange(self.startYear+v, self.endYear+1, 1) 
+                    if self.month > currentMonth:
+                        data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:len(years)+1,closestLat,closestLon])   
             value+=1
 
         # Convert C to F
