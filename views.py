@@ -74,9 +74,9 @@ def bargraph_panel(request):
             plt.close()
             return response
         except:
-            print "invalid plot"
+            return HttpResponse("Invalid plot")
     except:
-        print "invalid parameters"
+        return HttpResponse("Invalid parameters")
 
 def bargraph_text(request):
     variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]

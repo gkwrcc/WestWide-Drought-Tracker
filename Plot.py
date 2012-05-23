@@ -216,8 +216,6 @@ class Plot():
         data = np.array(dataFile.variables['data'][self.startYear-1895:len(years),closestLat,closestLon])
         
  
-        print len(data), len(years)
-
         # Convert Precip to if there are any -9999.00 values to exclude if data selection is for all years
         if self.variable == 'pon':
             data = data/100.
