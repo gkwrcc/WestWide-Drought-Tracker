@@ -106,7 +106,7 @@ class Plot():
                 v+=1
             else:
                 years = np.arange(self.startYear+v, self.endYear+1, 1)
-                data = np.array(dataFile.variables['data'][self.startYear-1895:len(years),closestLat,closestLon])
+                data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:len(years)+v,closestLat,closestLon])
             value+=1
         
         # Convert C to F
@@ -240,15 +240,8 @@ class Plot():
             if data[v] == -9999.0:
                 v+=1
             else:
-                if self.endYear == currentYear:
-                    years = np.arange(self.startYear+v, self.endYear+1, 1)
-                    data = np.array(dataFile.variables['data'][self.startYear-1895+v:len(years),closestLat,closestLon])
-
-                else:
-                    data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:len(years),closestLat,closestLon])
-                    years = np.arange(self.startYear+v, self.endYear+1, 1) 
-                    if self.month >= currentMonth:
-                        data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:len(years),closestLat,closestLon])   
+                years = np.arange(self.startYear+v, self.endYear+1, 1)
+                data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:len(years)+v,closestLat,closestLon])
             value+=1
 
         
