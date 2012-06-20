@@ -1,28 +1,15 @@
+import os
 import matplotlib.pyplot as plt
 import numpy as np
 import datetime
 
-from matplotlib.offsetbox import TextArea, DrawingArea, OffsetImage, AnnotationBbox
-from matplotlib.dates import MonthLocator, DateFormatter
 from dateutil.relativedelta import relativedelta
 from matplotlib.pyplot import figure, show
 from matplotlib.patches import Rectangle
 from matplotlib.mlab import find, prctile
-from scipy.io import netcdf
-
-
-
-import os
-
-
-
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.font_manager import FontProperties
-from matplotlib.ticker import ScalarFormatter
-
 from matplotlib.mlab import movavg
-from matplotlib.ticker import MultipleLocator
-
+from scipy.io import netcdf
 
 from settings import WWDTNETCDF_DIR, ELEVATION_DATA
 
