@@ -2,13 +2,15 @@
 <head>
 <title>WWDT</title>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-  <link rel="stylesheet" type="text/css" href="media/extjs/resources/css/ext-all.css"/>
-  <script type="text/javascript" src="media/extjs/adapter/ext/ext-base.js"></script>
-  <script type="text/javascript" src="media/extjs/ext-all.js"></script>
-  <script type="text/javascript" src="media/js/Ext.ux.GMapPanel3.js"></script>
-  <script type="text/javascript" src="media/js/interface.js"></script>
-  <link type="text/css" href="media/css/style.css" rel="stylesheet" media="all"/>
-  <link type="text/css" id="theme" href="media/extjs/resources/css/xtheme-WWDT.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="/media/extjs/resources/css/ext-all.css"/>
+  <script type="text/javascript" src="/media/extjs/adapter/ext/ext-base.js"></script>
+  <script type="text/javascript" src="/media/extjs/ext-all.js"></script>
+  <script type="text/javascript" src="/media/js/Ext.ux.GMapPanel3.js"></script>
+  <script type="text/javascript" src="/media/js/interface.js"></script>
+  <link type="text/css" href="/media/css/style.css" rel="stylesheet" media="all"/>
+  <link rel="stylesheet" type="text/css" id="theme" href="/media/extjs/resources/css/xtheme-WWDT.css"/>
+  
+
 </head>
 
 <body>
@@ -38,7 +40,7 @@
 
   <div id="use" class="x-hidden">
     <h3>Location Selection</h3>
-    <p>Click on the map to generate draggable red markers. Drag the markers to any location within the contiguous lower 48. This will automatically fill in the Latitude/Longitude form fields in the Point Select accordion menu to the left of the Google Map tabbed panel.</p><br />
+    <p>Click and drag the red map marker located in the center of the map to any location within the contiguous lower 48. This will automatically fill in the Latitude/Longitude form fields in the Point Select accordian menu to the left of the Google Map tabbed panel.</p><br />
 
     <h3>Data Options</h3>
     <p>Select a variable, start year, end year, month, and month span using the drop down combobox menus. Note - running average is an option field and takes user input in the for of an integer only (e.g. 5 for five year running average).</p><br />
@@ -74,5 +76,12 @@
     more spatially explicit.</p><br />
   </div>
  
+  <div id="disclaimer" class="x-hidden">
+    <h3>Disclaimer</h3>
+    <p>Data are produced using data from the PRISM (Parameter-elevation Regressions on Independent Slopes Model weblink http://prism.oregonstate.edu), the National Weather Service Cooperative Observer Network (COOP), and the Variable Infiltration Capacity (VIC) model. All near-real-time data are considered preliminary and should be used responsibly.
+
+.</p>
+  </div>
+
 </body>
 </html>

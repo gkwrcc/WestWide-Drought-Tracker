@@ -12,60 +12,60 @@ Ext.ux.GMapPanel = Ext.extend(Ext.Panel, {
      * An array of msg/code pairs.
      */
     respErrors: [{
-            code: 'UNKNOWN_ERROR',
-            msg: 'A geocoding or directions request could not be successfully processed, yet the exact reason for the failure is not known.' 
-        },{
-            code: 'ERROR',
-            msg: 'There was a problem contacting the Google servers.'
-        },{
-            code: 'ZERO_RESULTS',
-            msg: 'The request did not encounter any errors but returns zero results.'
-        },{
-            code: 'INVALID_REQUEST',
-            msg: 'This request was invalid.' 
-        },{
-            code: 'REQUEST_DENIED',
-            msg: 'The webpage is not allowed to use the geocoder for some reason.' 
-        },{
-            code: 'OVER_QUERY_LIMIT',
-            msg: 'The webpage has gone over the requests limit in too short a period of time.' 
+        code: 'UNKNOWN_ERROR',
+        msg: 'A geocoding or directions request could not be successfully processed, yet the exact reason for the failure is not known.'
+    }, {
+        code: 'ERROR',
+        msg: 'There was a problem contacting the Google servers.'
+    }, {
+        code: 'ZERO_RESULTS',
+        msg: 'The request did not encounter any errors but returns zero results.'
+    }, {
+        code: 'INVALID_REQUEST',
+        msg: 'This request was invalid.'
+    }, {
+        code: 'REQUEST_DENIED',
+        msg: 'The webpage is not allowed to use the geocoder for some reason.'
+    }, {
+        code: 'OVER_QUERY_LIMIT',
+        msg: 'The webpage has gone over the requests limit in too short a period of time.'
     }],
     /**
      * @cfg {Array} locationTypes
      * An array of msg/code/level pairs.
      */
     locationTypes: [{
-            level: 4,
-            code: 'ROOFTOP',
-            msg: 'The returned result is a precise geocode for which we have location information accurate down to street address precision.' 
-        },{
-            level: 3,
-            code: 'RANGE_INTERPOLATED',
-            msg: 'The returned result reflects an approximation (usually on a road) interpolated between two precise points (such as intersections). Interpolated results are generally returned when rooftop geocodes are unavailable for a street address.'
-        },{
-            level: 2,
-            code: 'GEOMETRIC_CENTER',
-            msg: 'The returned result is the geometric center of a result such as a polyline (for example, a street) or polygon (region).'
-        },{
-            level: 1,
-            code: 'APPROXIMATE',
-            msg: 'The returned result is approximate.' 
+        level: 4,
+        code: 'ROOFTOP',
+        msg: 'The returned result is a precise geocode for which we have location information accurate down to street address precision.'
+    }, {
+        level: 3,
+        code: 'RANGE_INTERPOLATED',
+        msg: 'The returned result reflects an approximation (usually on a road) interpolated between two precise points (such as intersections). Interpolated results are generally returned when rooftop geocodes are unavailable for a street address.'
+    }, {
+        level: 2,
+        code: 'GEOMETRIC_CENTER',
+        msg: 'The returned result is the geometric center of a result such as a polyline (for example, a street) or polygon (region).'
+    }, {
+        level: 1,
+        code: 'APPROXIMATE',
+        msg: 'The returned result is approximate.'
     }],
     /**
      * @cfg {String} respErrorTitle
      * Defaults to <tt>'Error'</tt>.
      */
-    respErrorTitle : 'Error',
+    respErrorTitle: 'Error',
     /**
      * @cfg {String} geoErrorMsgUnable
      * Defaults to <tt>'Unable to Locate the Address you provided'</tt>.
      */
-    geoErrorMsgUnable : 'Unable to Locate the Address you provided',
+    geoErrorMsgUnable: 'Unable to Locate the Address you provided',
     /**
      * @cfg {String} geoErrorTitle
      * Defaults to <tt>'Address Location Error'</tt>.
      */
-    geoErrorTitle : 'Address Location Error',
+    geoErrorTitle: 'Address Location Error',
     /**
      * @cfg {String} geoErrorMsgAccuracy
      * Defaults to <tt>'The address provided has a low accuracy.<br><br>{0} Accuracy.'</tt>.
@@ -84,7 +84,7 @@ Ext.ux.GMapPanel = Ext.extend(Ext.Panel, {
      * </p></div></li>
      * </ul></div>
      */
-    geoErrorMsgAccuracy : 'The address provided has a low accuracy.<br><br>"{0}" Accuracy.<br><br>{1}',
+    geoErrorMsgAccuracy: 'The address provided has a low accuracy.<br><br>"{0}" Accuracy.<br><br>{1}',
     /**
      * @cfg {String} gmapType
      * The type of map to display, generic options available are: 'map', 'panorama'.
@@ -130,7 +130,7 @@ Ext.ux.GMapPanel = Ext.extend(Ext.Panel, {
      * gmapType: G_MOON_VISIBLE_MAP
      * </code></pre>
      */
-    gmapType : 'map',
+    gmapType: 'map',
     /**
      * @cfg {Object} setCenter
      * The initial center location of the map. The map needs to be centered before it can be used.
@@ -227,213 +227,235 @@ markers: [{
     mapDefined: false,
     // private
     mapDefinedGMap: false,
-    initComponent : function(){
-        
-        this.addEvents(
-            /**
-             * @event mapready
-             * Fires when the map is ready for interaction
-             * @param {GMapPanel} this
-             * @param {GMap} map
-             */
-            'mapready',
-            /**
-             * @event apiready
-             * Fires when the Google Maps API is loaded
-             */
-            'apiready'
-        );
-        
-        Ext.applyIf(this,{
-          markers: [],
-          cache: {
-              marker: [],
-              polyline: [],
-              infowindow: []
-          }
-        });
-        
-        Ext.ux.GMapPanel.superclass.initComponent.call(this);        
+    initComponent: function () {
 
-        if (window.google && window.google.maps){
-          this.on('afterrender', this.apiReady, this);
-        }else{
-          window.gmapapiready = this.apiReady.createDelegate(this);
-          this.buildScriptTag('http://maps.google.com/maps/api/js?sensor=false&callback=gmapapiready');
+        this.addEvents(
+        /**
+         * @event mapready
+         * Fires when the map is ready for interaction
+         * @param {GMapPanel} this
+         * @param {GMap} map
+         */
+        'mapready',
+        /**
+         * @event apiready
+         * Fires when the Google Maps API is loaded
+         */
+        'apiready');
+
+        Ext.applyIf(this, {
+            markers: [],
+            cache: {
+                marker: [],
+                polyline: [],
+                infowindow: []
+            }
+        });
+
+        Ext.ux.GMapPanel.superclass.initComponent.call(this);
+
+        if (window.google && window.google.maps) {
+            this.on('afterrender', this.apiReady, this);
+        } else {
+            window.gmapapiready = this.apiReady.createDelegate(this);
+            this.buildScriptTag('http://maps.google.com/maps/api/js?sensor=false&callback=gmapapiready');
         }
 
     },
-    apiReady : function(){
-        
-        if (this.rendered){
-          
-          (function(){
-          
-          if (this.gmapType === 'map'){
-              this.gmap = new google.maps.Map(this.body.dom, {zoom:this.zoomLevel,mapTypeId: google.maps.MapTypeId.TERRAIN});
-              this.mapDefined = true;
-              this.mapDefinedGMap = true;
-          }
-          
-          if (this.gmapType === 'panorama'){
-              this.gmap = new GStreetviewPanorama(this.body.dom);
-              this.mapDefined = true;
-          }
-  
-          if (!this.mapDefined && this.gmapType){
-             this.gmap = new google.maps.Map(this.body.dom, {zoom:this.zoomLevel,mapTypeId: google.maps.MapTypeId.ROADMAP});
-             this.gmap.setMapTypeId(this.gmapType);
-             this.mapDefined = true;
-             this.mapDefinedGMap = true;
-          }
-          
-          google.maps.event.addListenerOnce(this.getMap(), 'tilesloaded', this.onMapReady.createDelegate(this));
-          google.maps.event.addListener(this.getMap(), 'dragend', this.dragEnd.createDelegate(this));
-          
-          // Click to add marker to map
-          google.maps.event.addListener(this.getMap(), 'click', function(event){
-              marker = new google.maps.Marker({
-              position: event.latLng, 
-              draggable: true,
-              map: this
-              });
+    apiReady: function () {
+
+        if (this.rendered) {
+
+            (function () {
+
+                if (this.gmapType === 'map') {
+                    this.gmap = new google.maps.Map(this.body.dom, {
+                        zoom: this.zoomLevel,
+                        mapTypeId: google.maps.MapTypeId.TERRAIN
+                    });
+                    this.mapDefined = true;
+                    this.mapDefinedGMap = true;
+                }
+
+                if (this.gmapType === 'panorama') {
+                    this.gmap = new GStreetviewPanorama(this.body.dom);
+                    this.mapDefined = true;
+                }
+
+                if (!this.mapDefined && this.gmapType) {
+                    this.gmap = new google.maps.Map(this.body.dom, {
+                        zoom: this.zoomLevel,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    });
+                    this.gmap.setMapTypeId(this.gmapType);
+                    this.mapDefined = true;
+                    this.mapDefinedGMap = true;
+                }
+
+                google.maps.event.addListenerOnce(this.getMap(), 'tilesloaded', this.onMapReady.createDelegate(this));
+                google.maps.event.addListener(this.getMap(), 'dragend', this.dragEnd.createDelegate(this));
+
+                // Click to add marker to map
+                google.maps.event.addListener(this.getMap(), 'click', function (event) {
+                    marker = new google.maps.Marker({
+                        position: event.latLng,
+                        draggable: true,
+                        map: this
+                    });
 
 
-         // Set lat/lon on click
-         pos = marker.getPosition();
-         document.getElementById("map_lat").value = pos.lat()
-         document.getElementById("map_lon").value = pos.lng() 
+                    // Set lat/lon on click for all on west accorion
+                    pos = marker.getPosition();
+                    var container = Ext.getCmp('id_product_tabs');
+                    var p = container.findByType(Ext.FormPanel);
+                    Ext.each(p, function () {
+                        this.find('name', 'lat')[0].setValue(pos.lat());
+                        this.find('name', 'lon')[0].setValue(pos.lng());
 
-          // Fill in lat/lon form as maker is dragged
-          google.maps.event.addListener(marker, 'drag', function () {
-                pos = marker.getPosition();
-                document.getElementById("map_lat").value = pos.lat()
-                document.getElementById("map_lon").value = pos.lng()             
-         });
+                    });
+
+                    // Fill in lat/lon form as maker is dragged
+                    google.maps.event.addListener(marker, 'drag', function () {
+                        pos = marker.getPosition();
+                        var container = Ext.getCmp('id_product_tabs');
+                        var p = container.findByType(Ext.FormPanel);
+                        Ext.each(p, function () {
+                            this.find('name', 'lat')[0].setValue(pos.lat());
+                            this.find('name', 'lon')[0].setValue(pos.lng());
+
+                        });
+                    });
 
 
-          });
-          
-          if (typeof this.setCenter === 'object') {
-              if (typeof this.setCenter.geoCodeAddr === 'string'){
-                  this.geoCodeLookup(this.setCenter.geoCodeAddr, this.setCenter.marker, false, true, this.setCenter.listeners);
-              }else{
-                  if (this.gmapType === 'map'){
-                      var point = new google.maps.LatLng(this.setCenter.lat,this.setCenter.lng);
-                      this.getMap().setCenter(point, this.zoomLevel);
-                      this.lastCenter = point;  
-                  }
-                  if (typeof this.setCenter.marker === 'object' && typeof point === 'object') {
-                      this.addMarker(point, this.setCenter.marker, this.setCenter.marker.clear);
-                  }
-              }
-              if (this.gmapType === 'panorama'){
-                  this.getMap().setLocationAndPOV(new google.maps.LatLng(this.setCenter.lat,this.setCenter.lng), {yaw: this.yaw, pitch: this.pitch, zoom: this.zoomLevel});
-              }
-          }
-          
-          }).defer(200,this);
-          
-        }else{
-          this.on('afterrender', this.apiReady, this);
+                });
+
+                if (typeof this.setCenter === 'object') {
+                    if (typeof this.setCenter.geoCodeAddr === 'string') {
+                        this.geoCodeLookup(this.setCenter.geoCodeAddr, this.setCenter.marker, false, true, this.setCenter.listeners);
+                    } else {
+                        if (this.gmapType === 'map') {
+                            var point = new google.maps.LatLng(this.setCenter.lat, this.setCenter.lng);
+                            this.getMap().setCenter(point, this.zoomLevel);
+                            this.lastCenter = point;
+                        }
+                        if (typeof this.setCenter.marker === 'object' && typeof point === 'object') {
+                            this.addMarker(point, this.setCenter.marker, this.setCenter.marker.clear);
+                        }
+                    }
+                    if (this.gmapType === 'panorama') {
+                        this.getMap().setLocationAndPOV(new google.maps.LatLng(this.setCenter.lat, this.setCenter.lng), {
+                            yaw: this.yaw,
+                            pitch: this.pitch,
+                            zoom: this.zoomLevel
+                        });
+                    }
+                }
+
+            }).defer(200, this);
+
+        } else {
+            this.on('afterrender', this.apiReady, this);
         }
     },
     // private
-    afterRender : function(){
-        
+    afterRender: function () {
+
         var wh = this.ownerCt.getSize();
         Ext.applyIf(this, wh);
-        
+
         Ext.ux.GMapPanel.superclass.afterRender.call(this);
 
     },
     // private
-    buildScriptTag: function(filename, callback) {
-        var script  = document.createElement('script'),
-        head        = document.getElementsByTagName("head")[0];
+    buildScriptTag: function (filename, callback) {
+        var script = document.createElement('script'),
+            head = document.getElementsByTagName("head")[0];
         script.type = "text/javascript";
-        script.src  = filename;    
-        
+        script.src = filename;
+
         return head.appendChild(script);
     },
     // private
-    onMapReady : function(){
-                
+    onMapReady: function () {
+
         this.addMapControls();
         this.addOptions();
-        
+
         this.addMarkers(this.markers);
-        
+
         this.fireEvent('mapready', this, this.getMap());
-        
+
     },
     // private
-    onResize : function(w, h){
-        
+    onResize: function (w, h) {
+
         Ext.ux.GMapPanel.superclass.onResize.call(this, w, h);
 
         // check for the existance of the google map in case the onResize fires too early
         if (typeof this.getMap() == 'object') {
             google.maps.event.trigger(this.getMap(), 'resize');
-            if (this.lastCenter){
-              this.getMap().setCenter(this.lastCenter, this.zoomLevel);
+            if (this.lastCenter) {
+                this.getMap().setCenter(this.lastCenter, this.zoomLevel);
             }
         }
 
     },
     // private
-    setSize : function(width, height, animate){
-        
+    setSize: function (width, height, animate) {
+
         Ext.ux.GMapPanel.superclass.setSize.call(this, width, height, animate);
 
         // check for the existance of the google map in case setSize is called too early
         if (Ext.isObject(this.getMap())) {
             google.maps.event.trigger(this.getMap(), 'resize');
-            if (this.lastCenter){
-              this.getMap().setCenter(this.lastCenter, this.zoomLevel);
+            if (this.lastCenter) {
+                this.getMap().setCenter(this.lastCenter, this.zoomLevel);
             }
         }
-        
+
     },
     // private
-    dragEnd: function(){
-      this.lastCenter = this.getMap().getCenter();
+    dragEnd: function () {
+        this.lastCenter = this.getMap().getCenter();
     },
     /**
      * Returns the current google map which can be used to call Google Maps API specific handlers.
      * @return {GMap} this
      */
-    getMap : function(){
-        
+    getMap: function () {
+
         return this.gmap;
-        
+
     },
     /**
      * Returns the maps center as a GLatLng object
      * @return {GLatLng} this
      */
-    getCenter : function(){
-        
+    getCenter: function () {
+
         return this.getMap().getCenter();
-        
+
     },
     /**
      * Returns the maps center as a simple object
      * @return {Object} this has lat and lng properties only
      */
-    getCenterLatLng : function(){
-        
+    getCenterLatLng: function () {
+
         var ll = this.getCenter();
-        return {lat: ll.lat(), lng: ll.lng()};
-        
+        return {
+            lat: ll.lat(),
+            lng: ll.lng()
+        };
+
     },
     /**
      * Creates markers from the array that is passed in. Each marker must consist of at least
      * <code>lat</code> and <code>lng</code> properties or a <code>geoCodeAddr</code>.
      * @param {Array} markers an array of marker objects
      */
-    addMarkers : function(markers) {
-        if (Ext.isArray(markers)){
+    addMarkers: function (markers) {
+        if (Ext.isArray(markers)) {
             for (var i = 0; i < markers.length; i++) {
                 if (markers[i]) {
                     if (typeof markers[i].geoCodeAddr == 'string') {
@@ -445,7 +467,7 @@ markers: [{
                 }
             }
         }
-        
+
     },
     /**
      * Creates a single marker.
@@ -455,11 +477,11 @@ markers: [{
      * @param {Boolean} center true to center the map on this marker
      * @param {Object} listeners a listeners config
      */
-    addMarker : function(point, marker, clear, center, listeners){
-        
-        Ext.applyIf(marker,{});
+    addMarker: function (point, marker, clear, center, listeners) {
 
-        if (clear === true){
+        Ext.applyIf(marker, {});
+
+        if (clear === true) {
             this.clearMarkers();
         }
         if (center === true) {
@@ -470,46 +492,47 @@ markers: [{
         var mark = new google.maps.Marker(Ext.apply(marker, {
             position: point
         }));
-        
-        if (marker.infoWindow){
+
+        if (marker.infoWindow) {
             this.createInfoWindow(marker.infoWindow, point, mark);
         }
-        
+
         this.cache.marker.push(mark);
         mark.setMap(this.getMap());
 
-        if (typeof listeners === 'object'){
+        if (typeof listeners === 'object') {
             for (evt in listeners) {
                 google.maps.event.addListener(mark, evt, listeners[evt]);
             }
         }
-        
+
         return mark;
-        
+
     },
     /**
      * Creates a single polyline.
      * @param {Array} points an array of polyline points
      * @param {Object} linestyle an object defining the line style to use
      */
-    addPolyline : function(points, linestyle){
-        
-        var plinepnts = new google.maps.MVCArray, pline, linestyle = linestyle ? linestyle : {
-            strokeColor: '#FF0000',
-            strokeOpacity: 1.0,
-            strokeWeight: 2
-        };
-        
-        Ext.each(points, function(point){
+    addPolyline: function (points, linestyle) {
+
+        var plinepnts = new google.maps.MVCArray,
+            pline, linestyle = linestyle ? linestyle : {
+                strokeColor: '#FF0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 2
+            };
+
+        Ext.each(points, function (point) {
             plinepnts.push(new google.maps.LatLng(point.lat, point.lng));
         }, this);
-        
+
         var pline = new google.maps.Polyline(Ext.apply({
-          path: plinepnts
-        },linestyle));
-        
+            path: plinepnts
+        }, linestyle));
+
         this.cache.polyline.push(pline);
-        
+
         pline.setMap(this.getMap());
 
     },
@@ -519,102 +542,103 @@ markers: [{
      * @param {GLatLng} point the point to show the Info Window at
      * @param {GMarker} marker a marker to attach the Info Window to
      */
-    createInfoWindow : function(inwin, point, marker){
-        
-        var me = this, infoWindow = new google.maps.InfoWindow({
-            content: inwin.content,
-            position: point
-        });
-        
+    createInfoWindow: function (inwin, point, marker) {
+
+        var me = this,
+            infoWindow = new google.maps.InfoWindow({
+                content: inwin.content,
+                position: point
+            });
+
         if (marker) {
-            google.maps.event.addListener(marker, 'click', function(){
+            google.maps.event.addListener(marker, 'click', function () {
                 me.hideAllInfoWindows();
                 infoWindow.open(me.getMap());
             });
         }
-        
+
         this.cache.infowindow.push(infoWindow);
 
         return infoWindow;
 
     },
     // private
-    hideAllInfoWindows : function(){
+    hideAllInfoWindows: function () {
         for (var i = 0; i < this.cache.infowindow.length; i++) {
             this.cache.infowindow[i].close();
         }
     },
     // private
-    clearMarkers : function(){
-        
+    clearMarkers: function () {
+
         this.hideAllInfoWindows();
         this.hideMarkers();
 
     },
     // private
-    hideMarkers : function(){
-        Ext.each(this.cache.marker, function(mrk){
+    hideMarkers: function () {
+        Ext.each(this.cache.marker, function (mrk) {
             mrk.setMap(null);
         });
     },
     // private
-    showMarkers : function(){
-        Ext.each(this.cache.marker, function(mrk){
+    showMarkers: function () {
+        Ext.each(this.cache.marker, function (mrk) {
             mrk.setMap(this.getMap());
-        },this);
+        }, this);
     },
     // private
-    addMapControls : function(){
-        
+    addMapControls: function () {
+
         if (this.gmapType === 'map') {
             if (Ext.isArray(this.mapControls)) {
-                for(i=0;i<this.mapControls.length;i++){
+                for (i = 0; i < this.mapControls.length; i++) {
                     //this.addMapControl(this.mapControls[i]);
                 }
-            }else if(typeof this.mapControls === 'string'){
+            } else if (typeof this.mapControls === 'string') {
                 //this.addMapControl(this.mapControls);
-            }else if(typeof this.mapControls === 'object'){
+            } else if (typeof this.mapControls === 'object') {
                 //this.getMap().add_control(this.mapControls);
             }
         }
-        
+
     },
     /**
      * Adds a GMap control to the map.
      * @param {String} mc a string representation of the control to be instantiated.
      */
-    addMapControl : function(mc){
-        
+    addMapControl: function (mc) {
+
         var mcf = window[mc];
         if (typeof mcf === 'function') {
             //this.getMap().addControl(new mcf());
-        }    
-        
+        }
+
     },
     // private
-    addOptions : function(){
-        
+    addOptions: function () {
+
         if (Ext.isArray(this.mapConfOpts)) {
             var mc;
-            for(i=0;i<this.mapConfOpts.length;i++){
+            for (i = 0; i < this.mapConfOpts.length; i++) {
                 //this.addOption(this.mapConfOpts[i]);
             }
-        }else if(typeof this.mapConfOpts === 'string'){
+        } else if (typeof this.mapConfOpts === 'string') {
             //this.addOption(this.mapConfOpts);
-        }        
-        
+        }
+
     },
     /**
      * Adds a GMap option to the map.
      * @param {String} mo a string representation of the option to be instantiated.
      */
-    addOption : function(mo){
-        
+    addOption: function (mo) {
+
         var mof = this.getMap()[mo];
         if (typeof mof === 'function') {
             this.getMap()[mo]();
-        }    
-        
+        }
+
     },
     /**
      * Looks up and address and optionally add a marker, center the map to this location, or
@@ -655,91 +679,91 @@ buttons: [
      * @param {Boolean} center true to set this point as the center of the map.
      * @param {Object} listeners a listeners config
      */
-    geoCodeLookup : function(addr, marker, clear, center, listeners) {
-        
+    geoCodeLookup: function (addr, marker, clear, center, listeners) {
+
         if (!this.geocoder) {
             this.geocoder = new google.maps.Geocoder();
         }
         this.geocoder.geocode({
-    			address: addr
-    		}, this.addAddressToMap.createDelegate(this, [addr, marker, clear, center, listeners], true));
-        
+            address: addr
+        }, this.addAddressToMap.createDelegate(this, [addr, marker, clear, center, listeners], true));
+
     },
-  	// private 
-  	centerOnClientLocation : function(){
-  		this.getClientLocation(function(loc){
-  			var point = new google.maps.LatLng(loc.latitude,loc.longitude);
-        this.getMap().setCenter(point, this.zoomLevel);
-        this.lastCenter = point;
-  		});
-  	},
-  	// private
-  	getClientLocation : function(fn, errorFn){
-  		if (!errorFn) {
-          errorFn = Ext.emptyFn;
-      }
-  		if (!this.clientGeo) {
-  			this.clientGeo = google.gears.factory.create('beta.geolocation');
-  		}
-  		geo.getCurrentPosition(fn.createDelegate(this), errorFn);
-  	},
+    // private 
+    centerOnClientLocation: function () {
+        this.getClientLocation(function (loc) {
+            var point = new google.maps.LatLng(loc.latitude, loc.longitude);
+            this.getMap().setCenter(point, this.zoomLevel);
+            this.lastCenter = point;
+        });
+    },
     // private
-    addAddressToMap : function(response, status, addr, marker, clear, center, listeners){
+    getClientLocation: function (fn, errorFn) {
+        if (!errorFn) {
+            errorFn = Ext.emptyFn;
+        }
+        if (!this.clientGeo) {
+            this.clientGeo = google.gears.factory.create('beta.geolocation');
+        }
+        geo.getCurrentPosition(fn.createDelegate(this), errorFn);
+    },
+    // private
+    addAddressToMap: function (response, status, addr, marker, clear, center, listeners) {
         if (!response || status !== 'OK') {
             this.respErrorMsg(status);
-        }else{
+        } else {
             var place = response[0].geometry.location,
-			          accuracy = this.getLocationTypeInfo(response[0].geometry.location_type,'level'),
-			          reqAccuracy = this.getLocationTypeInfo(this.minGeoAccuracy,'level');
+                accuracy = this.getLocationTypeInfo(response[0].geometry.location_type, 'level'),
+                reqAccuracy = this.getLocationTypeInfo(this.minGeoAccuracy, 'level');
             if (accuracy === 0) {
                 this.geoErrorMsg(this.geoErrorTitle, this.geoErrorMsgUnable);
-            }else{
+            } else {
                 if (accuracy < reqAccuracy) {
-                    this.geoErrorMsg(this.geoErrorTitle, String.format(this.geoErrorMsgAccuracy, response[0].geometry.location_type, this.getLocationTypeInfo(response[0].geometry.location_type,'msg')));
-                }else{
-                    point = new google.maps.LatLng(place.lat(),place.lng());
-                    if (center){
+                    this.geoErrorMsg(this.geoErrorTitle, String.format(this.geoErrorMsgAccuracy, response[0].geometry.location_type, this.getLocationTypeInfo(response[0].geometry.location_type, 'msg')));
+                } else {
+                    point = new google.maps.LatLng(place.lat(), place.lng());
+                    if (center) {
                         this.getMap().setCenter(point, this.zoomLevel);
                         this.lastCenter = point;
                     }
                     if (typeof marker === 'object') {
-                        if (!marker.title){
+                        if (!marker.title) {
                             marker.title = response.formatted_address;
                         }
                         var mkr = this.addMarker(point, marker, clear, false, listeners);
-                        if (marker.callback){
-                          marker.callback.call(this, mkr, point);
+                        if (marker.callback) {
+                            marker.callback.call(this, mkr, point);
                         }
                     }
                 }
             }
         }
-        
+
     },
     // private
-    geoErrorMsg : function(title,msg){
+    geoErrorMsg: function (title, msg) {
         if (this.displayGeoErrors) {
-            Ext.MessageBox.alert(title,msg);
+            Ext.MessageBox.alert(title, msg);
         }
     },
     // private
-    respErrorMsg : function(code){
-        Ext.each(this.respErrors, function(obj){
-            if (code == obj.code){
+    respErrorMsg: function (code) {
+        Ext.each(this.respErrors, function (obj) {
+            if (code == obj.code) {
                 Ext.MessageBox.alert(this.respErrorTitle, obj.msg);
             }
         }, this);
     },
     // private
-    getLocationTypeInfo: function(location_type,property){
-      var val = 0;
-      Ext.each(this.locationTypes, function(itm){
-        if (itm.code === location_type){
-          val = itm[property];
-        }
-      });
-      return val;
+    getLocationTypeInfo: function (location_type, property) {
+        var val = 0;
+        Ext.each(this.locationTypes, function (itm) {
+            if (itm.code === location_type) {
+                val = itm[property];
+            }
+        });
+        return val;
     }
 });
 
-Ext.reg('gmappanel',Ext.ux.GMapPanel); 
+Ext.reg('gmappanel', Ext.ux.GMapPanel);

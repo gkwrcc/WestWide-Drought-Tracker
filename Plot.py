@@ -65,27 +65,16 @@ class Plot():
         currentDay = datetime.now().day
         currentMonth = datetime.now().month
 
-        # Determine what year the data ends in and set year
-        #if self.endYear == currentYear:
-        #    data = np.array(dataFile.variables['data'][self.startYear-1895: ,closestLat,closestLon])
-        #    print data[:]
-               
-        #else:
-        #    data = np.array(dataFile.variables['data'][self.startYear-1895:-(currentYear-self.endYear),closestLat,closestLon])
-        #    print data[:]
-        #years = np.arange(self.startYear, self.endYear+1, 1)
-      
-
         # Updated list sequencing index
-        #
         years = np.arange(self.startYear, self.endYear+1, 1)
-        data = np.array(dataFile.variables['data'][self.startYear-1895:len(years),closestLat,closestLon])
+        data = np.array(dataFile.variables['data'][self.startYear-1895:(self.endYear-1894),closestLat,closestLon])
 
         # Convert Precip to inches
         if self.variable == 'pon':
             data = data/100.
 
         # Force data values of -9999.0 for nonexistent data
+        
         if self.month - self.span < 0:
             noData = (abs(self.month - self.span)/12)
             noYear = 0
@@ -106,7 +95,7 @@ class Plot():
                 v+=1
             else:
                 years = np.arange(self.startYear+v, self.endYear+1, 1)
-                data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:len(years)+v,closestLat,closestLon])
+                data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:(self.endYear-1894),closestLat,closestLon])
             value+=1
         
         # Convert C to F
@@ -119,7 +108,6 @@ class Plot():
 
 
         #Uncomment to show the data that will be plotted.
-        #print data[:]
 
         # Set notmal period 1891-2010
         normal_range = np.array(dataFile.variables['data'][86:116,closestLat,closestLon])
@@ -197,9 +185,6 @@ class Plot():
         elevation = elevationData[eclosestLat, eclosestLon]
         elevationFile.close()
 
-        
-        
-
         # Set Current dates
         currentYear = datetime.now().year
         
@@ -208,12 +193,9 @@ class Plot():
         currentMonth = datetime.now().month
 
 
-        #
-        # Start here when selecting len of arrary
-        #
-
+        # Open data
         years = np.arange(self.startYear, self.endYear+1, 1)
-        data = np.array(dataFile.variables['data'][self.startYear-1895:len(years),closestLat,closestLon])
+        data = np.array(dataFile.variables['data'][self.startYear-1895:(self.endYear-1894),closestLat,closestLon])
         
  
         # Convert Precip to if there are any -9999.00 values to exclude if data selection is for all years
@@ -241,10 +223,8 @@ class Plot():
                 v+=1
             else:
                 years = np.arange(self.startYear+v, self.endYear+1, 1)
-                data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:len(years)+v,closestLat,closestLon])
+                data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:(self.endYear-1894),closestLat,closestLon])
             value+=1
-
-        
 
         # Convert C to F
         if self.variable == 'mdn':
@@ -254,10 +234,6 @@ class Plot():
         if self.variable == 'pon':
             data = data/100.
  
-        # Prints Data
-        #print data[:]
-
-
         # Set normal range 1981-2010
         normal_range = np.array(dataFile.variables['data'][86:116,closestLat,closestLon])
         normal = normal_range.mean() 
@@ -329,7 +305,6 @@ class Plot():
                 ax.set_title(u'Precipitation, %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (monthList[self.month-1], self.lat, abs(self.lon), elevation)) 
             else:
                 ax.set_title(u'Precipitation, %s-Months Ending in %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (self.span, monthList[self.month-1], self.lat, abs(self.lon), elevation))
-            #ax.set_title(u'Precipitation at %4.2f\u00b0N, %4.2f\u00b0W, Elevation:(%4.2f Meters) - %s-Months Ending in %s' % (self.lat, self.lon, elevation, self.span, monthList[self.month-1]), fontsize=9)
             ax.set_ylabel("Inches")
             ax.set_ybound(max(data))
             ax.axhline(y=normal, color="black", label='Normal Period: 1981-2010') 
@@ -457,4 +432,5 @@ if __name__ == '__main__':
     month = 1
     span = 1
     runavg = 5
+
 
