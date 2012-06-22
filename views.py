@@ -193,11 +193,11 @@ def climatology_text(request):
       
     variable = int(request.GET['variable'])
     variable = variableList[variable]
-    print 'variable:', variable
+    #print 'variable:', variable
     monthSpan = int(request.GET['span'])
    
     text = Climatology(lat=lat, lon=lon, variable=variable, monthSpan=monthSpan).getText()
-    print 'text:', text[:]
+    #print 'text:', text[:]
     data = []
     for value in text:
         data.append(value)
