@@ -76,9 +76,9 @@ def bargraph_panel(request):
             plt.close()
             return response
         except:
-            print "invalid plot"
+            return HttpResponse("invalid plot")
     except:
-        print "invalid parameters"
+        return HttpResponse("invalid parameters")
 
 def bargraph_text(request):
     variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
@@ -171,9 +171,9 @@ def climatology(request):
             plt.close()
             return response
         except:
-            print "invalid plot"
+            return HttpResponse("invalid plot")
     except:
-        print "invalid parameters"
+        return HttpResponse("invalid parameters")
 
 def climatology_text(request):
     variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
@@ -193,11 +193,11 @@ def climatology_text(request):
       
     variable = int(request.GET['variable'])
     variable = variableList[variable]
-    print 'variable:', variable
+    #print 'variable:', variable
     monthSpan = int(request.GET['span'])
    
     text = Climatology(lat=lat, lon=lon, variable=variable, monthSpan=monthSpan).getText()
-    print 'text:', text[:]
+    #print 'text:', text[:]
     data = []
     for value in text:
         data.append(value)
