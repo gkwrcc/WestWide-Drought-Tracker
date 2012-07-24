@@ -36,7 +36,7 @@ class Climatology:
         self.monthSpan = monthSpan
         self.region = region
         
-        print self.region, self.variable, self.monthSpan
+       # print self.region, self.variable, self.monthSpan
 
 
 
@@ -912,7 +912,7 @@ class Plot():
         self.span = span
         self.runavg = runavg
 
-        print self.region, self.startYear, self.endYear,self.variable,self.month ,self.span ,self.runavg, 
+       # print self.region, self.startYear, self.endYear,self.variable,self.month ,self.span ,self.runavg, 
   
     def Index(self, array, userInput):
         '''Function to find the index value of an array value closest to user input value '''     
@@ -1179,7 +1179,7 @@ class Plot():
             topColor, bottomColor = 'green', 'gold'    
             
         if self.variable == 'mdn':
-            print 'asggdsdf'
+
             if self.span == 1:
                 ax.set_title(u'Mean Temperature, %s \n %s ' % ( monthList[self.month-1], regionName ))
             else:
@@ -1309,7 +1309,7 @@ class Plot():
         ax.set_autoscale_on(False)
         ax.set_xbound((years[0]-1, years[-1]+1))
 
-        print 'edbs'
+
 
         # Add figure to canvas
         canvas = FigureCanvas(plt.figure(1))      
@@ -1340,7 +1340,7 @@ class AllData:
         self.variable = variable
         self.region = region
         
-        print self.region, self.variable
+
 
     def Index(self, array, userInput):
         '''Function to find the index value of an array value closest to user input value '''     
@@ -1694,6 +1694,6 @@ class AllData:
             dataList.append(dataString)
             v+=1
 
-        print dataList
+
         return dataList
 
