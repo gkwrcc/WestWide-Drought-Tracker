@@ -410,12 +410,12 @@ class Climatology:
         ax.plot(x, perc7Line, color='white')
 
         # Fill in between percentage lines
-        ax.fill_between(x, percLine, perc2Line, facecolor=perc_colors[0], edgecolor='w')
-        ax.fill_between(x, perc2Line, perc3Line, facecolor=perc_colors[1], edgecolor='w')
-        ax.fill_between(x, perc3Line, perc4Line, facecolor=perc_colors[2], edgecolor='w')
-        ax.fill_between(x, perc4Line, perc5Line, facecolor=perc_colors[2], edgecolor='w')
-        ax.fill_between(x, perc5Line, perc6Line, facecolor=perc_colors[1], edgecolor='w')
-        ax.fill_between(x, perc6Line, perc7Line, facecolor=perc_colors[0], edgecolor='w')
+        ax.fill_between(x, percLine, perc2Line, facecolor=perc_colors[0], edgecolor='w', interpolate=True)
+        ax.fill_between(x, perc2Line, perc3Line, facecolor=perc_colors[1], edgecolor='w', interpolate=True)
+        ax.fill_between(x, perc3Line, perc4Line, facecolor=perc_colors[2], edgecolor='w', interpolate=True)
+        ax.fill_between(x, perc4Line, perc5Line, facecolor=perc_colors[2], edgecolor='w', interpolate=True)
+        ax.fill_between(x, perc5Line, perc6Line, facecolor=perc_colors[1], edgecolor='w', interpolate=True)
+        ax.fill_between(x, perc6Line, perc7Line, facecolor=perc_colors[0], edgecolor='w', interpolate=True)
 
         # Set x-axis labels
         ax.set_xticks(np.arange(span))
@@ -429,33 +429,33 @@ class Climatology:
 
         # Setup plots based on Variable    
         if self.variable == 'pdsi':
-            ax.set_title(u'Palmer Drought Severity Index, %s-Months Prior to %s \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[oneMonth-1], self.lat, abs(self.lon)))
+            ax.set_title(u'Palmer Drought Severity Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
             ax.set_ylabel("PDSI")
 
         if self.variable == 'scpdsi':
-            ax.set_title(u' Self Calibrated Palmer Drought Severity Index, %s-Months Prior to %s \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[oneMonth-1], self.lat, abs(self.lon)))
+            ax.set_title(u' Self Calibrated Palmer Drought Severity Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
             ax.set_ylabel("SCPDSI")
  
         if self.variable == 'pzi':
-            ax.set_title(u' Palmer Z-Index, %s-Months Prior to %s \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[oneMonth-1], self.lat, abs(self.lon)))
+            ax.set_title(u' Palmer Z-Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
             ax.set_ylabel("PZI")   
             
         if self.variable == 'mdn':
-            ax.set_title(u'Mean Temperature, %s-Months Prior to %s \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[oneMonth-1], self.lat, abs(self.lon)))  
+            ax.set_title(u'Mean Temperature, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
             ax.set_ylabel(u"Temperature \u00b0F")
             
         if self.variable == 'spi':
-            ax.set_title(u'Standardized Precipitation Index, %s-Months Prior to %s \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[oneMonth-1], self.lat, abs(self.lon)))
+            ax.set_title(u'Standardized Precipitation Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
             ax.set_ylabel(u"SPI")
             
         if self.variable == 'pon':
-            ax.set_title(u'Precipitation, %s-Months Prior to %s \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[oneMonth-1], self.lat, abs(self.lon)))
+            ax.set_title(u'Precipitation, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
             ax.set_ylabel("Inches")
 
 
         # Set axes
         #ax.set_ylabel('%s'%self.variable) 
-        ax.set_xlabel('From %s-%s - %s-%s'%(startDate.month, startDate.year, today.month, today.year))   
+        ax.set_xlabel('From %s-%s - %s-%s'%(startDate.month, startDate.year, (today.month-1), today.year))   
         ax.autoscale_view(tight=False) 
 
         # Set text
