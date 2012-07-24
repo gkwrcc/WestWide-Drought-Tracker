@@ -1,2 +1,3 @@
-WWDTNETCDF_DIR = '/home/www/jtwrcc/research/WWDT/data/PRISM/'
-ELEVATION_DATA = '/home/www/jtwrcc/research/WWDT/data/elevationUS.nc'
+WWDTNETCDF_DIR = '/media/drought/WWDTNETCDF/PRISM'
+WWDTNETCDF_DIR2 = '/media/drought/WWDTNETCDF/REGION'
+ELEVATION_DATA = '/media/drought/WWDTNETCDF/elevation/elevationUS.nc' 

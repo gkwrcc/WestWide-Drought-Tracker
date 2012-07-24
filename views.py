@@ -8,9 +8,14 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from Plot import Plot as Plot
 from climatology import Climatology as Climatology
+from regions import Plot as regionPlot
+from regions import Climatology as regionClimatology
+from regions import AllData as AllData
 import allData
 
 from django import template
+
+from regionDicts import *
 
 
 def testing(request):
@@ -76,9 +81,62 @@ def bargraph_panel(request):
             plt.close()
             return response
         except:
-            return HttpResponse("invalid plot")
+            print "invalid plot"
     except:
-        return HttpResponse("invalid parameters")
+        print "invalid parameters"
+
+def regionsBargraph_panel(request):
+    try:
+        data = [1,2,3,4,5]
+        variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
+        if 'run_avg' in request.GET:
+            run_avg = request.GET['run_avg']
+            if not run_avg:
+                runAvg = 0
+            else:
+                runAvg = int(run_avg)
+
+        region = request.GET['region']
+        #print region
+ 
+
+        if 'start_year' in request.GET:
+            startYear = request.GET['start_year']
+            if startYear < 1895:
+                startYear = 1895
+            else:
+                startYear = int(startYear)
+
+        if 'end_year' in request.GET:
+            endYear = request.GET['end_year']
+            endYear = int(endYear)
+            #if endYear > datetime.datetime.now().year:
+            #    endYear = (datetime.datetime.now().year -1)
+            #else:
+            #    endYear = int(endYear)
+
+        #if 'variable' in request.GET:
+        #    variable = int(request.GET['variable'])
+        #    variable = variableList[variable]
+
+      
+        variable = int(request.GET['variable'])
+        variable = variableList[variable]
+        month = int(request.GET['month'])
+        span = int(request.GET['span'])
+   
+        # Print PNG to page
+        try:
+            canvas = regionPlot(region=region, startYear=startYear, endYear=endYear, variable=variable, month=month, span=span, runavg=runAvg, data=None).getData()
+            response=HttpResponse(content_type='image/png')
+            canvas.print_png(response)
+            plt.close()
+            return response
+        except:
+            print "invalid plot"
+    except:
+        print "invalid parameters"
+
 
 def bargraph_text(request):
     variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
@@ -103,6 +161,31 @@ def bargraph_text(request):
     for value in text:
         data.append(value)
     return render_to_response('print.html', {'data': data})#, {'year': data}, {'mean': data})
+
+
+def regionBargraph_text(request):
+    variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
+    if 'run_avg' in request.GET:
+        run_avg = request.GET['run_avg']
+        if not run_avg:
+            runAvg = 0
+        else:
+            runAvg = int(run_avg)
+
+    region = request.GET['region']
+    endYear = int(request.GET['end_year'])
+    startYear = int(request.GET['start_year'])
+
+    variable = int(request.GET['variable'])
+    variable = variableList[variable]
+    month = int(request.GET['month'])
+    span = int(request.GET['span'])
+    text = regionPlot(region=region, startYear=startYear, endYear=endYear, variable=variable, month=month, span=span, runavg=runAvg, data=None).getText()
+    data = []
+    for value in text:
+        data.append(value)
+    return render_to_response('print.html', {'data': data})#, {'year': data}, {'mean': data})
+
 
 
 def all_text(request):
@@ -133,6 +216,39 @@ def all_text(request):
 
 
     return render_to_response('print.html', {'data': data})
+
+def regionsAll_text(request):
+    variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
+  
+
+    region = request.GET['region']
+    variable = int(request.GET['variable'])
+    variable = variableList[variable]
+    text = AllData(region=region, variable=variable).getAll()
+
+    regionName = allRegionDict[int(region)]
+
+
+    # Assign Data information
+    if variable == "mdn": data = ['Temperature (Degrees F) Mean Departure from Normal']
+    if variable == "pon": data = ['Precipitation (Inches)']
+    if variable == "spi": data = ['Standardized Precipitaion Index']
+    if variable == "pdsi": data = ['Palmer Drought Severity Index']
+    if variable == "pzi": data = ['Palmer Z-Index']
+    if variable == "scpdsi": data = ['Self Calibrated Palmer Drought Severity Index']
+
+    # Set 
+    data = data+[regionName,'________________________________________________________________________________']
+    data = data+['Year, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec']
+    for value in text:
+        # Send Data as a srting to Django
+
+        dataString = '%4.0f,%4.2f,%4.2f,%4.2f,%4.2f,%4.2f,%4.2f,%4.2f,%4.2f,%4.2f,%4.2f,%4.2f,%4.2f' % (value[0],value[1],value[2],value[3],value[4],value[5],value[6],value[7],value[8],value[9],value[10],value[11],value[12])
+        data.append(dataString)
+
+
+    return render_to_response('print.html', {'data': data})
+
 
 def wait_message(request):
     return render_to_response('wait.html')
@@ -171,9 +287,9 @@ def climatology(request):
             plt.close()
             return response
         except:
-            return HttpResponse("invalid plot")
+            print "invalid plot"
     except:
-        return HttpResponse("invalid parameters")
+        print "invalid parameters"
 
 def climatology_text(request):
     variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
@@ -203,3 +319,45 @@ def climatology_text(request):
         data.append(value)
     return render_to_response('print.html', {'data': data})#, {'year': data}, {'mean': data})
 
+def climatologyRegions(request):
+    try:
+        data = [1,2,3,4,5]
+        variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
+
+        region = request.GET['region']
+
+
+      
+        variable = int(request.GET['variable'])
+        variable = variableList[variable]
+
+        monthSpan = int(request.GET['span'])
+   
+        # Print PNG to page
+        try:
+            canvas = regionClimatology(region=region, variable=variable, monthSpan=monthSpan).getData()
+            response=HttpResponse(content_type='image/png')
+            canvas.print_png(response)
+            plt.close()
+            return response
+        except:
+            print "invalid plot"
+    except:
+        print "invalid parameters"
+
+def climatologyRegions_text(request):
+    variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
+
+    region = request.GET['region']
+      
+    variable = int(request.GET['variable'])
+    variable = variableList[variable]
+    #print 'variable:', variable
+    monthSpan = int(request.GET['span'])
+   
+    text = regionClimatology(region=region, variable=variable, monthSpan=monthSpan).getText()
+    #print 'text:', text[:]
+    data = []
+    for value in text:
+        data.append(value)
+    return render_to_response('print.html', {'data': data})#, {'year': data}, {'mean': data})
