@@ -751,7 +751,9 @@ markers: [{
 
                             clearOverlays();
 
-
+                            if (marker == true){
+                            alert('marker already here');
+                            }
 
 
                             var marker = new google.maps.Marker({
@@ -760,42 +762,52 @@ markers: [{
                                 map: this.getMap()
                             });
 
-
-
                             markersArray.push(marker);
+                            //alert('here'+event.latLng);
+                            //pos = marker.getPosition();
+                            Ext.getCmp('map_lat').setValue(event.latLng.lat());
+                            Ext.getCmp('map_lon').setValue(event.latLng.lng());
 
+                            Ext.getCmp('map_lat2').setValue(event.latLng.lat());
+                            Ext.getCmp('map_lon2').setValue(event.latLng.lng());
 
+                            Ext.getCmp('map_lat3').setValue(event.latLng.lat());
+                            Ext.getCmp('map_lon3').setValue(event.latLng.lng());
+                            //Ext.getCmp('map_lon').setValue();
 
-
-
-                            // Set lat/lon on click for all on west accorion
-                            pos = marker.getPosition();
-                            var container = Ext.getCmp('id_product_tabs');
-                            var p = container.findByType(Ext.FormPanel);
-                            Ext.each(p, function () {
-                                this.find('name', 'lat')[0].setValue(pos.lat());
-                                this.find('name', 'lon')[0].setValue(pos.lng());
 
 
 
                                 google.maps.event.addListener(marker, 'drag', function (event) {
-                                    // Set lat/lon on click for all on west accorion
-                                    pos = marker.getPosition();
-                                    Ext.getCmp('map_lat').setValue(pos.lat());
-                                    Ext.getCmp('map_lon').setValue(pos.lng());
+                                
+                            Ext.getCmp('map_lat').setValue(event.latLng.lat());
+                            Ext.getCmp('map_lon').setValue(event.latLng.lng());
 
-                                    Ext.getCmp('map_lat2').setValue(pos.lat());
-                                    Ext.getCmp('map_lon2').setValue(pos.lng());
+                            Ext.getCmp('map_lat2').setValue(event.latLng.lat());
+                            Ext.getCmp('map_lon2').setValue(event.latLng.lng());
 
-                                    Ext.getCmp('map_lat3').setValue(pos.lat());
-                                    Ext.getCmp('map_lon3').setValue(pos.lng());
+                            Ext.getCmp('map_lat3').setValue(event.latLng.lat());
+                            Ext.getCmp('map_lon3').setValue(event.latLng.lng());
+});
+
+                            // Set lat/lon on click for all on west accorion
+                            
+                            //var container = Ext.getCmp('id_product_tabs');
+                            //var p = container.findByType(Ext.FormPanel);
+                            //Ext.each(p, function () {
+                            //    this.find('name', 'lat')[0].setValue(pos.lat());
+                            //    this.find('name', 'lon')[0].setValue(pos.lng());
 
 
-                                });
+
+
+
+
 
                                 google.maps.event.addListener(marker, 'dragend', function (event) {
 
                                     if (google.maps.geometry.poly.containsLocation(event.latLng, conus) == true) {
+                                         //alert(event.latLng.lat());
 
                                         conus.setMap(null);
                                         //lake.setMap(null); 
@@ -831,29 +843,20 @@ markers: [{
 
                                             lake.setMap(this.getMap());
 
+                            Ext.getCmp('map_lat').setValue(null);
+                            Ext.getCmp('map_lon').setValue(null);
 
+                            Ext.getCmp('map_lat2').setValue(null);
+                            Ext.getCmp('map_lon2').setValue(null);
 
-                                            pos4 = marker.getPosition();
-                                            var container4 = Ext.getCmp('id_product_tabs');
-                                            var p4 = container4.findByType(Ext.FormPanel);
-                                            Ext.each(p4, function () {
-                                                this.find('name', 'lat')[0].setValue(null);
-                                                this.find('name', 'lon')[0].setValue(null);
-
-                                            });
-
+                            Ext.getCmp('map_lat3').setValue(null);
+                            Ext.getCmp('map_lon3').setValue(null);
 
 
                                         } else {
 
                                             lake.setMap(null);
-                                            pos2 = marker.getPosition();
-                                            var container2 = Ext.getCmp('id_product_tabs');
-                                            var p2 = container2.findByType(Ext.FormPanel);
-                                            Ext.each(p2, function () {
-                                                this.find('name', 'lat')[0].setValue(pos2.lat());
-                                                this.find('name', 'lon')[0].setValue(pos2.lng());
-                                            });
+
                                         }
 
 
@@ -881,13 +884,15 @@ markers: [{
                                         conus.setMap(this.getMap());
 
 
-                                        pos3 = marker.getPosition();
-                                        var container3 = Ext.getCmp('id_product_tabs');
-                                        var p3 = container3.findByType(Ext.FormPanel);
-                                        Ext.each(p3, function () {
-                                            this.find('name', 'lat')[0].setValue(null);
-                                            this.find('name', 'lon')[0].setValue(null);
-                                        });
+                            Ext.getCmp('map_lat').setValue(null);
+                            Ext.getCmp('map_lon').setValue(null);
+
+                            Ext.getCmp('map_lat2').setValue(null);
+                            Ext.getCmp('map_lon2').setValue(null);
+
+                            Ext.getCmp('map_lat3').setValue(null);
+                            Ext.getCmp('map_lon3').setValue(null);
+                                        
 
 
                                     }
@@ -902,7 +907,7 @@ markers: [{
 
 
 
-                        });
+                        //});
 
 
                     }
@@ -4121,6 +4126,15 @@ markers: [{
                             countyID['ID_00245'] = '23785969664';
                             countyID['ID_00224'] = '27004899328';
 
+                            countyID['ID_00176'] = 'Null';
+                            countyID['ID_02245'] = 'Null';
+                            countyID['ID_02575'] = 'Null';
+                            countyID['ID_02183'] = 'Null';
+
+
+
+
+
 
                             //alert(countyID[countyKmlID]);
                             //alert(text);
@@ -4733,6 +4747,22 @@ markers: [{
                             divID['ID_00100'] = '480009';
                             divID['ID_00071'] = '480001';
 
+                            divID['ID_00181'] = '180007';
+                            divID['ID_00101'] = '190003';
+                            divID['ID_00058'] = '200002';
+                            divID['ID_00135'] = '300004';
+                            divID['ID_00109'] = '370001';
+                            divID['ID_00007'] = '450003';
+                            divID['ID_00082'] = '470006';
+
+
+
+
+
+
+
+
+
                             Ext.getCmp('map_region').setValue(divID[divKmlID]);
                             Ext.getCmp('map_region2').setValue(divID[divKmlID]);
                             Ext.getCmp('map_region3').setValue(divID[divKmlID]);
@@ -4955,6 +4985,21 @@ markers: [{
                             psaID['ID_00052'] = '10814500';
                             psaID['ID_00018'] = '20585150';
                             psaID['ID_00076'] = '16335590';
+                            psaID['ID_00122'] = '10794280';
+                            
+                            psaID['ID_00056'] = 'Null';
+                            psaID['ID_00110'] = 'Null';
+                            psaID['ID_00029'] = 'Null';
+
+                            psaID['ID_00190'] = '15941480';
+
+                            psaID['ID_00027'] = '7001711';
+                            psaID['ID_00011'] = '11065590';
+
+
+
+	
+
 
 
                             Ext.getCmp('map_region').setValue(psaID[psaKmlID]);

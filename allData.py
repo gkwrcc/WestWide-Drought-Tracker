@@ -89,7 +89,7 @@ def getAll(lat, lon, variable):
             dataJan = ((dataJan* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataJan = dataJan/100.
+            dataJan = dataJan/25.4
     else:
         dataJan = np.array(dataJan.variables['data'][:len(years),closestLat,closestLon])
         # Data conversions
@@ -98,7 +98,7 @@ def getAll(lat, lon, variable):
             dataJan = ((dataJan* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataJan = dataJan/100.
+            dataJan = dataJan/25.4
         dataJan = np.append(dataJan,-9999)
 
     if currentMonth > 2 and currentDay > 2:
@@ -109,7 +109,7 @@ def getAll(lat, lon, variable):
             dataFeb = ((dataFeb* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataFeb = dataFeb/100.
+            dataFeb = dataFeb/25.4
     else:
         dataFeb = np.array(dataFeb.variables['data'][:len(years),closestLat,closestLon])
         # Data conversions
@@ -118,7 +118,7 @@ def getAll(lat, lon, variable):
             dataFeb = ((dataFeb* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataFeb = dataFeb/100.
+            dataFeb = dataFeb/25.4
         dataFeb = np.append(dataFeb,-9999)
 
     if currentMonth > 3 and currentDay > 2:
@@ -129,7 +129,7 @@ def getAll(lat, lon, variable):
             dataMar = ((dataMar* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataMar = dataMar/100.
+            dataMar = dataMar/25.4
     else:
         dataMar = np.array(dataMar.variables['data'][:len(years),closestLat,closestLon])
         # Data conversions
@@ -138,7 +138,7 @@ def getAll(lat, lon, variable):
             dataMar = ((dataMar* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataMar = dataMar/100.
+            dataMar = dataMar/25.4
         dataMar = np.append(dataMar,-9999)
 
     if currentMonth > 4 and currentDay > 2:
@@ -149,7 +149,7 @@ def getAll(lat, lon, variable):
             dataApr = ((dataApr* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataApr = dataApr/100.
+            dataApr = dataApr/25.4
     else:
         dataApr = np.array(dataApr.variables['data'][:len(years),closestLat,closestLon])
         # Data conversions
@@ -158,7 +158,7 @@ def getAll(lat, lon, variable):
             dataApr = ((dataApr* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataApr = dataApr/100.
+            dataApr = dataApr/25.4
         dataApr = np.append(dataApr,-9999)
 
     if currentMonth > 5 and currentDay > 2:
@@ -169,7 +169,7 @@ def getAll(lat, lon, variable):
             dataMay = ((dataMay* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataMay = dataMay/100.
+            dataMay = dataMay/25.4
     else:
         dataMay = np.array(dataMay.variables['data'][:len(years),closestLat,closestLon])
         # Data conversions
@@ -178,7 +178,7 @@ def getAll(lat, lon, variable):
             dataMay = ((dataMay* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataMay = dataMay/100.
+            dataMay = dataMay/25.4
         dataMay = np.append(dataMay,-9999)
 
     if currentMonth > 6 and currentDay > 2:
@@ -189,7 +189,7 @@ def getAll(lat, lon, variable):
             dataJun = ((dataJun* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataJun = dataJun/100.
+            dataJun = dataJun/25.4
     else:
         dataJun = np.array(dataJun.variables['data'][:len(years),closestLat,closestLon])
         # Data conversions
@@ -198,7 +198,7 @@ def getAll(lat, lon, variable):
             dataJun = ((dataJun* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataJun = dataJun/100.
+            dataJun = dataJun/25.4
         dataJun = np.append(dataJun,-9999)
 
     if currentMonth > 7 and currentDay > 2:
@@ -209,7 +209,7 @@ def getAll(lat, lon, variable):
             dataJul = ((dataJul* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataJul = dataJul/100.
+            dataJul = dataJul/25.4
     else:
         dataJul = np.array(dataJul.variables['data'][:len(years),closestLat,closestLon])
         # Data conversions
@@ -218,7 +218,7 @@ def getAll(lat, lon, variable):
             dataJul = ((dataJul* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataJul = dataJul/100.
+            dataJul = dataJul/25.4
         dataJul = np.append(dataJul,-9999)
 
     if currentMonth > 8 and currentDay > 2:
@@ -229,7 +229,7 @@ def getAll(lat, lon, variable):
             dataAug = ((dataAug* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataAug = dataAug/100.
+            dataAug = dataAug/25.4
     else:
         dataAug = np.array(dataAug.variables['data'][:len(years),closestLat,closestLon])
         # Data conversions
@@ -238,7 +238,7 @@ def getAll(lat, lon, variable):
             dataAug = ((dataAug* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataAug = dataAug/100.
+            dataAug = dataAug/25.4
         dataAug = np.append(dataAug,-9999)
 
     if currentMonth > 9 and currentDay > 2:
@@ -249,7 +249,7 @@ def getAll(lat, lon, variable):
             dataSep = ((dataSep* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataSep = dataSep/100.
+            dataSep = dataSep/25.4
     else:
         dataSep = np.array(dataSep.variables['data'][:len(years),closestLat,closestLon])
         # Data conversions
@@ -258,7 +258,7 @@ def getAll(lat, lon, variable):
             dataSep = ((dataSep* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataSep = dataSep/100.
+            dataSep = dataSep/25.4
         dataSep = np.append(dataSep,-9999)
 
     if currentMonth > 10 and currentDay > 2:
@@ -269,7 +269,7 @@ def getAll(lat, lon, variable):
             dataOct = ((dataOct* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataOct = dataOct/100.
+            dataOct = dataOct/25.4
     else:
         dataOct = np.array(dataOct.variables['data'][:len(years),closestLat,closestLon])
         # Data conversions
@@ -278,7 +278,7 @@ def getAll(lat, lon, variable):
             dataOct = ((dataOct* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataOct = dataOct/100.
+            dataOct = dataOct/25.4
         dataOct = np.append(dataOct,-9999)
 
     if currentMonth > 11 and currentDay > 2:
@@ -289,7 +289,7 @@ def getAll(lat, lon, variable):
             dataNov = ((dataNov* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataNov = dataNov/100.
+            dataNov = dataNov/25.4
     else:
         dataNov = np.array(dataNov.variables['data'][:len(years),closestLat,closestLon])
         # Data conversions
@@ -298,7 +298,7 @@ def getAll(lat, lon, variable):
             dataNov = ((dataNov* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataNov = dataNov/100.
+            dataNov = dataNov/25.4
         dataNov = np.append(dataNov,-9999)
 
     if currentMonth > 12 and currentDay > 2:
@@ -309,7 +309,7 @@ def getAll(lat, lon, variable):
             dataDec = ((dataDec* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataDec = dataDec/100.
+            dataDec = dataDec/25.4
     else:
         dataDec = np.array(dataDec.variables['data'][:len(years),closestLat,closestLon])
         # Data conversions
@@ -318,7 +318,7 @@ def getAll(lat, lon, variable):
             dataDec = ((dataDec* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataDec = dataDec/100.
+            dataDec = dataDec/25.4
         dataDec = np.append(dataDec,-9999)
 
 

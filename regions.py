@@ -11,7 +11,7 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.mlab import movavg
 from scipy.io import netcdf
 
-from settings import WWDTNETCDF_DIR, WWDTNETCDF_DIR2, ELEVATION_DATA
+from settings import WWDTNETCDF_DIR, WWDTNETCDF_DIR2, WWDTNETCDF_DIR3, ELEVATION_DATA
 from regionDicts import *
 
 WWDTNETCDF_DIR = WWDTNETCDF_DIR2
@@ -30,11 +30,13 @@ from matplotlib.ticker import MultipleLocator
 
 class Climatology:
 
-    def __init__(self, region, variable, monthSpan):
+    def __init__(self, region, variable, monthSpan, month, year):
         '''Collect and Assign Parameters '''
         self.variable = variable
         self.monthSpan = monthSpan
         self.region = region
+        self.month = month
+        self.year = year
         
        # print self.region, self.variable, self.monthSpan
 
@@ -62,7 +64,11 @@ class Climatology:
     def getData(self):
         '''Open and plot the data '''
     
-
+        # Set station directory if needed
+        if int(self.region) in stationDict:
+            WWDTNETCDF_DIR = WWDTNETCDF_DIR3
+        else:
+            WWDTNETCDF_DIR = WWDTNETCDF_DIR2
     
         # Open NetCDF Files
         if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi':
@@ -108,8 +114,14 @@ class Climatology:
         dataNov = netcdf.netcdf_file(dataNov, 'r')
         dataDec = netcdf.netcdf_file(dataDec, 'r')
 
-        # Select Pixle data
-        closestRegion = self.Index(dataJan.variables['polygon'], self.region)
+
+        # Get closest Lat/Lon      
+        if int(self.region) in stationDict:
+            closestRegion = self.Index(dataJan.variables['station_ID'], self.region)
+        else:
+            closestRegion = self.Index(dataJan.variables['polygon'], self.region)
+
+
 
         # Set up time features
         today = datetime.datetime.today()
@@ -189,18 +201,18 @@ class Climatology:
 
         # Convert Precip to inches
         if self.variable == 'pon':
-            dataJan = dataJan/100.
-            dataFeb = dataFeb/100.
-            dataMar = dataMar/100.
-            dataApr = dataApr/100.
-            dataMay = dataMay/100.
-            dataJun = dataJun/100.
-            dataJul = dataJul/100.
-            dataAug = dataAug/100.
-            dataSep = dataSep/100.
-            dataOct = dataOct/100.
-            dataNov = dataNov/100.
-            dataDec = dataDec/100.
+            dataJan = dataJan/24.5
+            dataFeb = dataFeb/24.5
+            dataMar = dataMar/24.5
+            dataApr = dataApr/24.5
+            dataMay = dataMay/24.5
+            dataJun = dataJun/24.5
+            dataJul = dataJul/24.5
+            dataAug = dataAug/24.5
+            dataSep = dataSep/24.5
+            dataOct = dataOct/24.5
+            dataNov = dataNov/24.5
+            dataDec = dataDec/24.5
  
 
         
@@ -262,8 +274,8 @@ class Climatology:
 
         ## Date format for red line 
         oneDay = 1
-        oneMonth = today.month
-        oneYear = today.year
+        oneMonth = self.month
+        oneYear = self.year
         endDate =  datetime.datetime(oneYear,oneMonth,oneDay)
         startDate = endDate + relativedelta(months =- self.monthSpan)
         delta = relativedelta(months=+1)
@@ -296,7 +308,12 @@ class Climatology:
 
 
 
-            closestRegion = self.Index(dataFile.variables['polygon'], self.region)
+            #closestRegion = self.Index(dataFile.variables['station_ID'], self.region)
+            # Get closest Lat/Lon      
+            #if int(self.region) in stationDict:
+            #    closestRegion = self.Index(dataJan.variables['station_ID'], self.region)
+            #else:
+            #    closestRegion = self.Index(dataJan.variables['polygon'], self.region)
             
 
 
@@ -307,7 +324,7 @@ class Climatology:
                     value = ((value* 9.0/5) + 32)
                 # Convert Precip to inches
                 if self.variable == 'pon':
-                    value = value/100.
+                    value = value/24.5
                 monthSpanListData.append(value)
 
                 # Create value to append for date to return through django
@@ -335,8 +352,11 @@ class Climatology:
         if today.day < 2:
             xMonth = xMonth + 1
 
+
+        
+
         # Set the starting month
-        startDate = (datetime.date.today() - datetime.timedelta(xMonth*365/12))
+        startDate = (datetime.date(oneYear, oneMonth, 25) - datetime.timedelta(xMonth*365/12))
         startMonth = startDate.month
         
 
@@ -474,7 +494,7 @@ class Climatology:
 
         # Set axes
         #ax.set_ylabel('%s'%self.variable) 
-        ax.set_xlabel('From %s-%s - %s-%s'%(startDate.month, startDate.year, (today.month-1), today.year))   
+        #ax.set_xlabel('From %s-%s - %s-%s'%(startDate.month, startDate.year, self.month, oneYear))   
         ax.autoscale_view(tight=False) 
 
         # Set text
@@ -498,6 +518,13 @@ class Climatology:
 
     def getText(self):
         '''Open and plot the data '''
+
+        # Set station directory if needed
+        if int(self.region) in stationDict:
+            WWDTNETCDF_DIR = WWDTNETCDF_DIR3
+        else:
+            WWDTNETCDF_DIR = WWDTNETCDF_DIR2
+    
     
         # Open NetCDF Files
         if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi':
@@ -543,8 +570,11 @@ class Climatology:
         dataNov = netcdf.netcdf_file(dataNov, 'r')
         dataDec = netcdf.netcdf_file(dataDec, 'r')
 
-        # Select Pixle data
-        closestRegion = self.Index(dataJan.variables['polygon'], self.region)
+        # Get closest Lat/Lon      
+        if int(self.region) in stationDict:
+            closestRegion = self.Index(dataJan.variables['station_ID'], self.region)
+        else:
+            closestRegion = self.Index(dataJan.variables['polygon'], self.region)
 
         # Set up time features
         today = datetime.datetime.today()
@@ -624,18 +654,18 @@ class Climatology:
 
         # Convert Precip to inches
         if self.variable == 'pon':
-            dataJan = dataJan/100.
-            dataFeb = dataFeb/100.
-            dataMar = dataMar/100.
-            dataApr = dataApr/100.
-            dataMay = dataMay/100.
-            dataJun = dataJun/100.
-            dataJul = dataJul/100.
-            dataAug = dataAug/100.
-            dataSep = dataSep/100.
-            dataOct = dataOct/100.
-            dataNov = dataNov/100.
-            dataDec = dataDec/100.
+            dataJan = dataJan/24.5
+            dataFeb = dataFeb/24.5
+            dataMar = dataMar/24.5
+            dataApr = dataApr/24.5
+            dataMay = dataMay/24.5
+            dataJun = dataJun/24.5
+            dataJul = dataJul/24.5
+            dataAug = dataAug/24.5
+            dataSep = dataSep/24.5
+            dataOct = dataOct/24.5
+            dataNov = dataNov/24.5
+            dataDec = dataDec/24.5
  
 
         
@@ -697,8 +727,8 @@ class Climatology:
 
         ## Date format for red line 
         oneDay = 1
-        oneMonth = today.month
-        oneYear = today.year
+        oneMonth = self.month
+        oneYear = self.year
         endDate =  datetime.datetime(oneYear,oneMonth,oneDay)
         startDate = endDate + relativedelta(months =- self.monthSpan)
         delta = relativedelta(months=+1)
@@ -731,7 +761,8 @@ class Climatology:
 
 
 
-            closestRegion = self.Index(dataFile.variables['polygon'], self.region)
+            #closestRegion = self.Index(dataFile.variables['polygon'], self.region)
+
             
 
 
@@ -742,7 +773,7 @@ class Climatology:
                     value = ((value* 9.0/5) + 32)
                 # Convert Precip to inches
                 if self.variable == 'pon':
-                    value = value/100.
+                    value = value/24.5
                 monthSpanListData.append(value)
 
                 # Create value to append for date to return through django
@@ -771,7 +802,7 @@ class Climatology:
             xMonth = xMonth + 1
 
         # Set the starting month
-        startDate = (datetime.date.today() - datetime.timedelta(xMonth*365/12))
+        startDate = (datetime.date(oneYear, oneMonth, 25) - datetime.timedelta(xMonth*365/12))
         startMonth = startDate.month
         
 
@@ -912,7 +943,8 @@ class Plot():
         self.span = span
         self.runavg = runavg
 
-       # print self.region, self.startYear, self.endYear,self.variable,self.month ,self.span ,self.runavg, 
+
+        #print self.region, self.startYear, self.endYear,self.variable,self.month ,self.span ,self.runavg, 
   
     def Index(self, array, userInput):
         '''Function to find the index value of an array value closest to user input value '''     
@@ -936,6 +968,12 @@ class Plot():
     def getText(self):
         ''' Finds and processes data to send text values to screen '''
 
+        # Set station directory if needed
+        if int(self.region) in stationDict:
+            WWDTNETCDF_DIR = WWDTNETCDF_DIR3
+        else:
+            WWDTNETCDF_DIR = WWDTNETCDF_DIR2
+
         if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi':
 	    filename = os.path.join(WWDTNETCDF_DIR, self.variable, '%s_%s_PRISM.nc' % (self.variable, self.month))
         else:
@@ -944,7 +982,10 @@ class Plot():
 	dataFile = netcdf.netcdf_file(filename, 'r')
 
         # Get closest Lat/Lon      
-        closestRegion = self.Index(dataFile.variables['polygon'], self.region)
+        if int(self.region) in stationDict:
+            closestRegion = self.Index(dataFile.variables['station_ID'], self.region)
+        else:
+            closestRegion = self.Index(dataFile.variables['polygon'], self.region)
 
         # Set Current Dates
         currentYear = datetime.datetime.now().year
@@ -957,7 +998,7 @@ class Plot():
 
         # Convert Precip to inches
         if self.variable == 'pon':
-            data = data/100.
+            data = data/24.5
 
         # Force data values of -9999.0 for nonexistent data
         
@@ -971,8 +1012,8 @@ class Plot():
                     data[noYear] = -9999.00
                     noYear+=1
 
-        if data.mean() == -9999.00:
-            data = ''
+        #if data.mean() == -9999.00:
+        #    data = ''
 
         # Select earliest possible year/value based on user input  
         v = 0
@@ -983,14 +1024,22 @@ class Plot():
                 years = np.arange(self.startYear+v, self.endYear+1, 1)
                 data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:(self.endYear-1894),closestRegion])
             value+=1
-        
+    
+
+        # Force - 9999 to nan
+        for i in range(0, data.size):
+            #print data[i]
+            if data[i] == -9999.0:
+                #print i
+                data[i] = np.nan
+    
         # Convert C to F
         if self.variable == 'mdn':
             data = ((data* 9.0/5) + 32)
    
         # Divide inches of (precip*100)/100
         if self.variable == 'pon':
-            data = data/100.
+            data = data/24.5
 
 
         #Uncomment to show the data that will be plotted.
@@ -999,10 +1048,10 @@ class Plot():
         normal_range = np.array(dataFile.variables['data'][86:116,closestRegion])
         normal = normal_range.mean() 
         if normal == -9999.0:
-            normal = ''
+            normal = np.nan
 
         if self.variable == 'pon':
-            normal = normal/100.
+            normal = normal/24.5
 
         if self.variable == 'mdn':
             normal = ((normal* 9.0/5) + 32)
@@ -1047,6 +1096,15 @@ class Plot():
     def getData(self):
         '''Finds and processes data returning plot'''
 
+
+        # Set station directory if needed
+        if int(self.region) in stationDict:
+            WWDTNETCDF_DIR = WWDTNETCDF_DIR3
+        else:
+            WWDTNETCDF_DIR = WWDTNETCDF_DIR2
+            
+
+
         #print 'opening data...'
         if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi':
 	    filename = os.path.join(WWDTNETCDF_DIR, self.variable, '%s_%s_PRISM.nc' % (self.variable, self.month))
@@ -1060,7 +1118,13 @@ class Plot():
 
 
         # Get closest Lat/Lon      
-        closestRegion = self.Index(dataFile.variables['polygon'], self.region)
+        if int(self.region) in stationDict:
+            closestRegion = self.Index(dataFile.variables['station_ID'], self.region)
+        else:
+            closestRegion = self.Index(dataFile.variables['polygon'], self.region)
+
+
+
 
         
 
@@ -1076,14 +1140,13 @@ class Plot():
         # Open data
         years = np.arange(self.startYear, self.endYear+1, 1)
 
-    
 
         data = np.array(dataFile.variables['data'][self.startYear-1895:(self.endYear-1894),closestRegion])
    
 
         # Convert Precip to if there are any -9999.00 values to exclude if data selection is for all years
         if self.variable == 'pon':
-            data = data/100.
+            data = data/24.5
        
 
 
@@ -1101,8 +1164,8 @@ class Plot():
                     data[noYear] = -9999.00
                     noYear+=1
 
-        if data.mean() == -9999.00:
-            data = ''
+        #if data.mean() == -9999.00:
+        #    data = ''
 
         # Select earliest possible year/value based on user input  
         v = 0
@@ -1114,14 +1177,30 @@ class Plot():
                 data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:(self.endYear-1894),closestRegion])
             value+=1
 
+
+
+
         # Convert C to F
         if self.variable == 'mdn':
             data = ((data* 9.0/5) + 32)
 
         # Convert Precip to inches
         if self.variable == 'pon':
-            data = data/100.
+            data = data/24.5
  
+
+
+        #print data[:]
+
+        # Force - 9999 to nan
+        for i in range(0, data.size):
+            #print data[i]
+            if data[i] == -9999.0:
+                #print i
+                data[i] = np.nan
+                
+
+
         # Set normal range 1981-2010
         normal_range = np.array(dataFile.variables['data'][86:116,closestRegion])
         normal = normal_range.mean() 
@@ -1131,7 +1210,7 @@ class Plot():
         #print normal
         # Convert precip to correct format
         if self.variable == 'pon':
-            normal = normal/100.
+            normal = normal/24.5
 
         # Convert temperature from C to F
         if self.variable == 'mdn':
@@ -1139,8 +1218,29 @@ class Plot():
 
         # Raise error if data is all -9999.0
         if normal == -9999.0:
-            normal = ''
+            normal = np.nan
 
+        nanList = []
+        # set nan values to the normal on bar graphs so they do not show values
+        # Leave the values as nan for precip charts
+        if self.variable == 'pon':
+            for i in range(0, data.size):
+                #print i
+                if np.isnan(data[i]):
+                    data[i] = 0
+                    nanList.append(i)
+
+        if not self.variable == 'pon':
+            for i in range(0, data.size):
+                #print i
+                if np.isnan(data[i]):
+                    data[i] = normal
+                    nanList.append(i)
+                    #print 'nan'
+                #item = normal
+        #print data[:]
+        #print nanList[:]
+       
         # No time scale is needed for drought indices
         if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi':
             normal = 0
@@ -1222,6 +1322,17 @@ class Plot():
                 ma.shape
                 ax.plot(years[self.runavg/2:-(self.runavg/2)], ma, color='#FF9900', linewidth=2, label="%d Year Average"% self.runavg)
 
+
+            if nanList:
+                if len(nanList) <=1:
+                    for i in nanList:
+                        ax.bar(years[i],max(data), color='lightgrey', label='No Record')
+                if len(nanList)> 1:
+                    ax.bar(years[0],max(data),color='lightgrey',label = "No Record")
+                    for i in nanList:
+                        ax.bar(years[i], max(data),color='lightgrey')
+            ax.axis('tight')
+
         # Set up plot for non Percent of Normal Plots
         if not self.variable == 'pon':  
         
@@ -1276,11 +1387,31 @@ class Plot():
                 y_min, y_max = (-(y_limit), y_limit)            
             else:
                 y_min, y_max = (normal- max(abs(inv_data)), normal+ max(abs(inv_data)))
+
+
+
+        # Denote missing data on plots
+
+            if nanList:
+                if len(nanList) <=1:
+                    for i in nanList:
+                        ax.bar(years[i],y_max, color='lightgrey', label='No Record')
+                        ax.bar(years[i],y_min, color='lightgrey')
+                if len(nanList)> 1:
+                    ax.bar(years[0], normal, color='lightgrey',label = "No Record")
+                    for i in nanList:
+                        ax.bar(years[i],y_max, color='lightgrey')
+                        ax.bar(years[i],y_min, color='lightgrey')
+
                 
             # Uncrowd y-axis is span is more than 13 - set for all variable - indent 4 spaces to make apply only to mdn
             if y_max-y_min >= 13:
                 ax.yaxis.set_major_locator(MultipleLocator(2))
                 ax.yaxis.set_minor_locator(MultipleLocator(.5))
+
+            if y_max-y_min >= 26:
+                ax.yaxis.set_major_locator(MultipleLocator(4))
+                ax.yaxis.set_minor_locator(MultipleLocator(1))
 
             ax.set_ybound(y_min, y_max)
        
@@ -1293,10 +1424,12 @@ class Plot():
             ax.xaxis.grid()
 
 
+
         # Set font properties for the legend(s)
         fontProperties = FontProperties()
         fontProperties.set_size('small')
         ax.legend(loc=(0, -0.150), fancybox=True, prop=fontProperties)
+
         
         # Set branding
         if currentDay < 10:
@@ -1362,7 +1495,12 @@ class AllData:
         region = int(self.region)
         variable = self.variable
 
-    
+        # Set station directory if needed
+        if int(self.region) in stationDict:
+            WWDTNETCDF_DIR = WWDTNETCDF_DIR3
+        else:
+            WWDTNETCDF_DIR = WWDTNETCDF_DIR2
+
         # Set files names for all 12 months
         if variable == 'pdsi' or variable == 'scpdsi' or variable == 'pzi':
 	    fileJan = os.path.join(WWDTNETCDF_DIR, variable, '%s_1_PRISM.nc' % (variable))
@@ -1406,7 +1544,11 @@ class AllData:
         dataDec = netcdf.netcdf_file(fileDec, 'r')
 
         # Get closest Lat/Lon      
-        closestRegion = self.Index(dataJan.variables['polygon'], self.region)
+        if int(self.region) in stationDict:
+            WWDTNETCDF_DIR = WWDTNETCDF_DIR3
+            closestRegion = self.Index(dataJan.variables['station_ID'], self.region)
+        else:
+            closestRegion = self.Index(dataJan.variables['polygon'], self.region)
     
 
         # Set Current date variable
@@ -1426,7 +1568,7 @@ class AllData:
                 dataJan = ((dataJan* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataJan = dataJan/100.
+                dataJan = dataJan/24.5
         else:
             dataJan = np.array(dataJan.variables['data'][:len(years),closestRegion])
             # Data conversions
@@ -1435,7 +1577,7 @@ class AllData:
                 dataJan = ((dataJan* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataJan = dataJan/100.
+                dataJan = dataJan/24.5
             dataJan = np.append(dataJan,-9999)
 
         if currentMonth > 2 and currentDay > 2:
@@ -1446,7 +1588,7 @@ class AllData:
                 dataFeb = ((dataFeb* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataFeb = dataFeb/100.
+                dataFeb = dataFeb/24.5
         else:
             dataFeb = np.array(dataFeb.variables['data'][:len(years),closestRegion])
             # Data conversions
@@ -1455,7 +1597,7 @@ class AllData:
                 dataFeb = ((dataFeb* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataFeb = dataFeb/100.
+                dataFeb = dataFeb/24.5
             dataFeb = np.append(dataFeb,-9999)
 
         if currentMonth > 3 and currentDay > 2:
@@ -1466,7 +1608,7 @@ class AllData:
                 dataMar = ((dataMar* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataMar = dataMar/100.
+                dataMar = dataMar/24.5
         else:
             dataMar = np.array(dataMar.variables['data'][:len(years),closestRegion])
             # Data conversions
@@ -1475,7 +1617,7 @@ class AllData:
                 dataMar = ((dataMar* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataMar = dataMar/100.
+                dataMar = dataMar/24.5
             dataMar = np.append(dataMar,-9999)
 
         if currentMonth > 4 and currentDay > 2:
@@ -1486,7 +1628,7 @@ class AllData:
                 dataApr = ((dataApr* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataApr = dataApr/100.
+                dataApr = dataApr/24.5
         else:
             dataApr = np.array(dataApr.variables['data'][:len(years),closestRegion])
             # Data conversions
@@ -1495,7 +1637,7 @@ class AllData:
                 dataApr = ((dataApr* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataApr = dataApr/100.
+                dataApr = dataApr/24.5
             dataApr = np.append(dataApr,-9999)
 
         if currentMonth > 5 and currentDay > 2:
@@ -1506,7 +1648,7 @@ class AllData:
                 dataMay = ((dataMay* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataMay = dataMay/100.
+                dataMay = dataMay/24.5
         else:
             dataMay = np.array(dataMay.variables['data'][:len(years),closestRegion])
             # Data conversions
@@ -1515,7 +1657,7 @@ class AllData:
                 dataMay = ((dataMay* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-               dataMay = dataMay/100.
+               dataMay = dataMay/24.5
             dataMay = np.append(dataMay,-9999)
 
         if currentMonth > 6 and currentDay > 2:
@@ -1526,7 +1668,7 @@ class AllData:
                 dataJun = ((dataJun* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataJun = dataJun/100.
+                dataJun = dataJun/24.5
         else:
             dataJun = np.array(dataJun.variables['data'][:len(years),closestRegion])
             # Data conversions
@@ -1535,7 +1677,7 @@ class AllData:
             dataJun = ((dataJun* 9.0/5) + 32)
         # Devide Precip by 100
         if variable == 'pon':
-            dataJun = dataJun/100.
+            dataJun = dataJun/24.5
             dataJun = np.append(dataJun,-9999)
 
         if currentMonth > 7 and currentDay > 2:
@@ -1546,7 +1688,7 @@ class AllData:
                 dataJul = ((dataJul* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataJul = dataJul/100.
+                dataJul = dataJul/24.5
         else:
             dataJul = np.array(dataJul.variables['data'][:len(years),closestRegion])
             # Data conversions
@@ -1555,7 +1697,7 @@ class AllData:
                 dataJul = ((dataJul* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataJul = dataJul/100.
+                dataJul = dataJul/24.5
             dataJul = np.append(dataJul,-9999)
 
         if currentMonth > 8 and currentDay > 2:
@@ -1566,7 +1708,7 @@ class AllData:
                 dataAug = ((dataAug* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataAug = dataAug/100.
+                dataAug = dataAug/24.5
         else:
             dataAug = np.array(dataAug.variables['data'][:len(years),closestRegion])
             # Data conversions
@@ -1575,7 +1717,7 @@ class AllData:
                 dataAug = ((dataAug* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataAug = dataAug/100.
+                dataAug = dataAug/24.5
             dataAug = np.append(dataAug,-9999)
 
         if currentMonth > 9 and currentDay > 2:
@@ -1586,7 +1728,7 @@ class AllData:
                 dataSep = ((dataSep* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataSep = dataSep/100.
+                dataSep = dataSep/24.5
         else:
             dataSep = np.array(dataSep.variables['data'][:len(years),closestRegion])
             # Data conversions
@@ -1595,7 +1737,7 @@ class AllData:
                 dataSep = ((dataSep* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataSep = dataSep/100.
+                dataSep = dataSep/24.5
             dataSep = np.append(dataSep,-9999)
 
         if currentMonth > 10 and currentDay > 2:
@@ -1606,7 +1748,7 @@ class AllData:
                 dataOct = ((dataOct* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataOct = dataOct/100.
+                dataOct = dataOct/24.5
         else:
             dataOct = np.array(dataOct.variables['data'][:len(years),closestRegion])
             # Data conversions
@@ -1615,7 +1757,7 @@ class AllData:
                 dataOct = ((dataOct* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataOct = dataOct/100.
+                dataOct = dataOct/24.5
             dataOct = np.append(dataOct,-9999)
 
         if currentMonth > 11 and currentDay > 2:
@@ -1626,7 +1768,7 @@ class AllData:
                 dataNov = ((dataNov* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataNov = dataNov/100.
+                dataNov = dataNov/24.5
         else:
             dataNov = np.array(dataNov.variables['data'][:len(years),closestRegion])
             # Data conversions
@@ -1635,7 +1777,7 @@ class AllData:
                 dataNov = ((dataNov* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataNov = dataNov/100.
+                dataNov = dataNov/24.5
             dataNov = np.append(dataNov,-9999)
 
         if currentMonth > 12 and currentDay > 2:
@@ -1646,7 +1788,7 @@ class AllData:
                 dataDec = ((dataDec* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataDec = dataDec/100.
+                dataDec = dataDec/24.5
         else:
             dataDec = np.array(dataDec.variables['data'][:len(years),closestRegion])
             # Data conversions
@@ -1655,7 +1797,7 @@ class AllData:
                 dataDec = ((dataDec* 9.0/5) + 32)
             # Devide Precip by 100
             if variable == 'pon':
-                dataDec = dataDec/100.
+                dataDec = dataDec/24.5
             dataDec = np.append(dataDec,-9999)
 
 

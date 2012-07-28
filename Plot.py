@@ -71,7 +71,7 @@ class Plot():
 
         # Convert Precip to inches
         if self.variable == 'pon':
-            data = data/100.
+            data = data/25.4
 
         # Force data values of -9999.0 for nonexistent data
         
@@ -85,8 +85,8 @@ class Plot():
                     data[noYear] = -9999.00
                     noYear+=1
 
-        if data.mean() == -9999.00:
-            data = ''
+        #if data.mean() == -9999.00:
+        #    data = ''
 
         # Select earliest possible year/value based on user input  
         v = 0
@@ -98,13 +98,20 @@ class Plot():
                 data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:(self.endYear-1894),closestLat,closestLon])
             value+=1
         
+        # Force - 9999 to nan
+        for i in range(0, data.size):
+            #print data[i]
+            if data[i] == -9999.0:
+                #print i
+                data[i] = np.nan
+
         # Convert C to F
         if self.variable == 'mdn':
             data = ((data* 9.0/5) + 32)
    
-        # Divide inches of (precip*100)/100
+        # Divide inches of (precip*100)/25.4
         if self.variable == 'pon':
-            data = data/100.
+            data = data/25.4
 
 
         #Uncomment to show the data that will be plotted.
@@ -113,10 +120,10 @@ class Plot():
         normal_range = np.array(dataFile.variables['data'][86:116,closestLat,closestLon])
         normal = normal_range.mean() 
         if normal == -9999.0:
-            normal = ''
+            normal = np.nan
 
         if self.variable == 'pon':
-            normal = normal/100.
+            normal = normal/25.4
 
         if self.variable == 'mdn':
             normal = ((normal* 9.0/5) + 32)
@@ -200,7 +207,7 @@ class Plot():
  
         # Convert Precip to if there are any -9999.00 values to exclude if data selection is for all years
         if self.variable == 'pon':
-            data = data/100.
+            data = data/25.4
        
         # Force data values of -9999.0 for nonexistent data
         if self.month - self.span < 0:
@@ -213,8 +220,8 @@ class Plot():
                     data[noYear] = -9999.00
                     noYear+=1
 
-        if data.mean() == -9999.00:
-            data = ''
+        #if data.mean() == -9999.00:
+        #    data = ''
 
         # Select earliest possible year/value based on user input  
         v = 0
@@ -226,13 +233,20 @@ class Plot():
                 data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:(self.endYear-1894),closestLat,closestLon])
             value+=1
 
+        # Force - 9999 to nan
+        for i in range(0, data.size):
+            #print data[i]
+            if data[i] == -9999.0:
+                #print i
+                data[i] = np.nan
+
         # Convert C to F
         if self.variable == 'mdn':
             data = ((data* 9.0/5) + 32)
 
         # Convert Precip to inches
         if self.variable == 'pon':
-            data = data/100.
+            data = data/25.4
  
         # Set normal range 1981-2010
         normal_range = np.array(dataFile.variables['data'][86:116,closestLat,closestLon])
@@ -241,7 +255,7 @@ class Plot():
         #print normal
         # Convert precip to correct format
         if self.variable == 'pon':
-            normal = normal/100.
+            normal = normal/25.4
 
         # Convert temperature from C to F
         if self.variable == 'mdn':
@@ -249,7 +263,7 @@ class Plot():
 
         # Raise error if data is all -9999.0
         if normal == -9999.0:
-            normal = ''
+            normal = np.nan
 
         # No time scale is needed for drought indices
         if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi':

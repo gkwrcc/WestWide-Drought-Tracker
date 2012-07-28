@@ -283,7 +283,7 @@ def regionsAll_text(request):
 
 
     # Assign Data information
-    if variable == "mdn": data = ['Temperature (Degrees F) Mean Departure from Normal']
+    if variable == "mdn": data = ['Temperature (Degrees F)']
     if variable == "pon": data = ['Precipitation (Inches)']
     if variable == "spi": data = ['Standardized Precipitaion Index']
     if variable == "pdsi": data = ['Palmer Drought Severity Index']
@@ -331,10 +331,13 @@ def climatology(request):
         variable = variableList[variable]
 
         monthSpan = int(request.GET['span'])
+        year = int(request.GET['year'])
+        month = int(request.GET['month'])
+
    
         # Print PNG to page
         try:
-            canvas = Climatology(lat=lat, lon=lon, variable=variable, monthSpan=monthSpan).getData()
+            canvas = Climatology(lat=lat, lon=lon, variable=variable, monthSpan=monthSpan, month=month, year=year).getData()
             response=HttpResponse(content_type='image/png')
             canvas.print_png(response)
             plt.close()
@@ -364,8 +367,11 @@ def climatology_text(request):
     variable = variableList[variable]
     #print 'variable:', variable
     monthSpan = int(request.GET['span'])
+
+    year = int(request.GET['year'])
+    month = int(request.GET['month'])
    
-    text = Climatology(lat=lat, lon=lon, variable=variable, monthSpan=monthSpan).getText()
+    text = Climatology(lat=lat, lon=lon, variable=variable, monthSpan=monthSpan, month=month, year=year).getText()
     #print 'text:', text[:]
     data = []
     for value in text:
@@ -385,10 +391,13 @@ def climatologyRegions(request):
         variable = variableList[variable]
 
         monthSpan = int(request.GET['span'])
+
+        year = int(request.GET['year'])
+        month = int(request.GET['month'])
    
         # Print PNG to page
         try:
-            canvas = regionClimatology(region=region, variable=variable, monthSpan=monthSpan).getData()
+            canvas = regionClimatology(region=region, variable=variable, monthSpan=monthSpan, month=month, year=year).getData()
             response=HttpResponse(content_type='image/png')
             canvas.print_png(response)
             plt.close()
@@ -407,8 +416,10 @@ def climatologyRegions_text(request):
     variable = variableList[variable]
     #print 'variable:', variable
     monthSpan = int(request.GET['span'])
+    year = int(request.GET['year'])
+    month = int(request.GET['month'])
    
-    text = regionClimatology(region=region, variable=variable, monthSpan=monthSpan).getText()
+    text = regionClimatology(region=region, variable=variable, monthSpan=monthSpan, month=month, year=year).getText()
     #print 'text:', text[:]
     data = []
     for value in text:

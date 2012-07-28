@@ -11,10 +11,13 @@
   <link rel="stylesheet" type="text/css" id="theme" href="media/extjs/resources/css/xtheme-WWDT.css"/>
   
 
-</head>
 
+</head>
 <body>
-  <div align="center"> <FONT SIZE="6" COLOR="Grey">WestWide Drought Tracker</FONT></div>
+
+  <div align="center"> <FONT SIZE="6" COLOR="Grey"><a href="http://www.wrcc.dri.edu/monitor/WWDT/">WestWide Drought Tracker: Nationwide Extension</a></FONT></div>
+
+  
   
     {% if errors %}
         {% for error in errors %}
@@ -22,10 +25,6 @@
         {% endfor%}
     {% endif %} 
 
-  <div id="about" class="x-hidden">
-    <h3>Concept</h3>
-    <p>This dynamic website was created to allow easy access and delineation to a spatial suite of drought data.</p>
-  </div>
 
   <div id="contact" class="x-hidden">
     <br><h3>General Feedback</h3>
@@ -39,14 +38,18 @@
   </div>
 
   <div id="use" class="x-hidden">
-    <h3>Location Selection</h3>
-    <p>Click and drag the red map marker located in the center of the map to any location within the contiguous lower 48. This will automatically fill in the Latitude/Longitude form fields in the Point Select accordian menu to the left of the Google Map tabbed panel.</p><br />
+    <h3>Point Data</h3>
+    <p>Click within the contiguous lower 48 states to add a draggable marker to the map. Clicking and dragging the marker will automatically fill in the Latitude/Longitude forms needed to use the time series, all data, and climate span tools located on the right hand side of the page. After the marker has been dragged to a location, the green map represents data that can get pulled whereas a red map means data can not be pulled. It is also possible to enter a latitude and longitude value.</p><br />
+
+    <h3>Region/Station Data</h3>
+    <p>Click on the radio button to add the clickable feature datalayer to the map. Clicking the region/station marker will automatically fill in the region drop down menu forms needed to use the time series, all data, and climate span tools located on the right hand side of the page. It is also possible to use the drop down menus to select region/station.</p><br />
+
 
     <h3>Data Options</h3>
-    <p>Select a variable, start year, end year, month, and month span using the drop down combobox menus. Note - running average is an option field and takes user input in the for of an integer only (e.g. 5 for five year running average).</p><br />
+    <p>Select variables using the dropdown menus.</p><br />
 
     <h3>Getting the Product</h3>
-    <p>Press the submit button and a new tab will be loaded containing the results.</p>
+    <p>Press the submit button located in each of the time series, all data, and climate span tools to generate results for each separate tool. The results will be loaded into a new tab above the map and next to the Map tab.</p>
   </div>
   <div id="variables" class="x-hidden">
     <h3><a href="http://lwf.ncdc.noaa.gov/oa/climate/research/prelim/drought/spi.html"
@@ -78,10 +81,65 @@
  
   <div id="disclaimer" class="x-hidden">
     <h3>Disclaimer</h3>
-    <p>Data are produced using data from the PRISM (Parameter-elevation Regressions on Independent Slopes Model weblink http://prism.oregonstate.edu), the National Weather Service Cooperative Observer Network (COOP), and the Variable Infiltration Capacity (VIC) model. All near-real-time data are considered preliminary and should be used responsibly.
-
-.</p>
+    <p>Data are produced using data from the PRISM (Parameter-elevation Regressions on Independent Slopes Model weblink http://prism.oregonstate.edu), the National Weather Service Cooperative Observer Network (COOP), and the Variable Infiltration Capacity (VIC) model. 
+</p>
+<br>
+<p>All near-real-time data are considered preliminary and should be used responsibly. All near-real time
+data should be considered provisional, subject to
+change, and used accordingly.</p>
   </div>
+
+  <div id="time_series" class="x-hidden">
+    <br><br>
+    <h3 align="center">Time Series Box</h3>
+    <br>
+    <p align="center">Function: generate a time series of select variables from 1895 through the most recent complete month.
+</p>
+  </div>
+
+  <div id="all_data" class="x-hidden">
+    <br><br>
+    <h3 align="center">All Data</h3>
+    <br>
+    <p align="center">Extract all months of data for selected variables for the period of record.
+</p>
+  </div>
+
+
+  <div id="climatology" class="x-hidden">
+    <br><br>
+    <h3 align="center">Climatology Box</h3>
+    <br>
+    <p align="center">Function: generate a time series of select variables for a sequence of months.
+</p>
+  </div>
+
+
+  <div id="time_series2" class="x-hidden">
+    <br><br>
+    <h3 align="center">Time Series Box</h3>
+    <br>
+    <p align="center">Function: generate a time series of select variables from 1895 through the most recent complete month.
+</p>
+  </div>
+
+  <div id="all_data2" class="x-hidden">
+    <br><br>
+    <h3 align="center">All Data</h3>
+    <br>
+    <p align="center">Extract all months of data for selected variables for the period of record.
+</p>
+  </div>
+
+
+  <div id="climatology2" class="x-hidden">
+    <br><br>
+    <h3 align="center">Climatology Box</h3>
+    <br>
+    <p align="center">Function: generate a time series of select variables for a sequence of months.
+</p>
+  </div>
+
 
 </body>
 </html>

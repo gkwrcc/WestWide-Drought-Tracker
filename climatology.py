@@ -16,12 +16,14 @@ from settings import WWDTNETCDF_DIR, ELEVATION_DATA
 
 class Climatology:
 
-    def __init__(self, lat, lon, variable, monthSpan):
+    def __init__(self, lat, lon, variable, monthSpan, month, year):
         '''Collect and Assign Parameters '''
         self.lat = lat
         self.lon = lon
         self.variable = variable
         self.monthSpan = monthSpan
+        self.month = month
+        self.year = year
 
 
 
@@ -173,18 +175,18 @@ class Climatology:
 
         # Convert Precip to inches
         if self.variable == 'pon':
-            dataJan = dataJan/100.
-            dataFeb = dataFeb/100.
-            dataMar = dataMar/100.
-            dataApr = dataApr/100.
-            dataMay = dataMay/100.
-            dataJun = dataJun/100.
-            dataJul = dataJul/100.
-            dataAug = dataAug/100.
-            dataSep = dataSep/100.
-            dataOct = dataOct/100.
-            dataNov = dataNov/100.
-            dataDec = dataDec/100.
+            dataJan = dataJan/25.4
+            dataFeb = dataFeb/25.4
+            dataMar = dataMar/25.4
+            dataApr = dataApr/25.4
+            dataMay = dataMay/25.4
+            dataJun = dataJun/25.4
+            dataJul = dataJul/25.4
+            dataAug = dataAug/25.4
+            dataSep = dataSep/25.4
+            dataOct = dataOct/25.4
+            dataNov = dataNov/25.4
+            dataDec = dataDec/25.4
  
 
         
@@ -246,8 +248,8 @@ class Climatology:
 
         ## Date format for red line 
         oneDay = 1
-        oneMonth = today.month
-        oneYear = today.year
+        oneMonth = self.month
+        oneYear = self.year
         endDate =  datetime.datetime(oneYear,oneMonth,oneDay)
         startDate = endDate + relativedelta(months =- self.monthSpan)
         delta = relativedelta(months=+1)
@@ -291,7 +293,7 @@ class Climatology:
                     value = ((value* 9.0/5) + 32)
                 # Convert Precip to inches
                 if self.variable == 'pon':
-                    value = value/100.
+                    value = value/25.4
                 monthSpanListData.append(value)
 
                 # Create value to append for date to return through django
@@ -310,7 +312,9 @@ class Climatology:
 
         # Add y-axis data
         # Use y = monthSpanListData[:-1] when all data present
-        lastMonthY = monthSpanListData[:]
+       
+        lastMonthY = monthSpanListData[:-1]
+
 
 
         
@@ -320,7 +324,7 @@ class Climatology:
             xMonth = xMonth + 1
 
         # Set the starting month
-        startDate = (datetime.date.today() - datetime.timedelta(xMonth*365/12))
+        startDate = (datetime.date(oneYear, oneMonth, 25) - datetime.timedelta(xMonth*365/12))
         startMonth = startDate.month
         
 
@@ -455,7 +459,7 @@ class Climatology:
 
         # Set axes
         #ax.set_ylabel('%s'%self.variable) 
-        ax.set_xlabel('From %s-%s - %s-%s'%(startDate.month, startDate.year, (today.month-1), today.year))   
+        #ax.set_xlabel('From %s-%s - %s-%s'%(startDate.month, startDate.year, (today.month-1), today.year))   
         ax.autoscale_view(tight=False) 
 
         # Set text
@@ -605,18 +609,18 @@ class Climatology:
 
         # Convert Precip to inches
         if self.variable == 'pon':
-            dataJan = dataJan/100.
-            dataFeb = dataFeb/100.
-            dataMar = dataMar/100.
-            dataApr = dataApr/100.
-            dataMay = dataMay/100.
-            dataJun = dataJun/100.
-            dataJul = dataJul/100.
-            dataAug = dataAug/100.
-            dataSep = dataSep/100.
-            dataOct = dataOct/100.
-            dataNov = dataNov/100.
-            dataDec = dataDec/100.
+            dataJan = dataJan/25.4
+            dataFeb = dataFeb/25.4
+            dataMar = dataMar/25.4
+            dataApr = dataApr/25.4
+            dataMay = dataMay/25.4
+            dataJun = dataJun/25.4
+            dataJul = dataJul/25.4
+            dataAug = dataAug/25.4
+            dataSep = dataSep/25.4
+            dataOct = dataOct/25.4
+            dataNov = dataNov/25.4
+            dataDec = dataDec/25.4
  
 
         
@@ -678,8 +682,8 @@ class Climatology:
 
         ## Date format for red line 
         oneDay = 1
-        oneMonth = today.month
-        oneYear = today.year
+        oneMonth = self.month
+        oneYear = self.year
         endDate =  datetime.datetime(oneYear,oneMonth,oneDay)
         startDate = endDate + relativedelta(months =- self.monthSpan)
         delta = relativedelta(months=+1)
@@ -723,7 +727,7 @@ class Climatology:
                     value = ((value* 9.0/5) + 32)
                 # Convert Precip to inches
                 if self.variable == 'pon':
-                    value = value/100.
+                    value = value/25.4
                 monthSpanListData.append(value)
 
                 # Create value to append for date to return through django
@@ -752,7 +756,7 @@ class Climatology:
             xMonth = xMonth + 1
 
         # Set the starting month
-        startDate = (datetime.date.today() - datetime.timedelta(xMonth*365/12))
+        startDate = (datetime.date(oneYear, oneMonth, 25) - datetime.timedelta(xMonth*365/12))
         startMonth = startDate.month
         
 
@@ -802,6 +806,19 @@ class Climatology:
             perc5Line.append(adder[4])
             perc6Line.append(adder[5])
             perc7Line.append(adder[6])
+        # Collect for all 7 lines
+        for x in spanList:
+            index = x-1
+            adder = combiner[index]
+            meanAdder = meanCombiner[index]
+            meanLine.append(meanAdder)
+            percLine.append(adder[0])
+            perc2Line.append(adder[1])
+            perc3Line.append(adder[2])
+            perc4Line.append(adder[3])
+            perc5Line.append(adder[4])
+            perc6Line.append(adder[5])
+            perc7Line.append(adder[6])
             
         # Set range for months x-axis
         x = range(0,span, 1)
@@ -818,4 +835,5 @@ class Climatology:
         while zeroValue < len(monthDates):  
             newList.append(monthDates[zeroValue]+','+yearDates[zeroValue]+','+'%4.2f'%lastMonthY[zeroValue]+','+'%4.2f'%meanLine[zeroValue]+','+'%4.2f'%percLine[zeroValue]+','+'%4.2f'%perc7Line[zeroValue]+','+'%4.2f'%perc2Line[zeroValue]+','+'%4.2f'%perc6Line[zeroValue]+','+'%4.2f'%perc3Line[zeroValue]+','+'%4.2f'%perc4Line[zeroValue])
             zeroValue+=1    
-        return newList
+            
+        return newList[:-1]
