@@ -303,7 +303,7 @@ markers: [{
 
 
                 // Add KML Layer Variables 
-                var statesLayer = new google.maps.KmlLayer('http://dl.dropbox.com/u/46111637/states_old.kml', {
+                var statesLayer = new google.maps.KmlLayer('http://www.wrcc.dri.edu/monitor/WWDT/KML/states.kmz', {
                     preserveViewport: true,
                     suppressInfoWindows: false
                 });
