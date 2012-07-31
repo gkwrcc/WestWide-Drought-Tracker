@@ -1688,12 +1688,12 @@ class AllData:
             dataJun = np.array(dataJun.variables['data'][:len(years),closestRegion])
             # Data conversions
   	      # Convert C to F
-        if variable == 'mdn':
-            dataJun = ((dataJun* 9.0/5) + 32)
-        # Devide Precip by 100
-        if variable == 'pon':
-            dataJun = dataJun/24.5
-            dataJun = np.append(dataJun,-9999)
+            if variable == 'mdn':
+                dataJun = ((dataJun* 9.0/5) + 32)
+            # Devide Precip by 100
+            if variable == 'pon':
+                dataJun = dataJun/24.5
+                dataJun = np.append(dataJun,-9999)
 
         if currentMonth > 7 and currentDay > 2:
             dataJul = np.array(dataJul.variables['data'][:len(years)+1,closestRegion])
