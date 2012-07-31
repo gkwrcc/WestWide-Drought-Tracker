@@ -303,31 +303,31 @@ markers: [{
 
 
                 // Add KML Layer Variables 
-                var statesLayer = new google.maps.KmlLayer('http://www.wrcc.dri.edu/monitor/WWDT/KML/states.kmz', {
+                var statesLayer = new google.maps.KmlLayer('http://dl.dropbox.com/u/46111637/states_old.kml', {
                     preserveViewport: true,
-                    suppressInfoWindows: true
+                    suppressInfoWindows: false
                 });
                 var countiesLayer = new google.maps.KmlLayer('http://www.wrcc.dri.edu/monitor/WWDT/KML/counties.kmz', {
                     preserveViewport: true,
-                    suppressInfoWindows: true
+                    suppressInfoWindows: false
                 });
                 var hucsLayer = new google.maps.KmlLayer('http://www.wrcc.dri.edu/monitor/WWDT/KML/hucs.kmz', {
                     preserveViewport: true,
-                    suppressInfoWindows: true
+                    suppressInfoWindows: false
                 });
                 var divsLayer = new google.maps.KmlLayer('http://www.wrcc.dri.edu/monitor/WWDT/KML/divs.kmz', {
                     preserveViewport: true,
-                    suppressInfoWindows: true
+                    suppressInfoWindows: false
                 });
 
                 var psasLayer = new google.maps.KmlLayer('http://www.wrcc.dri.edu/monitor/WWDT/KML/psa.kmz', {
                     preserveViewport: true,
-                    suppressInfoWindows: true
+                    suppressInfoWindows: false
                 });
 
                 var stationsLayer = new google.maps.KmlLayer('http://www.wrcc.dri.edu/monitor/WWDT/KML/stations.kml', {
                     preserveViewport: true,
-                    suppressInfoWindows: true
+                    suppressInfoWindows: false
                 });
 
 
@@ -927,8 +927,10 @@ markers: [{
                         statesLayer.setMap(this);
 
 
+
                         // On kml click
                         google.maps.event.addListener(statesLayer, 'click', function (kmlEvent) {
+
 
 
 

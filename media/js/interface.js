@@ -6,6 +6,14 @@ Ext.onReady(function () {
         URL = "http://127.0.0.1:8000";
     }
 
+
+                Ext.MessageBox.alert('Welcome!', 'To get started read the how to on the left side of the page, then on the right side of the page click the drop down menus to access the tools.');
+
+
+    var singleSpanStore = [
+        ['1', "1-Month"] 
+]
+
     var spanStore = [
         ['1', "1-Month"],
         ['2', "2-Month"],
@@ -5549,6 +5557,9 @@ Ext.onReady(function () {
 
     formInput = Ext.extend(Ext.form.Field, {});
 
+
+    var valOne = 1;
+
     variableSelect = Ext.extend(Ext.form.ComboBox, {
         forceSelection: true,
         triggerAction: 'all',
@@ -5557,14 +5568,18 @@ Ext.onReady(function () {
                 var myCombo = Ext.getCmp('span_select');
                 var myCombo2 = Ext.getCmp('span_select13');
 
-                if (Ext.getCmp('variable_select').getValue() == 3) {
+
+                if (Ext.getCmp('variable_select').getValue() == 3 || Ext.getCmp('variable_select').getValue() == 4) {
                     // If SPI is chosen more month spans are populated
                     myCombo.store.loadData(spiSpanStore);
                 } else {
                     // Reload original 12 month span
                     myCombo.store.loadData(spanStore);
+                                    
+                    
+
                 }
-                if (Ext.getCmp('variable_select13').getValue() == 3) {
+                if (Ext.getCmp('variable_select13').getValue() == 3 || Ext.getCmp('variable_select13').getValue() == 4) {
                     // If SPI is chosen more month spans are populated
                     myCombo2.store.loadData(spiSpanStore);
                 } else {
@@ -5574,14 +5589,20 @@ Ext.onReady(function () {
 
 
             }
+
+
+
+
+
         },
         store: [
             ['1', "Temperature"],
             ['2', "Precipitation"],
             ['3', "SPI"],
-            ['4', "PDSI"],
-            ['5', "Palmer Z-Index"],
-            ['6', "Self Calibrated PDSI"], ]
+            ['4', "SPEI"],
+            ['5', "PDSI"],
+            ['6', "Palmer Z-Index"],
+            ['7', "Self Calibrated PDSI"], ]
     });
 
     monthSelect = Ext.extend(Ext.form.ComboBox, {
@@ -5642,6 +5663,7 @@ Ext.onReady(function () {
 
     // Process when Submit button is pressed
     dataSubmit = Ext.extend(Ext.Button, {
+        
         handler: function () {
 
             // Grab current month and year and day
@@ -5719,15 +5741,15 @@ Ext.onReady(function () {
 
 
             // Variable Checker
-            if (Ext.getCmp('variable_select').getValue() == 1 || Ext.getCmp('variable_select').getValue() == 2 || Ext.getCmp('variable_select').getValue() == 3 || Ext.getCmp('variable_select').getValue() == 4 || Ext.getCmp('variable_select').getValue() == 5 || Ext.getCmp('variable_select').getValue() == 6) {
+            if (Ext.getCmp('variable_select').getValue() == 1 || Ext.getCmp('variable_select').getValue() == 2 || Ext.getCmp('variable_select').getValue() == 3 || Ext.getCmp('variable_select').getValue() == 4 || Ext.getCmp('variable_select').getValue() == 5 || Ext.getCmp('variable_select').getValue() == 6 || Ext.getCmp('variable_select').getValue() == 7) {
                 VARIABLE = Ext.getCmp('variable_select').getValue()
             } else {
                 VARIABLE = NULL;
             }
 
             // Span Checker
-            if (Ext.getCmp('span_select').getValue() >= 13 && Ext.getCmp('variable_select').getValue() != 3) {
-                Ext.MessageBox.alert('Span Error', 'Month spans greater than 12 are only for SPI datasets, please chose a month span of 12 or less months.');
+            if (Ext.getCmp('span_select').getValue() >= 13 && Ext.getCmp('variable_select').getValue() < 3 || Ext.getCmp('variable_select').getValue() > 4) {
+                Ext.MessageBox.alert('Span Error', 'Month spans greater than 12 are only for SPI and SPEI datasets, please chose a month span of 12 or less months.');
                 SPAN = NULL;
             } else {
                 SPAN = Ext.getCmp('span_select').getValue()
@@ -5759,7 +5781,7 @@ Ext.onReady(function () {
                 title: parseFloat(LAT).toFixed(2) + "N, " + (Math.abs(LON)).toFixed(2) + "W",
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
-                html: '<iframe src="' + URL + '/bargraph/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="500px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/text/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="2500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
+                html: '<iframe src="' + URL + '/bargraph/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><iframe src="' + URL + '/text/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="3500px" width="99%" scrolling="no" frameborder="0" "></iframe><br>',
                 closable: true
             }).show(); // Set new tab active                
         }
@@ -5803,7 +5825,7 @@ Ext.onReady(function () {
 
 
             // Variable Checker
-            if (Ext.getCmp('variable_select2').getValue() == 1 || Ext.getCmp('variable_select2').getValue() == 2 || Ext.getCmp('variable_select2').getValue() == 3 || Ext.getCmp('variable_select2').getValue() == 4 || Ext.getCmp('variable_select2').getValue() == 5 || Ext.getCmp('variable_select2').getValue() == 6) {
+            if (Ext.getCmp('variable_select2').getValue() == 1 || Ext.getCmp('variable_select2').getValue() == 2 || Ext.getCmp('variable_select2').getValue() == 3 || Ext.getCmp('variable_select2').getValue() == 4 || Ext.getCmp('variable_select2').getValue() == 5 || Ext.getCmp('variable_select2').getValue() == 6 || Ext.getCmp('variable_select2').getValue() == 7) {
                 VARIABLE = Ext.getCmp('variable_select2').getValue()
             } else {
                 VARIABLE = NULL;
@@ -5815,7 +5837,7 @@ Ext.onReady(function () {
                 title: parseFloat(LAT).toFixed(2) + "N, " + (Math.abs(LON)).toFixed(2) + "W",
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
-                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><iframe src="' + URL + '/all/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '" height="2500px" width="99%" scrolling="no" frameborder="0"></iframe>',
+                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/all/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '" height="3500px" width="99%" scrolling="no" frameborder="0"></iframe>',
                 closable: true
             }).show(); // Set new tab active                
         }
@@ -5857,7 +5879,7 @@ Ext.onReady(function () {
 
 
             // Variable Checker
-            if (Ext.getCmp('variable_select3').getValue() == 1 || Ext.getCmp('variable_select3').getValue() == 2 || Ext.getCmp('variable_select3').getValue() == 3 || Ext.getCmp('variable_select3').getValue() == 4 || Ext.getCmp('variable_select3').getValue() == 5 || Ext.getCmp('variable_select3').getValue() == 6) {
+            if (Ext.getCmp('variable_select3').getValue() == 1 || Ext.getCmp('variable_select3').getValue() == 2 || Ext.getCmp('variable_select3').getValue() == 3 || Ext.getCmp('variable_select3').getValue() == 4 || Ext.getCmp('variable_select3').getValue() == 5 || Ext.getCmp('variable_select3').getValue() == 6 || Ext.getCmp('variable_select3').getValue() == 7) {
                 VARIABLE = Ext.getCmp('variable_select3').getValue()
 
             } else {
@@ -6082,7 +6104,7 @@ Ext.onReady(function () {
                 title: parseFloat(LAT).toFixed(2) + "N, " + (Math.abs(LON)).toFixed(2) + "W",
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
-                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><iframe src="' + URL + '/climatology/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR + '" height="500px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/lastmonths/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR + '" height="2500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
+                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/climatology/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/lastmonths/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR + '" height="3500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
                 closable: true
             }).show(); // Set new tab active                
         }
@@ -6160,15 +6182,15 @@ Ext.onReady(function () {
 
 
             // Variable Checker
-            if (Ext.getCmp('variable_select13').getValue() == 1 || Ext.getCmp('variable_select13').getValue() == 2 || Ext.getCmp('variable_select13').getValue() == 3 || Ext.getCmp('variable_select13').getValue() == 4 || Ext.getCmp('variable_select13').getValue() == 5 || Ext.getCmp('variable_select13').getValue() == 6) {
+            if (Ext.getCmp('variable_select13').getValue() == 1 || Ext.getCmp('variable_select13').getValue() == 2 || Ext.getCmp('variable_select13').getValue() == 3 || Ext.getCmp('variable_select13').getValue() == 4 || Ext.getCmp('variable_select13').getValue() == 5 || Ext.getCmp('variable_select13').getValue() == 6 || Ext.getCmp('variable_select13').getValue() == 7) {
                 VARIABLE = Ext.getCmp('variable_select13').getValue()
             } else {
                 VARIABLE = NULL;
             }
 
             // Span Checker
-            if (Ext.getCmp('span_select13').getValue() >= 13 && Ext.getCmp('variable_select13').getValue() != 3) {
-                Ext.MessageBox.alert('Span Error', 'Month spans greater than 12 are only for SPI datasets, please chose a month span of 12 or less months.');
+            if (Ext.getCmp('span_select13').getValue() >= 13 && Ext.getCmp('variable_select13').getValue() < 3 || Ext.getCmp('variable_select13').getValue() > 4) {
+                Ext.MessageBox.alert('Span Error', 'Month spans greater than 12 are only for SPI and SPEI datasets, please chose a month span of 12 or less months.');
                 SPAN = NULL;
             } else {
                 SPAN = Ext.getCmp('span_select13').getValue()
@@ -6202,7 +6224,7 @@ Ext.onReady(function () {
                 title: "Region",
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
-                html: '<iframe src="' + URL + '/regionsBargraph/?region=' + REGION + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="500px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/regionText/?region=' + REGION + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="2500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
+                html: '<iframe src="' + URL + '/regionsBargraph/?region=' + REGION + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/regionText/?region=' + REGION + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="3500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
 
 
                 closable: true
@@ -6233,7 +6255,7 @@ Ext.onReady(function () {
                 REGION = Ext.getCmp('map_region2').getValue();
             }
             // Variable Checker
-            if (Ext.getCmp('variable_select23').getValue() == 1 || Ext.getCmp('variable_select23').getValue() == 2 || Ext.getCmp('variable_select23').getValue() == 3 || Ext.getCmp('variable_select23').getValue() == 4 || Ext.getCmp('variable_select23').getValue() == 5 || Ext.getCmp('variable_select23').getValue() == 6) {
+            if (Ext.getCmp('variable_select23').getValue() == 1 || Ext.getCmp('variable_select23').getValue() == 2 || Ext.getCmp('variable_select23').getValue() == 3 || Ext.getCmp('variable_select23').getValue() == 4 || Ext.getCmp('variable_select23').getValue() == 5 || Ext.getCmp('variable_select23').getValue() == 6 || Ext.getCmp('variable_select23').getValue() == 7) {
                 VARIABLE = Ext.getCmp('variable_select23').getValue()
             } else {
                 VARIABLE = NULL;
@@ -6245,7 +6267,7 @@ Ext.onReady(function () {
                 title: "Region",
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
-                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><iframe src="' + URL + '/regionsAll/?region=' + REGION + '&variable=' + VARIABLE + '" height="2500px" width="99%" scrolling="no" frameborder="0"></iframe>',
+                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><iframe src="' + URL + '/regionsAll/?region=' + REGION + '&variable=' + VARIABLE + '" height="3500px" width="99%" scrolling="no" frameborder="0"></iframe>',
                 closable: true
             }).show(); // Set new tab active                
         }
@@ -6272,7 +6294,7 @@ Ext.onReady(function () {
                 REGION = Ext.getCmp('map_region3').getValue();
             }
             // Variable Checker
-            if (Ext.getCmp('variable_select33').getValue() == 1 || Ext.getCmp('variable_select33').getValue() == 2 || Ext.getCmp('variable_select33').getValue() == 3 || Ext.getCmp('variable_select33').getValue() == 4 || Ext.getCmp('variable_select33').getValue() == 5 || Ext.getCmp('variable_select33').getValue() == 6) {
+            if (Ext.getCmp('variable_select33').getValue() == 1 || Ext.getCmp('variable_select33').getValue() == 2 || Ext.getCmp('variable_select33').getValue() == 3 || Ext.getCmp('variable_select33').getValue() == 4 || Ext.getCmp('variable_select33').getValue() == 5 || Ext.getCmp('variable_select33').getValue() == 6 || Ext.getCmp('variable_select33').getValue() == 7) {
                 VARIABLE = Ext.getCmp('variable_select33').getValue()
 
             } else {
@@ -6492,7 +6514,7 @@ Ext.onReady(function () {
                 title: "Region",
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
-                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><iframe src="' + URL + '/climatologyRegions/?region=' + REGION + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR + '" height="500px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/lastmonthsRegions/?region=' + REGION + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR +  '" height="2500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
+                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/climatologyRegions/?region=' + REGION + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/lastmonthsRegions/?region=' + REGION + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR +  '" height="3500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
 
 
                 closable: true
@@ -6541,6 +6563,8 @@ Ext.onReady(function () {
 
                 Ext.MessageBox.alert('Point Data', 'Data layer is loading onto map. May take several minutes to please be patient.');
 
+                panel.setActiveTab(0);
+
 
 
                     item1.expand();
@@ -6559,6 +6583,8 @@ Ext.onReady(function () {
                 onClick: function () {
 
                 Ext.MessageBox.alert('State Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
+
+                panel.setActiveTab(0);
 
                     var stateRegionCombo = Ext.getCmp('map_region');
                     var stateRegionCombo2 = Ext.getCmp('map_region2');
@@ -6605,6 +6631,8 @@ Ext.onReady(function () {
                 onClick: function () {
                 Ext.MessageBox.alert('County Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
 
+                panel.setActiveTab(0);
+
 
                     var countyRegionCombo = Ext.getCmp('map_region');
                     var countyRegionCombo2 = Ext.getCmp('map_region2');
@@ -6644,6 +6672,8 @@ Ext.onReady(function () {
                 onClick: function () {
                 Ext.MessageBox.alert('Hydrologic Unit Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
 
+                panel.setActiveTab(0);
+
 
                     var hucRegionCombo = Ext.getCmp('map_region');
                     var hucRegionCombo2 = Ext.getCmp('map_region2');
@@ -6679,6 +6709,8 @@ Ext.onReady(function () {
                 id: 'div_radio',
                 onClick: function () {
                 Ext.MessageBox.alert('Climate Division Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
+
+                panel.setActiveTab(0);
 
 
                     var divRegionCombo = Ext.getCmp('map_region');
@@ -6717,6 +6749,8 @@ Ext.onReady(function () {
 
                 Ext.MessageBox.alert('Predictive Services Area Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
 
+                panel.setActiveTab(0);
+
 
                     var psaRegionCombo = Ext.getCmp('map_region');
                     var psaRegionCombo2 = Ext.getCmp('map_region2');
@@ -6754,6 +6788,7 @@ Ext.onReady(function () {
                 id: 'station_radio',
                 onClick: function () {
                 Ext.MessageBox.alert('Station Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
+                panel.setActiveTab(0);
 
 
                     var stationRegionCombo = Ext.getCmp('map_region');
@@ -6869,6 +6904,7 @@ Ext.onReady(function () {
             width: 135
         }), new dataSubmit({ // must be last
             text: 'Submit!',
+            
         }),
 
 ],
@@ -7165,13 +7201,13 @@ hideCollapseTool:true,
         split: true,
         width: 200,
         layout: 'accordion',
-        items: [radioPanel, item1, item2, item3]
+        items: [radioPanel, item1, item3, item2]
     });
 
-    accordion.add( item21, item22, item23);
+    accordion.add( item21, item23, item22);
     item21.hide();
-    item22.hide();
     item23.hide();
+    item22.hide();
 
     var accordion1 = new Ext.Panel({
         region: 'west',

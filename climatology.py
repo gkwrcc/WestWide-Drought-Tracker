@@ -451,6 +451,10 @@ class Climatology:
         if self.variable == 'spi':
             ax.set_title(u'Standardized Precipitation Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
             ax.set_ylabel(u"SPI")
+
+        if self.variable == 'spei':
+            ax.set_title(u'Standardized Evapotranspiration Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
+            ax.set_ylabel(u"SPI")
             
         if self.variable == 'pon':
             ax.set_title(u'Precipitation, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
@@ -470,6 +474,11 @@ class Climatology:
 
         # Set legend outside of plot axes
         ax.legend([Rectangle((0,0),1,1, facecolor=c, edgecolor='w') for c in perc_colors ], labels, bbox_to_anchor=(1.05, 1.), loc=2, borderaxespad=0., shadow=True)
+
+ 
+        currentYear = today.year
+        ax.set_xlabel("Data Source: WRCC/UI, Created: %s-%s-%s" % (currentMonth,currentDay,currentYear))
+        ax.xaxis.set_label_coords(0.78, -.122, transform=None)
 
 
         # Mock x,y for testing

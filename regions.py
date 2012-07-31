@@ -487,6 +487,10 @@ class Climatology:
         if self.variable == 'spi':
             ax.set_title(u'Standardized Precipitation Index, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)-1], oneYear, regionName))
             ax.set_ylabel(u"SPI")
+
+        if self.variable == 'spei':
+            ax.set_title(u'Standardized Evapotranspiration Index, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)-1], oneYear, regionName))
+            ax.set_ylabel(u"SPI")
             
         if self.variable == 'pon':
             ax.set_title(u'Precipitation, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)-1], oneYear, regionName))
@@ -506,6 +510,9 @@ class Climatology:
         # Set legend outside of plot axes
         ax.legend([Rectangle((0,0),1,1, facecolor=c, edgecolor='w') for c in perc_colors ], labels, bbox_to_anchor=(1.05, 1.), loc=2, borderaxespad=0., shadow=True)
 
+        currentYear = today.year
+        ax.set_xlabel("Data Source: WRCC/UI, Created: %s-%s-%s" % (currentMonth,currentDay,currentYear))
+        ax.xaxis.set_label_coords(0.78, -.122, transform=None)
 
         # Mock x,y for testing
         #x = range(0,10,1)
@@ -1057,7 +1064,7 @@ class Plot():
             normal = ((normal* 9.0/5) + 32)
 
         # Drought indices do not have a normal period
-        if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi':
+        if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi' or self.variable == 'spei':
             normal = 0
 
         # Set distance from normal 1981-2010
@@ -1067,7 +1074,7 @@ class Plot():
         newList = []
 
         # Assign data column attributes
-        if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi':
+        if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi' or self.variable == 'spei':
             newList.append("Year,Data")
         elif self.variable == 'pon':
             newList.append("Year,Precipitation (Inches),Percent of Normal")
@@ -1080,7 +1087,7 @@ class Plot():
             for item in years:
                 newList.append('%4s,%4.2f,%4.2f'%(item, data[start_point], data[start_point]/normal*100))
                 start_point+=1    
-        elif self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi': 
+        elif self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi' or self.variable == 'spei': 
             for item in years:
                 newList.append('%4s,%4.2f'%(item, data[start_point]))
                 start_point+=1
@@ -1242,7 +1249,7 @@ class Plot():
         #print nanList[:]
        
         # No time scale is needed for drought indices
-        if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi':
+        if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi' or self.variable == 'spei':
             normal = 0
 
         # Set distance from normal variable
@@ -1293,6 +1300,14 @@ class Plot():
                 ax.set_title(u'Standardized Precipitation Index, %s-Months Ending in %s \n %s ' % (self.span, monthList[self.month-1], regionName ))
             ax.set_ylabel(u"SPI")
             topColor, bottomColor = 'blue', 'red'
+
+        if self.variable == 'spei':
+            if self.span == 1:
+                ax.set_title(u'Standardized Evapotranspiration Index, %s \n %s ' % ( monthList[self.month-1], regionName ))
+            else:
+                ax.set_title(u'Standardized Evapotranspiration Index, %s-Months Ending in %s \n %s ' % (self.span, monthList[self.month-1], regionName ))
+            ax.set_ylabel(u"SPI")
+            topColor, bottomColor = 'blue', 'red'
           
         if self.variable == 'pon':
             if self.span == 1:
@@ -1337,7 +1352,7 @@ class Plot():
         if not self.variable == 'pon':  
         
             # Determines if normal period should be added to plot - drought indices are exempt.
-            if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi':
+            if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi' or self.variable == 'spei':
                 ax.axhline(y=normal, color="black") 
             else:
 	        ax.axhline(y=normal, color="black", label='Normal Period: 1981-2010')

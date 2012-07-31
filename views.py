@@ -26,7 +26,7 @@ def testing(request):
 def bargraph_panel(request):
     try:
         data = [1,2,3,4,5]
-        variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
+        variableList = ["", "mdn","pon","spi","spei","pdsi","pzi", "scpdsi"]
         if 'run_avg' in request.GET:
             run_avg = request.GET['run_avg']
             if not run_avg:
@@ -88,7 +88,7 @@ def bargraph_panel(request):
 def regionsBargraph_panel(request):
     try:
         data = [1,2,3,4,5]
-        variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
+        variableList = ["", "mdn","pon","spi", 'spei',"pdsi","pzi", "scpdsi"]
         if 'run_avg' in request.GET:
             run_avg = request.GET['run_avg']
             if not run_avg:
@@ -138,61 +138,10 @@ def regionsBargraph_panel(request):
         return HttpResponse("invalid parameters")
 
 
-def regionsBargraph_panel(request):
-    try:
-        data = [1,2,3,4,5]
-        variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
-        if 'run_avg' in request.GET:
-            run_avg = request.GET['run_avg']
-            if not run_avg:
-                runAvg = 0
-            else:
-                runAvg = int(run_avg)
-
-        region = request.GET['region']
-        #print region
- 
-
-        if 'start_year' in request.GET:
-            startYear = request.GET['start_year']
-            if startYear < 1895:
-                startYear = 1895
-            else:
-                startYear = int(startYear)
-
-        if 'end_year' in request.GET:
-            endYear = request.GET['end_year']
-            endYear = int(endYear)
-            #if endYear > datetime.datetime.now().year:
-            #    endYear = (datetime.datetime.now().year -1)
-            #else:
-            #    endYear = int(endYear)
-
-        #if 'variable' in request.GET:
-        #    variable = int(request.GET['variable'])
-        #    variable = variableList[variable]
-
-      
-        variable = int(request.GET['variable'])
-        variable = variableList[variable]
-        month = int(request.GET['month'])
-        span = int(request.GET['span'])
-   
-        # Print PNG to page
-        try:
-            canvas = regionPlot(region=region, startYear=startYear, endYear=endYear, variable=variable, month=month, span=span, runavg=runAvg, data=None).getData()
-            response=HttpResponse(content_type='image/png')
-            canvas.print_png(response)
-            plt.close()
-            return response
-        except:
-            return HttpResponse("invalid plot")
-    except:
-        return HttpResponse("invalid parameters")
 
 
 def bargraph_text(request):
-    variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
+    variableList = ["", "mdn","pon","spi","spei","pdsi","pzi", "scpdsi"]
     if 'run_avg' in request.GET:
         run_avg = request.GET['run_avg']
         if not run_avg:
@@ -217,7 +166,7 @@ def bargraph_text(request):
 
 
 def regionBargraph_text(request):
-    variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
+    variableList = ["", "mdn","pon","spi", "spei","pdsi","pzi", "scpdsi"]
     if 'run_avg' in request.GET:
         run_avg = request.GET['run_avg']
         if not run_avg:
@@ -242,7 +191,7 @@ def regionBargraph_text(request):
 
 
 def all_text(request):
-    variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
+    variableList = ["", "mdn","pon","spi", "spei","pdsi","pzi", "scpdsi"]
   
     lat = float(request.GET['lat'])
     lon = float(request.GET['lon'])
@@ -254,6 +203,7 @@ def all_text(request):
     if variable == "mdn": data = ['Temperature (Degrees F) Mean Departure from Normal']
     if variable == "pon": data = ['Precipitation (Inches)']
     if variable == "spi": data = ['Standardized Precipitaion Index']
+    if variable == "spei": data = [' Standardized Evapotranspiration Index']
     if variable == "pdsi": data = ['Palmer Drought Severity Index']
     if variable == "pzi": data = ['Palmer Z-Index']
     if variable == "scpdsi": data = ['Self Calibrated Palmer Drought Severity Index']
@@ -271,7 +221,7 @@ def all_text(request):
     return render_to_response('print.html', {'data': data})
 
 def regionsAll_text(request):
-    variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
+    variableList = ["", "mdn","pon","spi", "spei","pdsi","pzi", "scpdsi"]
   
 
     region = request.GET['region']
@@ -286,6 +236,7 @@ def regionsAll_text(request):
     if variable == "mdn": data = ['Temperature (Degrees F)']
     if variable == "pon": data = ['Precipitation (Inches)']
     if variable == "spi": data = ['Standardized Precipitaion Index']
+    if variable == "spei": data = ['Standardized Evapotranspiration Index']
     if variable == "pdsi": data = ['Palmer Drought Severity Index']
     if variable == "pzi": data = ['Palmer Z-Index']
     if variable == "scpdsi": data = ['Self Calibrated Palmer Drought Severity Index']
@@ -310,7 +261,7 @@ def wait_message(request):
 def climatology(request):
     try:
         data = [1,2,3,4,5]
-        variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
+        variableList = ["", "mdn","pon","spi", "spei", "pdsi","pzi", "scpdsi"]
 
         if 'lat' in request.GET:
             lat = request.GET['lat']
@@ -348,7 +299,7 @@ def climatology(request):
         return HttpResponse("invalid parameters")
 
 def climatology_text(request):
-    variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
+    variableList = ["", "mdn","pon","spi", "spei", "pdsi","pzi", "scpdsi"]
     if 'lat' in request.GET:
         lat = request.GET['lat']
         if not lat:
@@ -381,7 +332,7 @@ def climatology_text(request):
 def climatologyRegions(request):
     try:
         data = [1,2,3,4,5]
-        variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
+        variableList = ["", "mdn","pon","spi", "spei","pdsi","pzi", "scpdsi"]
 
         region = request.GET['region']
 
@@ -408,7 +359,7 @@ def climatologyRegions(request):
         return HttpResponse("invalid parameters")
 
 def climatologyRegions_text(request):
-    variableList = ["", "mdn","pon","spi","pdsi","pzi", "scpdsi"]
+    variableList = ["", "mdn","pon","spi","spei","pdsi","pzi", "scpdsi"]
 
     region = request.GET['region']
       

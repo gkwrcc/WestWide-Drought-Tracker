@@ -139,7 +139,7 @@ class Plot():
         newList = []
 
         # Assign data column attributes
-        if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi':
+        if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi' or self.variable == 'spei':
             newList.append("Year,Data")
         elif self.variable == 'pon':
             newList.append("Year,Precipitation (Inches),Percent of Normal")
@@ -152,7 +152,7 @@ class Plot():
             for item in years:
                 newList.append('%4s,%4.2f,%4.2f'%(item, data[start_point], data[start_point]/normal*100))
                 start_point+=1    
-        elif self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi': 
+        elif self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi' or self.variable == 'spei': 
             for item in years:
                 newList.append('%4s,%4.2f'%(item, data[start_point]))
                 start_point+=1
@@ -167,6 +167,8 @@ class Plot():
 
     def getData(self):
         '''Finds and processes data returning plot'''
+  
+
 
         #print 'opening data...'
         if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi':
@@ -204,7 +206,7 @@ class Plot():
         years = np.arange(self.startYear, self.endYear+1, 1)
         data = np.array(dataFile.variables['data'][self.startYear-1895:(self.endYear-1894),closestLat,closestLon])
         
- 
+
         # Convert Precip to if there are any -9999.00 values to exclude if data selection is for all years
         if self.variable == 'pon':
             data = data/25.4
@@ -266,7 +268,7 @@ class Plot():
             normal = np.nan
 
         # No time scale is needed for drought indices
-        if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi':
+        if self.variable == 'pdsi' or self.variable == 'scpdsi' or self.variable == 'pzi' or self.variable == 'spi' or self.variable == 'spei':
             normal = 0
 
         # Set distance from normal variable
@@ -279,16 +281,19 @@ class Plot():
         # Used to set month name in plots based on month index
         monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
+
+
+
         # Setup plots based on Variable    
         if self.variable == 'pdsi':
             self.span = 1
-            ax.set_title(u'Palmer Drought Severity Index, %s-Months Ending in %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (self.span, monthList[self.month-1], self.lat, abs(self.lon), elevation))
+            ax.set_title(u'Palmer Drought Severity Index, %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (monthList[self.month-1], self.lat, abs(self.lon), elevation))
             ax.set_ylabel("PDSI")
             topColor, bottomColor = 'green', 'gold'
 
         if self.variable == 'scpdsi':
             self.span = 1
-            ax.set_title(u' Self Calibrated Palmer Drought Severity Index, %s-Months Ending in %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (self.span, monthList[self.month-1], self.lat, abs(self.lon), elevation))
+            ax.set_title(u' Self Calibrated Palmer Drought Severity Index, %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (monthList[self.month-1], self.lat, abs(self.lon), elevation))
             ax.set_ylabel("SCPDSI")
             topColor, bottomColor = 'green', 'gold'
  
@@ -311,6 +316,14 @@ class Plot():
                 ax.set_title(u'Standardized Precipitation Index, %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (monthList[self.month-1], self.lat, abs(self.lon), elevation)) 
             else:
                 ax.set_title(u'Standardized Precipitation Index, %s-Months Ending in %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (self.span, monthList[self.month-1], self.lat, abs(self.lon), elevation))
+            ax.set_ylabel(u"SPI")
+            topColor, bottomColor = 'blue', 'red'
+
+        if self.variable == 'spei':
+            if self.span == 1:
+                ax.set_title(u'Standardized Evapotranspiration Index, %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (monthList[self.month-1], self.lat, abs(self.lon), elevation)) 
+            else:
+                ax.set_title(u'Standardized Evapotranspiration Index, %s-Months Ending in %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (self.span, monthList[self.month-1], self.lat, abs(self.lon), elevation))
             ax.set_ylabel(u"SPI")
             topColor, bottomColor = 'blue', 'red'
           
