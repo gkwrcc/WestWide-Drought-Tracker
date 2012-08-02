@@ -1002,7 +1002,14 @@ class Plot():
         # Updated list sequencing index
         years = np.arange(self.startYear, self.endYear+1, 1)
         data = np.array(dataFile.variables['data'][self.startYear-1895:(self.endYear-1894),closestRegion])
-
+        
+        # Force - 9999 to nan
+        for i in range(0, data.size):
+            #print data[i]
+            if data[i] == -9999.0:
+                #print i
+                data[i] = np.nan
+                
         # Convert Precip to inches
         if self.variable == 'pon':
             data = data/24.5
@@ -1149,7 +1156,13 @@ class Plot():
 
 
         data = np.array(dataFile.variables['data'][self.startYear-1895:(self.endYear-1894),closestRegion])
-   
+        
+        # Force - 9999 to nan
+        for i in range(0, data.size):
+            #print data[i]
+            if data[i] == -9999.0:
+                #print i
+                data[i] = np.nan   
 
         # Convert Precip to if there are any -9999.00 values to exclude if data selection is for all years
         if self.variable == 'pon':
