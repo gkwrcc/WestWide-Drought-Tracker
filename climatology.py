@@ -320,8 +320,8 @@ class Climatology:
         
 
         # Set back a month if data has not been made for last month
-        if today.day < 2:
-            xMonth = xMonth + 1
+        #if today.day < 2:
+        #    xMonth = xMonth + 1
 
         # Set the starting month
         startDate = (datetime.date(oneYear, oneMonth, 25) - datetime.timedelta(xMonth*365/12))
@@ -761,8 +761,8 @@ class Climatology:
         
 
         # Set back a month if data has not been made for last month
-        if today.day < 2:
-            xMonth = xMonth + 1
+        #if today.day < 2:
+        #    xMonth = xMonth + 1
 
         # Set the starting month
         startDate = (datetime.date(oneYear, oneMonth, 25) - datetime.timedelta(xMonth*365/12))
