@@ -5646,12 +5646,14 @@ Ext.onReady(function () {
     var xArr = 1895;
     var yearArr = [];
 
-
     for (i = xArr; i < currentYearArr + 1; i++) {
         yearArr.push([i, i.toString()])
     }
 
 
+    // Current month selector
+    var currentMonthArr = currentDateArr.getMonth();
+ 
     yearSelect = Ext.extend(Ext.form.ComboBox, {
         width: 125,
         forceSelection: true,
@@ -6887,7 +6889,7 @@ Ext.onReady(function () {
             name: 'month',
             editable: false,
             fieldLabel: 'Month',
-            value: '1',
+            value: currentMonthArr,
             id: 'month_select',
             width: 135
         }), new spanSelect({
@@ -6915,7 +6917,7 @@ Ext.onReady(function () {
 
     // Setup forms and comboboxes for all point data
     var item2 = new Ext.FormPanel({
-        title: "All Data",
+        title: "All Months",
         labelWidth: 55,
         //cls: 'empty',
         items: [
@@ -6945,7 +6947,7 @@ Ext.onReady(function () {
 
     // Setup forms and comboboxes for point selection
     var item3 = new Ext.FormPanel({
-        title: "Climate Spans",
+        title: "Monthly Sequences",
         labelWidth: 55,
         items: [new formInput({
             name: 'lat',
@@ -6969,7 +6971,7 @@ Ext.onReady(function () {
             editable: false,
             store: monthStore,
             fieldLabel: 'Month',
-            value: '1',
+            value: currentMonthArr.toString(),
             id: 'span_select31',
             width: 135
         }), new yearSelect({
@@ -7081,13 +7083,13 @@ hideCollapseTool:true,
             name: 'endyear',
             fieldLabel: 'End Year',
             editable: false,
-            value: 2012,
+            value: 1895+(yearArr.length-1),
             id: 'end_year13',
             width: 135
         }), new monthSelect({
             name: 'month',
             fieldLabel: 'Month',
-            value: '1',
+            value: currentMonthArr,
             editable: false,
             id: 'month_select13',
             width: 135
@@ -7113,7 +7115,7 @@ hideCollapseTool:true,
 
     // Setup forms and comboboxes for all point data
     var item22 = new Ext.FormPanel({
-        title: "All Data",
+        title: "All Months",
 
         labelWidth: 55,
         cls: 'empty',
@@ -7142,7 +7144,7 @@ hideCollapseTool:true,
 
     // Setup forms and comboboxes for point selection
     var item23 = new Ext.FormPanel({
-        title: "Climate Spans",
+        title: "Monthly Sequences",
         labelWidth: 55,
         items: [new regionSelect({
             name: 'region',
@@ -7164,7 +7166,7 @@ hideCollapseTool:true,
             editable: false,
             store: monthStore,
             fieldLabel: 'Month',
-            value: '1',
+            value: currentMonthArr,
             id: 'span_select34',
             width: 135
         }), new yearSelect({
@@ -7259,6 +7261,15 @@ hideCollapseTool:true,
         panel, ]
     });
 
+    //
+    // Set month and year back if January of new year
+    if (currentDateArr.getMonth() == 0) {
+        Ext.getCmp('month_select').setValue(12);
+        alert('janu');
+        currentMonthArr = 12;
+        var yearValue = currentDateArr.getFullYear()-1;
+        Ext.getCmp('end_year').setValue(yearValue);     
+    }
 
 
 

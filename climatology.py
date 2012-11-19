@@ -222,7 +222,7 @@ class Climatology:
         #print len(DATA[0]), len(DATA[11])
 
         # Colors for fill between, median and months legend colors
-        perc_colors = ( [.85, .99, .99], [.7, .99, .99], [.5, .99, .99], [0, 0, 0], [1, 0, 0] )
+        perc_colors = ( [.85, .99, .99], [.7, .99, .99], [.5, .99, .99], [0, 0, 0], [1, 0, 0], [1,1,1] )
         plevels = [5., 10., 25., 50., 75., 90., 95.]
 
         # Get percentages for months e.g. perc = Jan percentages
@@ -393,16 +393,8 @@ class Climatology:
         
 
 
-        # Plot mean line
-        meanLine = ax.plot(meanLine, 'k', linewidth=1)
 
-        # Plot the x's and the lastXmonth line 
-        #
-        # Check here to make sure red line is correct
-        #
-        #print len(lastMonthY)
-        lastXLine = ax.plot(lastMonthY, 'r-', linewidth=2)
-        lastX = ax.plot(lastMonthY, 'rx', linewidth=2, markersize=18)
+
 
         # Plot percentage lines
         ax.plot(x, percLine, color='white')
@@ -412,6 +404,18 @@ class Climatology:
         ax.plot(x, perc5Line, color='white')
         ax.plot(x, perc6Line, color='white')
         ax.plot(x, perc7Line, color='white')
+
+        # Plot mean line
+        meanLine = ax.plot(meanLine, 'k', linewidth=1.5)
+
+        # Plot the x's and the lastXmonth line 
+        #
+        # Check here to make sure red line is correct
+        #
+        #print len(lastMonthY)
+
+        lastXLine = ax.plot(lastMonthY, 'r--', linewidth=1)
+        lastX = ax.plot(lastMonthY, 'rx', linewidth=2, markersize=12, markeredgewidth=3, markerfacecolor="red" )
 
         # Fill in between percentage lines
         ax.fill_between(x, percLine, perc2Line, facecolor=perc_colors[0], edgecolor='w', interpolate=True)
@@ -427,6 +431,9 @@ class Climatology:
 
         # Set title
         #ax.set_title('%s Last %s-Months'%(self.variable,span))
+
+        # Sets the correct year for use in plot header
+        oneYear = int(yearDates[-2])
 
         # Used to set month name in plots based on month index
         monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -453,8 +460,8 @@ class Climatology:
             ax.set_ylabel(u"SPI")
 
         if self.variable == 'spei':
-            ax.set_title(u'Standardized Evapotranspiration Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
-            ax.set_ylabel(u"SPI")
+            ax.set_title(u'Standardized Precipitation-Evapotranspiration Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)), fontsize=12)
+            ax.set_ylabel(u"SPEI")
             
         if self.variable == 'pon':
             ax.set_title(u'Precipitation, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
@@ -470,10 +477,10 @@ class Climatology:
         #ax.text(1.1, 01.10, "Western Regional\nClimate Center\nUniversity of Idaho",{'size':"x-small", 'family':"monospace"}, color='black')#, ha='right', va='top', alpha=0.9)
 
         # Set legend
-        labels = ( r"$5-95^{th}$", r"$10-90^{th}$", r"$25-75^{th}$", r"$Median$", r"$Months$")
+        labels = ( r"$5-95^{th}$", r"$10-90^{th}$", r"$25-75^{th}$", r"$Median$", r"$Monthly$", r"$Values$")
 
         # Set legend outside of plot axes
-        ax.legend([Rectangle((0,0),1,1, facecolor=c, edgecolor='w') for c in perc_colors ], labels, bbox_to_anchor=(1.05, 1.), loc=2, borderaxespad=0., shadow=True)
+        ax.legend([Rectangle((0,0),1,1, facecolor=c, edgecolor='w') for c in perc_colors ], labels, bbox_to_anchor=(1.02, 1.), loc=2, borderaxespad=0., shadow=True)
 
  
         currentYear = today.year

@@ -248,7 +248,7 @@ class Climatology:
         #print len(DATA[0]), len(DATA[11])
 
         # Colors for fill between, median and months legend colors
-        perc_colors = ( [.85, .99, .99], [.7, .99, .99], [.5, .99, .99], [0, 0, 0], [1, 0, 0] )
+        perc_colors = ( [.85, .99, .99], [.7, .99, .99], [.5, .99, .99], [0, 0, 0], [1, 0, 0], [1,1,1] )
         plevels = [5., 10., 25., 50., 75., 90., 95.]
 
         # Get percentages for months e.g. perc = Jan percentages
@@ -425,18 +425,7 @@ class Climatology:
         
 
 
-        # Plot mean line
-        meanLine = ax.plot(meanLine, 'k', linewidth=1)
-
-        # Plot the x's and the lastXmonth line 
-        #
-        # Check here to make sure red line is correct
-        #
-        #print len(lastMonthY)
-        lastXLine = ax.plot(lastMonthY, 'r-', linewidth=2)
-        lastX = ax.plot(lastMonthY, 'rx', linewidth=2, markersize=18)
-
-        # Plot percentage lines
+          # Plot percentage lines
         ax.plot(x, percLine, color='white')
         ax.plot(x, perc2Line, color='white')
         ax.plot(x, perc3Line, color='white')
@@ -444,6 +433,18 @@ class Climatology:
         ax.plot(x, perc5Line, color='white')
         ax.plot(x, perc6Line, color='white')
         ax.plot(x, perc7Line, color='white')
+
+        # Plot mean line
+        meanLine = ax.plot(meanLine, 'k', linewidth=1.5)
+
+        # Plot the x's and the lastXmonth line 
+        #
+        # Check here to make sure red line is correct
+        #
+        #print len(lastMonthY)
+
+        lastXLine = ax.plot(lastMonthY, 'r--', linewidth=1)
+        lastX = ax.plot(lastMonthY, 'rx', linewidth=2, markersize=12, markeredgewidth=3, markerfacecolor="red" )
 
         # Fill in between percentage lines
         ax.fill_between(x, percLine, perc2Line, facecolor=perc_colors[0], edgecolor='w', interpolate=True)
@@ -467,6 +468,10 @@ class Climatology:
         #regionName = stateDict[self.region]
         regionName = allRegionDict[int(self.region)]
         
+        # Sets the correct year for use in plot header
+        oneYear = int(yearDates[-2])
+
+
         # Setup plots based on Variable    
         if self.variable == 'pdsi':
             ax.set_title(u'Palmer Drought Severity Index, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)-1], oneYear, regionName))
@@ -489,8 +494,8 @@ class Climatology:
             ax.set_ylabel(u"SPI")
 
         if self.variable == 'spei':
-            ax.set_title(u'Standardized Evapotranspiration Index, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)-1], oneYear, regionName))
-            ax.set_ylabel(u"SPI")
+            ax.set_title(u'Standardized Precipitation-Evapotranspiration Index, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)-1], oneYear, regionName), fontsize=12)
+            ax.set_ylabel(u"SPEI")
             
         if self.variable == 'pon':
             ax.set_title(u'Precipitation, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)-1], oneYear, regionName))
@@ -505,10 +510,10 @@ class Climatology:
         #ax.text(1.1, 01.10, "Western Regional\nClimate Center\nUniversity of Idaho",{'size':"x-small", 'family':"monospace"}, color='black')#, ha='right', va='top', alpha=0.9)
 
         # Set legend
-        labels = ( r"$5-95^{th}$", r"$10-90^{th}$", r"$25-75^{th}$", r"$Median$", r"$Months$")
+        labels = ( r"$5-95^{th}$", r"$10-90^{th}$", r"$25-75^{th}$", r"$Median$", r"$Monthly$",r"$Values$")
 
         # Set legend outside of plot axes
-        ax.legend([Rectangle((0,0),1,1, facecolor=c, edgecolor='w') for c in perc_colors ], labels, bbox_to_anchor=(1.05, 1.), loc=2, borderaxespad=0., shadow=True)
+        ax.legend([Rectangle((0,0),1,1, facecolor=c, edgecolor='w') for c in perc_colors ], labels, bbox_to_anchor=(1.02, 1.), loc=2, borderaxespad=0., shadow=True)
 
         currentYear = today.year
         ax.set_xlabel("Data Source: WRCC/UI, Created: %s-%s-%s" % (currentMonth,currentDay,currentYear))
@@ -519,6 +524,8 @@ class Climatology:
         #y = range(0,10,1)
         #ax.plot(x,y)
         #show()
+
+
         
         canvas = FigureCanvas(plt.figure(1)) 
         return canvas
@@ -708,7 +715,7 @@ class Climatology:
         #print len(DATA[0]), len(DATA[11])
 
         # Colors for fill between, median and months legend colors
-        perc_colors = ( [.85, .99, .99], [.7, .99, .99], [.5, .99, .99], [0, 0, 0], [1, 0, 0] )
+        perc_colors = ( [.85, .99, .99], [.7, .99, .99], [.5, .99, .99], [0, 0, 0], [1, 0, 0], [1,1,1] )
         plevels = [5., 10., 25., 50., 75., 90., 95.]
 
         # Get percentages for months e.g. perc = Jan percentages
@@ -1316,10 +1323,10 @@ class Plot():
 
         if self.variable == 'spei':
             if self.span == 1:
-                ax.set_title(u'Standardized Evapotranspiration Index, %s \n %s ' % ( monthList[self.month-1], regionName ))
+                ax.set_title(u'Standardized Precipitation-Evapotranspiration Index, %s \n %s ' % ( monthList[self.month-1], regionName ), fontsize=15)
             else:
-                ax.set_title(u'Standardized Evapotranspiration Index, %s-Months Ending in %s \n %s ' % (self.span, monthList[self.month-1], regionName ))
-            ax.set_ylabel(u"SPI")
+                ax.set_title(u'Standardized Precipitation-Evapotranspiration Index, %s-Months Ending in %s \n %s ' % (self.span, monthList[self.month-1], regionName ), fontsize=15)
+            ax.set_ylabel(u"SPEI")
             topColor, bottomColor = 'blue', 'red'
           
         if self.variable == 'pon':

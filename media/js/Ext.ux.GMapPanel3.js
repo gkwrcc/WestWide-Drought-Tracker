@@ -765,14 +765,14 @@ markers: [{
                             markersArray.push(marker);
                             //alert('here'+event.latLng);
                             //pos = marker.getPosition();
-                            Ext.getCmp('map_lat').setValue(event.latLng.lat());
-                            Ext.getCmp('map_lon').setValue(event.latLng.lng());
+                            Ext.getCmp('map_lat').setValue(event.latLng.lat().toFixed(5));
+                            Ext.getCmp('map_lon').setValue(event.latLng.lng().toFixed(5));
 
-                            Ext.getCmp('map_lat2').setValue(event.latLng.lat());
-                            Ext.getCmp('map_lon2').setValue(event.latLng.lng());
+                            Ext.getCmp('map_lat2').setValue(event.latLng.lat().toFixed(5));
+                            Ext.getCmp('map_lon2').setValue(event.latLng.lng().toFixed(5));
 
-                            Ext.getCmp('map_lat3').setValue(event.latLng.lat());
-                            Ext.getCmp('map_lon3').setValue(event.latLng.lng());
+                            Ext.getCmp('map_lat3').setValue(event.latLng.lat().toFixed(5));
+                            Ext.getCmp('map_lon3').setValue(event.latLng.lng().toFixed(5));
                             //Ext.getCmp('map_lon').setValue();
 
 
@@ -780,14 +780,14 @@ markers: [{
 
                                 google.maps.event.addListener(marker, 'drag', function (event) {
                                 
-                            Ext.getCmp('map_lat').setValue(event.latLng.lat());
-                            Ext.getCmp('map_lon').setValue(event.latLng.lng());
+                            Ext.getCmp('map_lat').setValue(event.latLng.lat().toFixed(5));
+                            Ext.getCmp('map_lon').setValue(event.latLng.lng().toFixed(5));
 
-                            Ext.getCmp('map_lat2').setValue(event.latLng.lat());
-                            Ext.getCmp('map_lon2').setValue(event.latLng.lng());
+                            Ext.getCmp('map_lat2').setValue(event.latLng.lat().toFixed(5));
+                            Ext.getCmp('map_lon2').setValue(event.latLng.lng().toFixed(5));
 
-                            Ext.getCmp('map_lat3').setValue(event.latLng.lat());
-                            Ext.getCmp('map_lon3').setValue(event.latLng.lng());
+                            Ext.getCmp('map_lat3').setValue(event.latLng.lat().toFixed(5));
+                            Ext.getCmp('map_lon3').setValue(event.latLng.lng().toFixed(5));
 });
 
                             // Set lat/lon on click for all on west accorion

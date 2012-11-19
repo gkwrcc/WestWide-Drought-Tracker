@@ -335,10 +335,10 @@ class Plot():
 
         if self.variable == 'spei':
             if self.span == 1:
-                ax.set_title(u'Standardized Evapotranspiration Index, %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (monthList[self.month-1], self.lat, abs(self.lon), elevation)) 
+                ax.set_title(u'Standardized Precipitation-Evapotranspiration Index, %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (monthList[self.month-1], self.lat, abs(self.lon), elevation), fontsize=15) 
             else:
-                ax.set_title(u'Standardized Evapotranspiration Index, %s-Months Ending in %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (self.span, monthList[self.month-1], self.lat, abs(self.lon), elevation))
-            ax.set_ylabel(u"SPI")
+                ax.set_title(u'Standardized Precipitation-Evapotranspiration Index, %s-Months Ending in %s \n %4.2f\u00b0N, %4.2f\u00b0W, Elevation: %4.2f Meters' % (self.span, monthList[self.month-1], self.lat, abs(self.lon), elevation), fontsize=15)
+            ax.set_ylabel(u"SPEI")
             topColor, bottomColor = 'blue', 'red'
           
         if self.variable == 'pon':
