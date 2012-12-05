@@ -6688,11 +6688,11 @@ var win = new Ext.Window({
         title: 'How To Use',
         contentEl: 'use',
         cls: 'empty',
-        items: [new helpVideo({ // must be last
+        /*items: [new helpVideo({ // must be last
             text: 'Help',
             align: 'center',
 
-        })],
+        })],*/
     });
 
 
