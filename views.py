@@ -231,6 +231,10 @@ def regionsAll_text(request):
 
     regionName = allRegionDict[int(region)]
 
+    # add climate division to name if needed
+    if int(region) in divDict:
+        regionName = regionName + " Climate Division"
+
 
     # Assign Data information
     if variable == "mdn": data = ['Temperature (Degrees F)']

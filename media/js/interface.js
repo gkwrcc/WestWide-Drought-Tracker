@@ -7,7 +7,7 @@ Ext.onReady(function () {
     }
 
 
-                Ext.MessageBox.alert('Welcome!', 'To get started read the how to on the left side of the page, then on the right side of the page click the drop down menus to access the tools.');
+                //Ext.MessageBox.alert('Welcome!', 'To get started read the how to on the left side of the page, then on the right side of the page click the drop down menus to access the tools.');
 
 
     var singleSpanStore = [
@@ -5443,7 +5443,7 @@ Ext.onReady(function () {
                 title: parseFloat(LAT).toFixed(2) + "N, " + (Math.abs(LON)).toFixed(2) + "W",
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
-                html: '<iframe src="' + URL + '/bargraph/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><iframe src="' + URL + '/text/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="3500px" width="99%" scrolling="no" frameborder="0" "></iframe><br>',
+                html: '<iframe src="' + URL + '/bargraph/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><iframe src="' + URL + '/text/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="4500px" width="99%" scrolling="no" frameborder="0" "></iframe><br>',
                 closable: true
             }).show(); // Set new tab active                
         }
@@ -5499,7 +5499,7 @@ Ext.onReady(function () {
                 title: parseFloat(LAT).toFixed(2) + "N, " + (Math.abs(LON)).toFixed(2) + "W",
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
-                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/all/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '" height="3500px" width="99%" scrolling="no" frameborder="0"></iframe>',
+                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/all/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '" height="4500px" width="99%" scrolling="no" frameborder="0"></iframe>',
                 closable: true
             }).show(); // Set new tab active                
         }
@@ -5766,7 +5766,7 @@ Ext.onReady(function () {
                 title: parseFloat(LAT).toFixed(2) + "N, " + (Math.abs(LON)).toFixed(2) + "W",
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
-                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/climatology/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/lastmonths/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR + '" height="3500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
+                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/climatology/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/lastmonths/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR + '" height="4500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
                 closable: true
             }).show(); // Set new tab active                
         }
@@ -5886,7 +5886,7 @@ Ext.onReady(function () {
                 title: "Region",
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
-                html: '<iframe src="' + URL + '/regionsBargraph/?region=' + REGION + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/regionText/?region=' + REGION + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="3500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
+                html: '<iframe src="' + URL + '/regionsBargraph/?region=' + REGION + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/regionText/?region=' + REGION + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="4500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
 
 
                 closable: true
@@ -5929,7 +5929,7 @@ Ext.onReady(function () {
                 title: "Region",
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
-                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><iframe src="' + URL + '/regionsAll/?region=' + REGION + '&variable=' + VARIABLE + '" height="3500px" width="99%" scrolling="no" frameborder="0"></iframe>',
+                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><iframe src="' + URL + '/regionsAll/?region=' + REGION + '&variable=' + VARIABLE + '" height="4500px" width="99%" scrolling="no" frameborder="0"></iframe>',
                 closable: true
             }).show(); // Set new tab active                
         }
@@ -6176,7 +6176,7 @@ Ext.onReady(function () {
                 title: "Region",
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
-                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/climatologyRegions/?region=' + REGION + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/lastmonthsRegions/?region=' + REGION + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR +  '" height="3500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
+                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/climatologyRegions/?region=' + REGION + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/lastmonthsRegions/?region=' + REGION + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR +  '" height="4500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
 
 
                 closable: true
@@ -6201,9 +6201,35 @@ Ext.onReady(function () {
         }
     });
 
+
+
+
+
+
+    // Access help video window
+    helpVideo = Ext.extend(Ext.Button, {
+        handler: function () {
+
+var win = new Ext.Window({
+    title: "Help Video",
+    width :750,
+    height : 750,
+    maximizable: true,
+	id:'autoload-win',
+
+	autoScroll:true,
+	html: '<iframe src="' + URL + '/media/video/help.mp4" height="100%" width="100%" scrolling="no"</iframe>',
+});
+
+          win.show()              
+        }
+    });
+
+
+
     var radioPanel = new Ext.FormPanel({
 
-        title: "Data Type",
+        title: "Select Data Retrieval Method",
         layout: 'anchor',
         defaults: {
             anchor: '100%',
@@ -6216,14 +6242,14 @@ Ext.onReady(function () {
             columns: 1,
             vertical: true,
             items: [{
-                boxLabel: 'Point 4x4 km Spatial Resolution',
+                boxLabel: 'Single 4x4km pixel from gridded dataset',
                 name: 'rb',
                 inputValue: '1',
                 id: 'point_radio',
                 checked: true,
                 onClick: function () {
 
-                Ext.MessageBox.alert('Point Data', 'Data layer is loading onto map. May take several minutes to please be patient.');
+                Ext.MessageBox.alert('Point Data', 'Click anywhere on the map to add a marker.');
 
                 panel.setActiveTab(0);
 
@@ -6238,7 +6264,7 @@ Ext.onReady(function () {
                     item23.hide();
                 }
             }, {
-                boxLabel: 'Lower 48 States and DC',
+                boxLabel: 'Contiguous United States including DC',
                 name: 'rb',
                 inputValue: '2',
                 id: 'state_radio',
@@ -6286,7 +6312,7 @@ Ext.onReady(function () {
                     accordion.doLayout()
                 }
             }, {
-                boxLabel: 'County and Equivalent Areas',
+                boxLabel: 'Contiguous United States County and Equivalent Areas',
                 name: 'rb',
                 inputValue: '3',
                 id: 'county_radio',
@@ -6365,7 +6391,7 @@ Ext.onReady(function () {
                     accordion.doLayout()
                 }
             }, {
-                boxLabel: 'Climate Divisions (DIV)',
+                boxLabel: 'U.S. Climatological Divisions',
                 name: 'rb',
                 inputValue: '5',
                 id: 'div_radio',
@@ -6444,7 +6470,7 @@ Ext.onReady(function () {
 
 
             {
-                boxLabel: 'Stations',
+                boxLabel: 'United States Historical Climatology Network Stations',
                 name: 'rb',
                 inputValue: '6',
                 id: 'station_radio',
@@ -6661,7 +6687,12 @@ Ext.onReady(function () {
     var item11 = new Ext.Panel({
         title: 'How To Use',
         contentEl: 'use',
-        cls: 'empty'
+        cls: 'empty',
+        items: [new helpVideo({ // must be last
+            text: 'Help',
+            align: 'center',
+
+        })],
     });
 
 
@@ -6904,6 +6935,10 @@ hideCollapseTool:true,
     });
 
 
+
+
+
+
     var panel = new Ext.TabPanel({
         region: 'center',
         margins: '45 0 5 0',
@@ -6912,13 +6947,25 @@ hideCollapseTool:true,
         items: [Gmap]
     });
 
+
+
+    var nestedPanel = new Ext.Panel({
+        region: 'center',
+        margins: '45 0 5 0',
+        id: 'nested',
+        border: true,
+	autoScroll: true,
+        items: [radioPanel, panel]
+        
+    });
+
     var viewport = new Ext.Viewport({
         layout: 'border',
         items: [
         accordion, accordion1, {
             bodyStyle: 'background:#f1f1f1',
         },
-        panel, ]
+        nestedPanel, ]
     });
 
     //

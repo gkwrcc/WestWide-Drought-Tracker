@@ -467,6 +467,10 @@ class Climatology:
         # Set name from region dictionary
         #regionName = stateDict[self.region]
         regionName = allRegionDict[int(self.region)]
+
+        # add climate division to name if needed
+        if int(self.region) in divDict:
+           regionName = regionName + " Climate Division"
         
         # Sets the correct year for use in plot header
         oneYear = int(yearDates[-2])
@@ -1281,6 +1285,10 @@ class Plot():
     
 
         regionName = allRegionDict[int(self.region)]
+
+        # add climate division to name if needed
+        if int(self.region) in divDict:
+           regionName = regionName + " Climate Division"
 
 
         # Used to set month name in plots based on month index
