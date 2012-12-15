@@ -17,6 +17,8 @@ from django import template
 
 from regionDicts import *
 
+import django
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 
 def testing(request):
     errors = []
@@ -75,15 +77,18 @@ def bargraph_panel(request):
    
         # Print PNG to page
         try:
-            canvas = Plot(lat=lat, lon=lon, startYear=startYear, endYear=endYear, variable=variable, month=month, span=span, runavg=runAvg, data=None).getData()
-            response=HttpResponse(content_type='image/png')
+            newPlot = Plot(lat=lat, lon=lon, startYear=startYear, endYear=endYear, variable=variable, month=month, span=span, runavg=runAvg, data=None)
+            fig = newPlot.getData()            
+
+            canvas=FigureCanvas(fig)
+            response=django.http.HttpResponse(content_type='image/png')
             canvas.print_png(response)
-            plt.close()
+
             return response
         except:
-            return HttpResponse("invalid plot")
+            return HttpResponse("Plot feature under development for this location.")
     except:
-        return HttpResponse("invalid parameters")
+        return HttpResponse("No data.")
 
 def regionsBargraph_panel(request):
     try:
@@ -127,15 +132,18 @@ def regionsBargraph_panel(request):
    
         # Print PNG to page
         try:
-            canvas = regionPlot(region=region, startYear=startYear, endYear=endYear, variable=variable, month=month, span=span, runavg=runAvg, data=None).getData()
-            response=HttpResponse(content_type='image/png')
+            newPlot = regionPlot(region=region, startYear=startYear, endYear=endYear, variable=variable, month=month, span=span, runavg=runAvg, data=None)
+            fig = newPlot.getData()            
+
+            canvas=FigureCanvas(fig)
+            response=django.http.HttpResponse(content_type='image/png')
             canvas.print_png(response)
-            plt.close()
+
             return response
         except:
-            return HttpResponse("invalid plot")
+            return HttpResponse("Plot feature under development for this location.")
     except:
-        return HttpResponse("invalid parameters")
+        return HttpResponse("No data.")
 
 
 
@@ -292,15 +300,18 @@ def climatology(request):
    
         # Print PNG to page
         try:
-            canvas = Climatology(lat=lat, lon=lon, variable=variable, monthSpan=monthSpan, month=month, year=year).getData()
-            response=HttpResponse(content_type='image/png')
+            newPlot = Climatology(lat=lat, lon=lon, variable=variable, monthSpan=monthSpan, month=month, year=year)
+            fig = newPlot.getData()            
+
+            canvas=FigureCanvas(fig)
+            response=django.http.HttpResponse(content_type='image/png')
             canvas.print_png(response)
-            plt.close()
+
             return response
         except:
-            return HttpResponse("invalid plot")
+            return HttpResponse("Plot feature under development for this location.")
     except:
-        return HttpResponse("invalid parameters")
+        return HttpResponse("No data.")
 
 def climatology_text(request):
     variableList = ["", "mdn","pon","spi", "spei", "pdsi","pzi", "scpdsi"]
@@ -352,15 +363,18 @@ def climatologyRegions(request):
    
         # Print PNG to page
         try:
-            canvas = regionClimatology(region=region, variable=variable, monthSpan=monthSpan, month=month, year=year).getData()
-            response=HttpResponse(content_type='image/png')
+            newPlot = regionClimatology(region=region, variable=variable, monthSpan=monthSpan, month=month, year=year)
+            fig = newPlot.getData()            
+
+            canvas=FigureCanvas(fig)
+            response=django.http.HttpResponse(content_type='image/png')
             canvas.print_png(response)
-            plt.close()
+
             return response
         except:
-            return HttpResponse("invalid plot")
+            return HttpResponse("Plot feature under development for this location.")
     except:
-        return HttpResponse("invalid parameters")
+        return HttpResponse("No data.")
 
 def climatologyRegions_text(request):
     variableList = ["", "mdn","pon","spi","spei","pdsi","pzi", "scpdsi"]

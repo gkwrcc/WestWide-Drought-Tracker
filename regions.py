@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import datetime
 
+from matplotlib.figure import Figure
 from dateutil.relativedelta import relativedelta
 from matplotlib.pyplot import figure, show
 from matplotlib.patches import Rectangle
@@ -420,7 +421,7 @@ class Climatology:
         #    zeroValue+=1
 
         # Create Figure
-        fig = plt.figure(figsize=(10,7), facecolor='w')
+        fig = Figure(figsize=(10,7), facecolor='w')
         ax = fig.add_axes([0.08, 0.15, .70, 0.78])
         
 
@@ -531,8 +532,8 @@ class Climatology:
 
 
         
-        canvas = FigureCanvas(plt.figure(1)) 
-        return canvas
+        #canvas = FigureCanvas(plt.figure(1)) 
+        return fig
 
     def getText(self):
         '''Open and plot the data '''
@@ -1280,7 +1281,7 @@ class Plot():
         inv_data = data - normal    
 
         # Create a figure for plots
-        fig = plt.figure(figsize=(10,7), facecolor='w')
+        fig = Figure(figsize=(10,7), facecolor='w')
         ax = fig.add_axes([0.08, 0.15, .90, 0.78])
     
 
@@ -1485,10 +1486,10 @@ class Plot():
         ax.set_xbound((years[0]-1, years[-1]+1))
 
         # Add figure to canvas
-        canvas = FigureCanvas(plt.figure(1))      
+        #canvas = FigureCanvas(plt.figure(1))      
         #canvas.close()
-        dataFile.close()
-        return canvas
+        #dataFile.close()
+        return fig
 
 
 

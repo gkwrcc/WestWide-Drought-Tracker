@@ -2,6 +2,7 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 
+from matplotlib.figure import Figure
 from datetime import datetime
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.font_manager import FontProperties
@@ -289,7 +290,7 @@ class Plot():
         inv_data = data - normal    
 
         # Create a figure for plots
-        fig = plt.figure(figsize=(10,7), facecolor='w')
+        fig = Figure(figsize=(10,7), facecolor='w')
         ax = fig.add_axes([0.08, 0.15, .90, 0.78])
     
         # Used to set month name in plots based on month index
@@ -457,10 +458,10 @@ class Plot():
 
 
         # Add figure to canvas
-        canvas = FigureCanvas(plt.figure(1))      
+        #canvas = FigureCanvas(plt.figure(1))      
         #canvas.close()
-        dataFile.close()
-        return canvas
+        #dataFile.close()
+        return fig
         
      
 
