@@ -12,6 +12,8 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.mlab import movavg
 from scipy.io import netcdf
 
+from matplotlib.dates import YearLocator, MonthLocator, DateFormatter
+
 from settings import WWDTNETCDF_DIR, WWDTNETCDF_DIR2, WWDTNETCDF_DIR3, ELEVATION_DATA
 from regionDicts import *
 
@@ -283,7 +285,15 @@ class Climatology:
         #print 'startDate: ', startDate
         #print 'endDate: ', endDate
 
+        # varibale to become new date
+        newDate = startDate
 
+        # create list of dates to use for x-axis
+        dateList = []
+        while newDate <= endDate:
+            dateList.append(newDate)
+            newDate += delta
+        #print dateList
 
         # Get months from start date to end date
         monthSpanListData = [] 
@@ -421,22 +431,25 @@ class Climatology:
         #    zeroValue+=1
 
         # Create Figure
-        fig = Figure(figsize=(10,7), facecolor='w')
+        fig = Figure(figsize=(20,10), facecolor='w')
         ax = fig.add_axes([0.08, 0.15, .70, 0.78])
         
+        # Eliminate extra month from dateList
+        x = dateList[:-1]
 
 
-          # Plot percentage lines
-        ax.plot(x, percLine, color='white')
-        ax.plot(x, perc2Line, color='white')
-        ax.plot(x, perc3Line, color='white')
-        ax.plot(x, perc4Line, color='white')
-        ax.plot(x, perc5Line, color='white')
-        ax.plot(x, perc6Line, color='white')
-        ax.plot(x, perc7Line, color='white')
+
+        # Plot percentage lines
+        #ax.plot_date(x, percLine, color='white')
+        #ax.plot_date(x, perc2Line, color='white')
+        #ax.plot_date(x, perc3Line, color='white')
+        #ax.plot_date(x, perc4Line, color='white')
+        #ax.plot_date(x, perc5Line, color='white')
+        #ax.plot_date(x, perc6Line, color='white')
+        #ax.plot_date(x, perc7Line, color='white')
 
         # Plot mean line
-        meanLine = ax.plot(meanLine, 'k', linewidth=1.5)
+        #meanLine = ax.plot(meanLine, 'k', linewidth=1.5)
 
         # Plot the x's and the lastXmonth line 
         #
@@ -444,8 +457,8 @@ class Climatology:
         #
         #print len(lastMonthY)
 
-        lastXLine = ax.plot(lastMonthY, 'r--', linewidth=1)
-        lastX = ax.plot(lastMonthY, 'rx', linewidth=2, markersize=12, markeredgewidth=3, markerfacecolor="red" )
+        lastXLine = ax.plot_date(x, lastMonthY, 'r--', linewidth=1)
+        lastX = ax.plot_date(x, lastMonthY, 'rx', linewidth=2, markersize=12, markeredgewidth=3, markerfacecolor="red" )
 
         # Fill in between percentage lines
         ax.fill_between(x, percLine, perc2Line, facecolor=perc_colors[0], edgecolor='w', interpolate=True)
@@ -455,10 +468,26 @@ class Climatology:
         ax.fill_between(x, perc5Line, perc6Line, facecolor=perc_colors[1], edgecolor='w', interpolate=True)
         ax.fill_between(x, perc6Line, perc7Line, facecolor=perc_colors[0], edgecolor='w', interpolate=True)
 
-        # Set x-axis labels
-        ax.set_xticks(np.arange(span))
-        ax.set_xticklabels(xLabelList)
 
+        # set up locator for formating
+        years    = YearLocator()   # every year
+        months   = MonthLocator()  # every month
+        threeMonths = MonthLocator(bymonth=None, bymonthday=1, interval=3, tz=None)
+        yearsFmt = DateFormatter('%B %Y')
+        monthsFmt = DateFormatter('%B')
+
+        # Set x-axis labels
+        if span > 48:
+            ax.xaxis.set_major_locator(years)
+        elif span > 36:
+            ax.xaxis.set_major_locator(threeMonths)
+        elif span > 1:
+            ax.xaxis.set_major_locator(months)
+        ax.xaxis.set_major_formatter(yearsFmt)
+        ax.xaxis.set_minor_locator(months)
+        ax.autoscale_view()
+        ax.grid(True)
+        fig.autofmt_xdate()
         # Set title
         #ax.set_title('%s Last %s-Months'%(self.variable,span))
         # Used to set month name in plots based on month index
@@ -522,17 +551,8 @@ class Climatology:
 
         currentYear = today.year
         ax.set_xlabel("Data Source: WRCC/UI, Created: %s-%s-%s" % (currentMonth,currentDay,currentYear))
-        ax.xaxis.set_label_coords(0.78, -.122, transform=None)
+        ax.xaxis.set_label_coords(0.99, -.152, transform=None)
 
-        # Mock x,y for testing
-        #x = range(0,10,1)
-        #y = range(0,10,1)
-        #ax.plot(x,y)
-        #show()
-
-
-        
-        #canvas = FigureCanvas(plt.figure(1)) 
         return fig
 
     def getText(self):
@@ -1281,7 +1301,7 @@ class Plot():
         inv_data = data - normal    
 
         # Create a figure for plots
-        fig = Figure(figsize=(10,7), facecolor='w')
+        fig = Figure(figsize=(20,10), facecolor='w')
         ax = fig.add_axes([0.08, 0.15, .90, 0.78])
     
 
