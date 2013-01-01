@@ -5313,7 +5313,7 @@ Ext.onReady(function () {
 
     // Current month selector
     var currentMonthArr = currentDateArr.getMonth();
- 
+    
     yearSelect = Ext.extend(Ext.form.ComboBox, {
         width: 125,
         forceSelection: true,
@@ -6972,10 +6972,19 @@ hideCollapseTool:true,
     // Set month and year back if January of new year
     if (currentDateArr.getMonth() == 0) {
         Ext.getCmp('month_select').setValue(12);
-        alert('janu');
+        Ext.getCmp('month_select13').setValue(12);
+        
+
         currentMonthArr = 12;
         var yearValue = currentDateArr.getFullYear()-1;
-        Ext.getCmp('end_year').setValue(yearValue);     
+        Ext.getCmp('end_year').setValue(yearValue);   
+        Ext.getCmp('end_year13').setValue(yearValue); 
+
+        // Set monthy sequence month to Jan
+        Ext.getCmp('span_select31').setValue(1);
+        Ext.getCmp('span_select34').setValue(1);
+
+  
     }
 
 
