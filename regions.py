@@ -1188,7 +1188,7 @@ class Plot():
 
 
         data = np.array(dataFile.variables['data'][self.startYear-1895:(self.endYear-1894),closestRegion])
-        
+        #print data[:]
         # Force - 9999 to nan
         for i in range(0, data.size):
             #print data[i]
@@ -1196,6 +1196,7 @@ class Plot():
                 #print i
                 data[i] = np.nan   
 
+        #print data[:]
         # Convert Precip to if there are any -9999.00 values to exclude if data selection is for all years
         if self.variable == 'pon':
             data = data/24.5
@@ -1229,7 +1230,12 @@ class Plot():
                 data = np.array(dataFile.variables['data'][(self.startYear-1895)+v:(self.endYear-1894),closestRegion])
             value+=1
 
-
+        # Force - 9999 to nan
+        for i in range(0, data.size):
+            #print data[i]
+            if data[i] == -9999.0:
+                #print i
+                data[i] = np.nan
 
 
         # Convert C to F
@@ -1244,12 +1250,7 @@ class Plot():
 
         #print data[:]
 
-        # Force - 9999 to nan
-        for i in range(0, data.size):
-            #print data[i]
-            if data[i] == -9999.0:
-                #print i
-                data[i] = np.nan
+
                 
 
 
@@ -1392,7 +1393,7 @@ class Plot():
                     for i in nanList:
                         ax.bar(years[i],max(data), color='lightgrey', label='No Record')
                 if len(nanList)> 1:
-                    ax.bar(years[0],max(data),color='lightgrey',label = "No Record")
+                    ax.bar(years[0], 0,color='lightgrey',label = "No Record")
                     for i in nanList:
                         ax.bar(years[i], max(data),color='lightgrey')
             ax.axis('tight')
@@ -1462,10 +1463,11 @@ class Plot():
                         ax.bar(years[i],y_max, color='lightgrey', label='No Record')
                         ax.bar(years[i],y_min, color='lightgrey')
                 if len(nanList)> 1:
-                    ax.bar(years[0], normal, color='lightgrey',label = "No Record")
+                    ax.bar(years[i], normal, color='lightgrey',label = "No Record")
                     for i in nanList:
                         ax.bar(years[i],y_max, color='lightgrey')
                         ax.bar(years[i],y_min, color='lightgrey')
+            ax.axis('tight')
 
                 
             # Uncrowd y-axis is span is more than 13 - set for all variable - indent 4 spaces to make apply only to mdn

@@ -7,12 +7,12 @@ Ext.onReady(function () {
     }
 
 
-                //Ext.MessageBox.alert('Welcome!', 'To get started read the how to on the left side of the page, then on the right side of the page click the drop down menus to access the tools.');
+    //Ext.MessageBox.alert('Welcome!', 'To get started read the how to on the left side of the page, then on the right side of the page click the drop down menus to access the tools.');
 
 
     var singleSpanStore = [
-        ['1', "1-Month"] 
-]
+        ['1', "1-Month"]
+    ]
 
     var spanStore = [
         ['1', "1-Month"],
@@ -26,7 +26,8 @@ Ext.onReady(function () {
         ['9', "9-Month"],
         ['10', "10-Month"],
         ['11', "11-Month"],
-        ['12', "12-Month"], ]
+        ['12', "12-Month"]
+    ]
 
     var monthStore = [
         ['1', "January"],
@@ -40,7 +41,8 @@ Ext.onReady(function () {
         ['9', "September"],
         ['10', "October"],
         ['11', "November"],
-        ['12', "December"], ]
+        ['12', "December"]
+    ]
 
     var spiSpanStore = [
         ['1', "1-Month"],
@@ -62,7 +64,8 @@ Ext.onReady(function () {
         ['36', "36-Month"],
         ['48', "48-Month"],
         ['60', "60-Month"],
-        ['72', "72-Month"], ]
+        ['72', "72-Month"]
+    ]
 
     var climatologySpanStore = [
         ['2', "2-Month"],
@@ -81,7 +84,8 @@ Ext.onReady(function () {
         ['24', "24-Month"],
         ['30', "30-Month"],
         ['36', "36-Month"],
-        ['48', "48-Month"], ]
+        ['48', "48-Month"]
+    ]
 
     var stateStore = [
         ['131170803712', 'Alabama'],
@@ -3240,562 +3244,563 @@ Ext.onReady(function () {
         ['10347979776', 'WY - Teton County'],
         ['5390450176', 'WY - Uinta County'],
         ['5797814784', 'WY - Washakie County'],
-        ['6211020800', 'WY - Weston County'], ]
+        ['6211020800', 'WY - Weston County']
+    ]
 
 
     var hucStore = [
         ['5010002', 'Allegheny'],
-['3070101', 'Altamaha'],
-['1040001', 'Androscoggin'],
-['3130001', 'Apalachicola'],
-['11060003', 'Arkansas - Keystone'],
-['10120202', 'Belle Fourche'],
-['8060201', 'Big Black - Homochitto'],
-['10270201', 'Big Blue'],
-['10080015', 'Big Horn'],
-['10170202', 'Big Sioux'],
-['16040201', 'Black Rock Desert'],
-['3160101', 'Black Warrior - Tombigbee'],
-['8050001', 'Boeuf-Tensas'],
-['12050005', 'Brazos Headwaters'],
-['8080203', 'Calcasieu-Mermentau'],
-['3030002', 'Cape Fear'],
-['18060000', 'Central California Coastal'],
-['16060007', 'Central Nevada Desert Basins'],
-['7050002', 'Chippewa'],
-['14010001', 'Colorado Headwaters'],
-['1100005', 'Connecticut Coastal'],
-['3150101', 'Coosa-Tallapoosa'],
-['7100001', 'Des Moines'],
-['4120104', 'Eastern Lake Erie'],
-['10220001', 'Elkhorn'],
-['16030005', 'Escalante Desert-Sevier Lake'],
-['3140301', 'Escambia'],
-['10040104', 'Fort Peck Lake'],
-['10140103', 'Fort Randall Reservoir'],
-['10280102', 'Grand'],
-['5080001', 'Great Miami'],
-['16020309', 'Great Salt Lake'],
-['5110005', 'Green'],
-['12100201', 'Guadalupe'],
-['14020004', 'Gunnison'],
-['5070102', 'Guyandotte'],
-['7080201', 'Iowa'],
-['10160001', 'James'],
-['5050008', 'Kanawha'],
-['7140201', 'Kaskaskia'],
-['1030001', 'Kennebec'],
-['3090101', 'Kissimmee'],
-['18010200', 'Klamath'],
-['17010104', 'Kootenai'],
-['4080300', 'Lake Huron'],
-['8070202', 'Lake Maurepas'],
-['10130101', 'Lake Oahe'],
-['8090201', 'Lake Pontchartrain'],
-['10110101', 'Lake Sakakawea'],
-['4020300', 'Lake Superior'],
-['5100101', 'Licking'],
-['12070201', 'Little'],
-['15020018', 'Little Colorado'],
-['10210008', 'Loup'],
-['16010201', 'Lower Bear'],
-['2080103', 'Lower Chesapeake'],
-['11050001', 'Lower Cimarron'],
-['15030101', 'Lower Colorado'],
-['15010011', 'Lower Colorado-Lake Mead'],
-['17080004', 'Lower Columbia'],
-['15070102', 'Lower Gila-Agua Fria'],
-['14060003', 'Lower Green'],
-['2030101', 'Lower Hudson'],
-['7130001', 'Lower Illinois'],
-['8010100', 'Lower Mississippi-Memphis'],
-['10300101', 'Lower Missouri-Blackwater'],
-['5140101', 'Lower Ohio-Salt'],
-['13070007', 'Lower Pecos'],
-['10200201', 'Lower Platte'],
-['9020311', 'Lower Red'],
-['13090001', 'Lower Rio Grande'],
-['14080203', 'Lower San Juan'],
-['17060108', 'Lower Snake'],
-['6040006', 'Lower Tennessee'],
-['10100004', 'Lower Yellowstone'],
-['1050001', 'Maine Coastal'],
-['10030203', 'Marias'],
-['1090001', 'Massachusetts-Rhode Island Coastal.'],
-['1070001', 'Merrimack'],
-['11030002', 'Middle Arkansas'],
-['12060101', 'Middle Brazos-Clear Fork'],
-['11090104', 'Middle Candaian'],
-['12090107', 'Middle Colorado-Concho'],
-['17070106', 'Middle Columbia'],
-['15050100', 'Middle Gila'],
-['5090202', 'Middle Ohio-Little Miami'],
-['17050200', 'Middle Snake-Powder'],
-['6030003', 'Middle Tennessee-Elk'],
-['6020004', 'Middle Tennessee-Hiwassee'],
-['10050011', 'Milk'],
-['7020002', 'Minnesota'],
-['7010101', 'Mississippi Headwaters'],
-['10020006', 'Missouri Headwaters'],
-['10230003', 'Missouri-Little Sioux'],
-['10240002', 'Missouri-Nishnabotna'],
-['10060004', 'Missouri-Poplar'],
-['18090100', 'Mono-Owens Lakes'],
-['5020005', 'Monongahela'],
-['5040001', 'Muskingum'],
-['12020001', 'Neches'],
-['11070201', 'Neosho'],
-['10150006', 'Niobrara'],
-['11120302', 'North Fork Red'],
-['18080000', 'North Lahontan'],
-['10180007', 'North Platte'],
-['4060106', 'Northeastern Lake Michigan'],
-['4030107', 'Northwestern Lake Michigan'],
-['4010101', 'Northwestern Lake Superior'],
-['4070001', 'Nothwestern Lake Huron'],
-['12110102', 'Nueces'],
-['3120002', 'Ochlockonee'],
-['17120002', 'Oregon Closed Basins'],
-['10290108', 'Osage'],
-['3020102', 'Pamlico'],
-['3170001', 'Pascagoula'],
-['3180001', 'Pearl'],
-['1020002', 'Penobscot'],
-['2070004', 'Potomac'],
-['10090209', 'Powder'],
-['17110002', 'Puget Sound'],
-['9030009', 'Rainy'],
-['11140103', 'Red-Little'],
-['10250007', 'Republican'],
-['2010007', 'Richelieu'],
-['13050001', 'Rio Grande Closed Basins'],
-['13010003', 'Rio Grande Headwaters'],
-['13030101', 'Rio Grande-Caballo'],
-['13080001', 'Rio Grande-Falcon'],
-['13040100', 'Rio Grande-Fort Quitman'],
-['15080101', 'Rio Sonoyta'],
-['3010101', 'Roanoke'],
-['11110103', 'Robert S. Kerr Reservoir'],
-['7090001', 'Rock'],
-['12010001', 'Sabine'],
-['1060001', 'Saco'],
-['18050002', 'San Francisco Bay'],
-['12040101', 'San Jacinto'],
-['18040012', 'San Joaquin'],
-['3050101', 'Santee'],
-['10010001', 'Saskatchewan'],
-['3060101', 'Savannah'],
-['5060001', 'Scioto'],
-['10260012', 'Smoky Hill'],
-['9010001', 'Souris'],
-['10190016', 'South Platte'],
-['4050006', 'Southeastern Lake Michigan'],
-['4140102', 'Southeastern Lake Ontario'],
-['4110003', 'Southern Lake Erie'],
-['18100100', 'Southern Mojave'],
-['4040003', 'Southwestern Lake Michigan'],
-['4130001', 'Southwestern Lake Ontario'],
-['4090001', 'St. Clair-Detroit'],
-['7030003', 'St. Croix'],
-['8020202', 'St. Francis'],
-['1110000', 'St. Francois'],
-['1010001', 'St. John'],
-['3080103', 'St. Johns'],
-['4150301', 'St. Lawrence'],
-['3110202', 'Suwannee'],
-['3100208', 'Tampa Bay'],
-['16050104', 'Truckee'],
-['18030010', 'Tulare-Buena Vista Lakes'],
-['11020001', 'Upper Arkansas'],
-['11100102', 'Upper Beaver'],
-['11080001', 'Upper Canadian'],
-['2060002', 'Upper Chesapeake'],
-['11040005', 'Upper Cimarron'],
-['12080001', 'Upper Colorado'],
-['14070002', 'Upper Colorado-Dirty Devil'],
-['14030001', 'Upper Colorado-Dolores'],
-['17020008', 'Upper Columbia'],
-['1080101', 'Upper Connecticut'],
-['5130102', 'Upper Cumberland'],
-['2040101', 'Upper Delaware'],
-['15040004', 'Upper Gila'],
-['14040101', 'Upper Green'],
-['2020001', 'Upper Hudson'],
-['7120006', 'Upper Illinois'],
-['7040007', 'Upper Mississippi-Black-Root'],
-['7060001', 'Upper Mississippi-Maquoketa-Plum'],
-['7110001', 'Upper Mississippi-Salt'],
-['5030102', 'Upper Ohio-Beaver'],
-['8040101', 'Upper Ouachita'],
-['13060001', 'Upper Pecos'],
-['3040101', 'Upper Pee Dee'],
-['13020101', 'Upper Rio Grande'],
-['18020000', 'Upper Sacramento'],
-['17040202', 'Upper Snake'],
-['2050101', 'Upper Susquehanna'],
-['6010205', 'Upper Tennessee'],
-['12030103', 'Upper Trinity'],
-['11010007', 'Upper White'],
-['10070007', 'Upper Yellowstone'],
-['18070102', 'Ventura-San Gabriel Coastal'],
-['15060201', 'Verde'],
-['5120106', 'Wabash'],
-['17100100', 'Washington Coastal'],
-['11130302', 'Washita'],
-['4100001', 'Western Lake Erie'],
-['14050004', 'White-Yampa'],
-['17090012', 'Willamette'],
-['7070001', 'Wisconsin'],
-['17030000', 'Yakima'],
-['8030204', 'Yazoo'],
- ]
+        ['3070101', 'Altamaha'],
+        ['1040001', 'Androscoggin'],
+        ['3130001', 'Apalachicola'],
+        ['11060003', 'Arkansas - Keystone'],
+        ['10120202', 'Belle Fourche'],
+        ['8060201', 'Big Black - Homochitto'],
+        ['10270201', 'Big Blue'],
+        ['10080015', 'Big Horn'],
+        ['10170202', 'Big Sioux'],
+        ['16040201', 'Black Rock Desert'],
+        ['3160101', 'Black Warrior - Tombigbee'],
+        ['8050001', 'Boeuf-Tensas'],
+        ['12050005', 'Brazos Headwaters'],
+        ['8080203', 'Calcasieu-Mermentau'],
+        ['3030002', 'Cape Fear'],
+        ['18060000', 'Central California Coastal'],
+        ['16060007', 'Central Nevada Desert Basins'],
+        ['7050002', 'Chippewa'],
+        ['14010001', 'Colorado Headwaters'],
+        ['1100005', 'Connecticut Coastal'],
+        ['3150101', 'Coosa-Tallapoosa'],
+        ['7100001', 'Des Moines'],
+        ['4120104', 'Eastern Lake Erie'],
+        ['10220001', 'Elkhorn'],
+        ['16030005', 'Escalante Desert-Sevier Lake'],
+        ['3140301', 'Escambia'],
+        ['10040104', 'Fort Peck Lake'],
+        ['10140103', 'Fort Randall Reservoir'],
+        ['10280102', 'Grand'],
+        ['5080001', 'Great Miami'],
+        ['16020309', 'Great Salt Lake'],
+        ['5110005', 'Green'],
+        ['12100201', 'Guadalupe'],
+        ['14020004', 'Gunnison'],
+        ['5070102', 'Guyandotte'],
+        ['7080201', 'Iowa'],
+        ['10160001', 'James'],
+        ['5050008', 'Kanawha'],
+        ['7140201', 'Kaskaskia'],
+        ['1030001', 'Kennebec'],
+        ['3090101', 'Kissimmee'],
+        ['18010200', 'Klamath'],
+        ['17010104', 'Kootenai'],
+        ['4080300', 'Lake Huron'],
+        ['8070202', 'Lake Maurepas'],
+        ['10130101', 'Lake Oahe'],
+        ['8090201', 'Lake Pontchartrain'],
+        ['10110101', 'Lake Sakakawea'],
+        ['4020300', 'Lake Superior'],
+        ['5100101', 'Licking'],
+        ['12070201', 'Little'],
+        ['15020018', 'Little Colorado'],
+        ['10210008', 'Loup'],
+        ['16010201', 'Lower Bear'],
+        ['2080103', 'Lower Chesapeake'],
+        ['11050001', 'Lower Cimarron'],
+        ['15030101', 'Lower Colorado'],
+        ['15010011', 'Lower Colorado-Lake Mead'],
+        ['17080004', 'Lower Columbia'],
+        ['15070102', 'Lower Gila-Agua Fria'],
+        ['14060003', 'Lower Green'],
+        ['2030101', 'Lower Hudson'],
+        ['7130001', 'Lower Illinois'],
+        ['8010100', 'Lower Mississippi-Memphis'],
+        ['10300101', 'Lower Missouri-Blackwater'],
+        ['5140101', 'Lower Ohio-Salt'],
+        ['13070007', 'Lower Pecos'],
+        ['10200201', 'Lower Platte'],
+        ['9020311', 'Lower Red'],
+        ['13090001', 'Lower Rio Grande'],
+        ['14080203', 'Lower San Juan'],
+        ['17060108', 'Lower Snake'],
+        ['6040006', 'Lower Tennessee'],
+        ['10100004', 'Lower Yellowstone'],
+        ['1050001', 'Maine Coastal'],
+        ['10030203', 'Marias'],
+        ['1090001', 'Massachusetts-Rhode Island Coastal.'],
+        ['1070001', 'Merrimack'],
+        ['11030002', 'Middle Arkansas'],
+        ['12060101', 'Middle Brazos-Clear Fork'],
+        ['11090104', 'Middle Candaian'],
+        ['12090107', 'Middle Colorado-Concho'],
+        ['17070106', 'Middle Columbia'],
+        ['15050100', 'Middle Gila'],
+        ['5090202', 'Middle Ohio-Little Miami'],
+        ['17050200', 'Middle Snake-Powder'],
+        ['6030003', 'Middle Tennessee-Elk'],
+        ['6020004', 'Middle Tennessee-Hiwassee'],
+        ['10050011', 'Milk'],
+        ['7020002', 'Minnesota'],
+        ['7010101', 'Mississippi Headwaters'],
+        ['10020006', 'Missouri Headwaters'],
+        ['10230003', 'Missouri-Little Sioux'],
+        ['10240002', 'Missouri-Nishnabotna'],
+        ['10060004', 'Missouri-Poplar'],
+        ['18090100', 'Mono-Owens Lakes'],
+        ['5020005', 'Monongahela'],
+        ['5040001', 'Muskingum'],
+        ['12020001', 'Neches'],
+        ['11070201', 'Neosho'],
+        ['10150006', 'Niobrara'],
+        ['11120302', 'North Fork Red'],
+        ['18080000', 'North Lahontan'],
+        ['10180007', 'North Platte'],
+        ['4060106', 'Northeastern Lake Michigan'],
+        ['4030107', 'Northwestern Lake Michigan'],
+        ['4010101', 'Northwestern Lake Superior'],
+        ['4070001', 'Nothwestern Lake Huron'],
+        ['12110102', 'Nueces'],
+        ['3120002', 'Ochlockonee'],
+        ['17120002', 'Oregon Closed Basins'],
+        ['10290108', 'Osage'],
+        ['3020102', 'Pamlico'],
+        ['3170001', 'Pascagoula'],
+        ['3180001', 'Pearl'],
+        ['1020002', 'Penobscot'],
+        ['2070004', 'Potomac'],
+        ['10090209', 'Powder'],
+        ['17110002', 'Puget Sound'],
+        ['9030009', 'Rainy'],
+        ['11140103', 'Red-Little'],
+        ['10250007', 'Republican'],
+        ['2010007', 'Richelieu'],
+        ['13050001', 'Rio Grande Closed Basins'],
+        ['13010003', 'Rio Grande Headwaters'],
+        ['13030101', 'Rio Grande-Caballo'],
+        ['13080001', 'Rio Grande-Falcon'],
+        ['13040100', 'Rio Grande-Fort Quitman'],
+        ['15080101', 'Rio Sonoyta'],
+        ['3010101', 'Roanoke'],
+        ['11110103', 'Robert S. Kerr Reservoir'],
+        ['7090001', 'Rock'],
+        ['12010001', 'Sabine'],
+        ['1060001', 'Saco'],
+        ['18050002', 'San Francisco Bay'],
+        ['12040101', 'San Jacinto'],
+        ['18040012', 'San Joaquin'],
+        ['3050101', 'Santee'],
+        ['10010001', 'Saskatchewan'],
+        ['3060101', 'Savannah'],
+        ['5060001', 'Scioto'],
+        ['10260012', 'Smoky Hill'],
+        ['9010001', 'Souris'],
+        ['10190016', 'South Platte'],
+        ['4050006', 'Southeastern Lake Michigan'],
+        ['4140102', 'Southeastern Lake Ontario'],
+        ['4110003', 'Southern Lake Erie'],
+        ['18100100', 'Southern Mojave'],
+        ['4040003', 'Southwestern Lake Michigan'],
+        ['4130001', 'Southwestern Lake Ontario'],
+        ['4090001', 'St. Clair-Detroit'],
+        ['7030003', 'St. Croix'],
+        ['8020202', 'St. Francis'],
+        ['1110000', 'St. Francois'],
+        ['1010001', 'St. John'],
+        ['3080103', 'St. Johns'],
+        ['4150301', 'St. Lawrence'],
+        ['3110202', 'Suwannee'],
+        ['3100208', 'Tampa Bay'],
+        ['16050104', 'Truckee'],
+        ['18030010', 'Tulare-Buena Vista Lakes'],
+        ['11020001', 'Upper Arkansas'],
+        ['11100102', 'Upper Beaver'],
+        ['11080001', 'Upper Canadian'],
+        ['2060002', 'Upper Chesapeake'],
+        ['11040005', 'Upper Cimarron'],
+        ['12080001', 'Upper Colorado'],
+        ['14070002', 'Upper Colorado-Dirty Devil'],
+        ['14030001', 'Upper Colorado-Dolores'],
+        ['17020008', 'Upper Columbia'],
+        ['1080101', 'Upper Connecticut'],
+        ['5130102', 'Upper Cumberland'],
+        ['2040101', 'Upper Delaware'],
+        ['15040004', 'Upper Gila'],
+        ['14040101', 'Upper Green'],
+        ['2020001', 'Upper Hudson'],
+        ['7120006', 'Upper Illinois'],
+        ['7040007', 'Upper Mississippi-Black-Root'],
+        ['7060001', 'Upper Mississippi-Maquoketa-Plum'],
+        ['7110001', 'Upper Mississippi-Salt'],
+        ['5030102', 'Upper Ohio-Beaver'],
+        ['8040101', 'Upper Ouachita'],
+        ['13060001', 'Upper Pecos'],
+        ['3040101', 'Upper Pee Dee'],
+        ['13020101', 'Upper Rio Grande'],
+        ['18020000', 'Upper Sacramento'],
+        ['17040202', 'Upper Snake'],
+        ['2050101', 'Upper Susquehanna'],
+        ['6010205', 'Upper Tennessee'],
+        ['12030103', 'Upper Trinity'],
+        ['11010007', 'Upper White'],
+        ['10070007', 'Upper Yellowstone'],
+        ['18070102', 'Ventura-San Gabriel Coastal'],
+        ['15060201', 'Verde'],
+        ['5120106', 'Wabash'],
+        ['17100100', 'Washington Coastal'],
+        ['11130302', 'Washita'],
+        ['4100001', 'Western Lake Erie'],
+        ['14050004', 'White-Yampa'],
+        ['17090012', 'Willamette'],
+        ['7070001', 'Wisconsin'],
+        ['17030000', 'Yakima'],
+        ['8030204', 'Yazoo']
+    ]
 
 
 
     var divStore = [
-['10002', 'AL - APPALACHIAN MOUNTAIN'],
-['10007', 'AL - COASTAL PLAIN'],
-['10004', 'AL - EASTERN VALLEY'],
-['10008', 'AL - GULF'],
-['10001', 'AL - NORTHERN VALLEY'],
-['10005', 'AL - PIEDMONT PLATEAU'],
-['10006', 'AL - PRAIRIE'],
-['10003', 'AL - UPPER PLAINS'],
-['30005', 'AR - CENTRAL'],
-['30006', 'AR - EAST CENTRAL'],
-['30002', 'AR - NORTH CENTRAL'],
-['30003', 'AR - NORTHEAST'],
-['30001', 'AR - NORTHWEST'],
-['30008', 'AR - SOUTH CENTRAL'],
-['30009', 'AR - SOUTHEAST'],
-['30007', 'AR - SOUTHWEST'],
-['30004', 'AR - WEST CENTRAL'],
-['20004', 'AZ - EAST CENTRAL'],
-['20003', 'AZ - NORTH CENTRAL'],
-['20002', 'AZ - NORTHEAST'],
-['20001', 'AZ - NORTHWEST'],
-['20006', 'AZ - SOUTH CENTRAL'],
-['20007', 'AZ - SOUTHEAST'],
-['20005', 'AZ - SOUTHWEST'],
-['40004', 'CA - CENTRAL COAST DRNG.'],
-['40001', 'CA - NORTH COAST DRNG.'],
-['40003', 'CA - NORTHEAST INTER. BASINS'],
-['40002', 'CA - SACRAMENTO DRNG.'],
-['40005', 'CA - SAN JOAQUIN DRNG.'],
-['40006', 'CA - SOUTH COAST DRNG.'],
-['40007', 'CA - SOUTHEAST DESERT BASINS'],
-['50001', 'CO - AR DRAINAGE BASIN'],
-['50002', 'CO - CO DRAINAGE BASIN'],
-['50003', 'CO - KS DRAINAGE BASIN'],
-['50004', 'CO - PLATTE DRAINAGE BASIN'],
-['50005', 'CO - RIO GRANDE DRNG. BASIN'],
-['60002', 'CT - CENTRAL'],
-['60003', 'CT - COASTAL'],
-['60001', 'CT - NORTHWEST'],
-['70001', 'DE - NORTHERN'],
-['70002', 'DE - SOUTHERN'],
-['80005', 'FL - EVERGLADES & SW COAST'],
-['80006', 'FL - LOWER EAST COAST'],
-['80002', 'FL - NORTH'],
-['80003', 'FL - NORTH CENTRAL'],
-['80001', 'FL - NORTHWEST'],
-['80004', 'FL - SOUTH CENTRAL'],
-['90005', 'GA - CENTRAL'],
-['90006', 'GA - EAST CENTRAL'],
-['90002', 'GA - NORTH CENTRAL'],
-['90003', 'GA - NORTHEAST'],
-['90001', 'GA - NORTHWEST'],
-['90008', 'GA - SOUTH CENTRAL'],
-['90009', 'GA - SOUTHEAST'],
-['90007', 'GA - SOUTHWEST'],
-['90004', 'GA - WEST CENTRAL'],
-['130005', 'IA - CENTRAL'],
-['130006', 'IA - EAST CENTRAL'],
-['130002', 'IA - NORTH CENTRAL'],
-['130003', 'IA - NORTHEAST'],
-['130001', 'IA - NORTHWEST'],
-['130008', 'IA - SOUTH CENTRAL'],
-['130009', 'IA - SOUTHEAST'],
-['130007', 'IA - SOUTHWEST'],
-['130004', 'IA - WEST CENTRAL'],
-['100004', 'ID - CENTRAL MOUNTAINS'],
-['100007', 'ID - CENTRAL PLAINS'],
-['100010', 'ID - EASTERN HIGHLANDS'],
-['100003', 'ID - NORTH CENTRAL CANYONS'],
-['100002', 'ID - NORTH CENTRAL PRAIRIES'],
-['100008', 'ID - NORTHEASTERN VALLEYS'],
-['100001', 'ID - PANHANDLE'],
-['100006', 'ID - SOUTHWESTERN HIGHLANDS'],
-['100005', 'ID - SOUTHWESTERN VALLEYS'],
-['100009', 'ID - UPPER SNAKE RIVER PLAINS'],
-['110004', 'IL - CENTRAL'],
-['110005', 'IL - EAST'],
-['110007', 'IL - EAST SOUTHEAST'],
-['110002', 'IL - NORTHEAST'],
-['110001', 'IL - NORTHWEST'],
-['110009', 'IL - SOUTHEAST'],
-['110008', 'IL - SOUTHWEST'],
-['110003', 'IL - WEST'],
-['110006', 'IL - WEST SOUTHWEST'],
-['120005', 'IN - CENTRAL'],
-['120006', 'IN - EAST CENTRAL'],
-['120002', 'IN - NORTH CENTRAL'],
-['120003', 'IN - NORTHEAST'],
-['120001', 'IN - NORTHWEST'],
-['120008', 'IN - SOUTH CENTRAL'],
-['120009', 'IN - SOUTHEAST'],
-['120007', 'IN - SOUTHWEST'],
-['120004', 'IN - WEST CENTRAL'],
-['140005', 'KS - CENTRAL'],
-['140006', 'KS - EAST CENTRAL'],
-['140002', 'KS - NORTH CENTRAL'],
-['140003', 'KS - NORTHEAST'],
-['140001', 'KS - NORTHWEST'],
-['140008', 'KS - SOUTH CENTRAL'],
-['140009', 'KS - SOUTHEAST'],
-['140007', 'KS - SOUTHWEST'],
-['140004', 'KS - WEST CENTRAL'],
-['150003', 'KY - BLUE GRASS'],
-['150002', 'KY - CENTRAL'],
-['150004', 'KY - EASTERN'],
-['150001', 'KY - WESTERN'],
-['160005', 'LA - CENTRAL'],
-['160006', 'LA - EAST CENTRAL'],
-['160002', 'LA - NORTH CENTRAL'],
-['160003', 'LA - NORTHEAST'],
-['160001', 'LA - NORTHWEST'],
-['160008', 'LA - SOUTH CENTRAL'],
-['160009', 'LA - SOUTHEAST'],
-['160007', 'LA - SOUTHWEST'],
-['160004', 'LA - WEST CENTRAL'],
-['190002', 'MA - CENTRAL'],
-['190003', 'MA - COASTAL'],
-['190001', 'MA - WESTERN'],
-['180008', 'MD - ALLEGHENY PLATEAU'],
-['180007', 'MD - APPALACHIAN MOUNTAIN'],
-['180002', 'MD - CENTRAL EASTERN SHORE'],
-['180003', 'MD - LOWER SOUTHERN'],
-['180005', 'MD - NORTHEASTERN SHORE'],
-['180006', 'MD - NORTHERN CENTRAL'],
-['180001', 'MD - SOUTHEASTERN SHORE'],
-['180004', 'MD - UPPER SOUTHERN'],
-['170003', 'ME - COASTAL'],
-['170001', 'ME - NORTHERN'],
-['170002', 'ME - SOUTHERN INTERIOR'],
-['200006', 'MI - CENTRAL LOWER'],
-['200007', 'MI - EAST CENTRAL LOWER'],
-['200002', 'MI - EAST UPPER'],
-['200004', 'MI - NORTHEAST LOWER'],
-['200003', 'MI - NORTHWEST LOWER'],
-['200009', 'MI - SOUTH CENTRAL LOWER'],
-['200010', 'MI - SOUTHEAST LOWER'],
-['200008', 'MI - SOUTHWEST LOWER'],
-['200005', 'MI - WEST CENTRAL LOWER'],
-['200001', 'MI - WEST UPPER'],
-['210005', 'MN - CENTRAL'],
-['210006', 'MN - EAST CENTRAL'],
-['210002', 'MN - NORTH CENTRAL'],
-['210003', 'MN - NORTHEAST'],
-['210001', 'MN - NORTHWEST'],
-['210008', 'MN - SOUTH CENTRAL'],
-['210009', 'MN - SOUTHEAST'],
-['210007', 'MN - SOUTHWEST'],
-['210004', 'MN - WEST CENTRAL'],
-['230006', 'MO - BOOTHEEL'],
-['230005', 'MO - EAST OZARKS'],
-['230002', 'MO - NORTHEAST PRAIRIE'],
-['230001', 'MO - NORTHWEST PRAIRIE'],
-['230003', 'MO - WEST CENTRAL PLAINS'],
-['230004', 'MO - WEST OZARKS'],
-['220005', 'MS - CENTRAL'],
-['220010', 'MS - COASTAL'],
-['220006', 'MS - EAST CENTRAL'],
-['220004', 'MS - LOWER DELTA'],
-['220002', 'MS - NORTH CENTRAL'],
-['220003', 'MS - NORTHEAST'],
-['220008', 'MS - SOUTH CENTRAL'],
-['220009', 'MS - SOUTHEAST'],
-['220007', 'MS - SOUTHWEST'],
-['220001', 'MS - UPPER DELTA'],
-['240004', 'MT - CENTRAL'],
-['240003', 'MT - NORTH CENTRAL'],
-['240006', 'MT - NORTHEASTERN'],
-['240005', 'MT - SOUTH CENTRAL'],
-['240007', 'MT - SOUTHEASTERN'],
-['240002', 'MT - SOUTHWESTERN'],
-['240001', 'MT - WESTERN'],
-['310007', 'NC - CENTRAL COASTAL PLAIN'],
-['310004', 'NC - CENTRAL PIEDMONT'],
-['310008', 'NC - NORTHERN COASTAL PLAIN'],
-['310002', 'NC - NORTHERN MOUNTAINS'],
-['310003', 'NC - NORTHERN PIEDMONT'],
-['310006', 'NC - SOUTHERN COASTAL PLAIN'],
-['310001', 'NC - SOUTHERN MOUNTAINS'],
-['310005', 'NC - SOUTHERN PIEDMONT'],
-['320005', 'ND - CENTRAL'],
-['320006', 'ND - EAST CENTRAL'],
-['320002', 'ND - NORTH CENTRAL'],
-['320003', 'ND - NORTHEAST'],
-['320001', 'ND - NORTHWEST'],
-['320008', 'ND - SOUTH CENTRAL'],
-['320009', 'ND - SOUTHEAST'],
-['320007', 'ND - SOUTHWEST'],
-['320004', 'ND - WEST CENTRAL'],
-['250005', 'NE - CENTRAL'],
-['250006', 'NE - EAST CENTRAL'],
-['250002', 'NE - NORTH CENTRAL'],
-['250003', 'NE - NORTHEAST'],
-['250001', 'NE - PANHANDLE'],
-['250008', 'NE - SOUTH CENTRAL'],
-['250009', 'NE - SOUTHEAST'],
-['250007', 'NE - SOUTHWEST'],
-['270001', 'NH - NORTHERN'],
-['270002', 'NH - SOUTHERN'],
-['280003', 'NJ - COASTAL'],
-['280001', 'NJ - NORTHERN'],
-['280002', 'NJ - SOUTHERN'],
-['290006', 'NM - CENTRAL HIGHLANDS'],
-['290005', 'NM - CENTRAL VALLEY'],
-['290003', 'NM - NORTHEASTERN PLAINS'],
-['290002', 'NM - NORTHERN MOUNTAINS'],
-['290001', 'NM - NORTHWESTERN PLATEAU'],
-['290007', 'NM - SOUTHEASTERN PLAINS'],
-['290008', 'NM - SOUTHERN DESERT'],
-['290004', 'NM - SOUTHWESTERN MOUNTAINS'],
-['260004', 'NV - EXTREME SOUTHERN'],
-['260002', 'NV - NORTHEASTERN'],
-['260001', 'NV - NORTHWESTERN'],
-['260003', 'NV - SOUTH CENTRAL'],
-['300010', 'NY - CENTRAL LAKES'],
-['300007', 'NY - CHAMPLAIN VALLEY'],
-['300004', 'NY - COASTAL'],
-['300002', 'NY - EASTERN PLATEAU'],
-['300009', 'NY - GREAT LAKES'],
-['300005', 'NY - HUDSON VALLEY'],
-['300006', 'NY - MOHAWK VALLEY'],
-['300003', 'NY - NORTHERN PLATEAU'],
-['300008', 'NY - ST. LAWRENCE VALLEY'],
-['300001', 'NY - WESTERN PLATEAU'],
-['330005', 'OH - CENTRAL'],
-['330006', 'OH - CENTRAL HILLS'],
-['330002', 'OH - NORTH CENTRAL'],
-['330003', 'OH - NORTHEAST'],
-['330007', 'OH - NORTHEAST HILLS'],
-['330001', 'OH - NORTHWEST'],
-['330009', 'OH - SOUTH CENTRAL'],
-['330010', 'OH - SOUTHEAST'],
-['330008', 'OH - SOUTHWEST'],
-['330004', 'OH - WEST CENTRAL'],
-['340005', 'OK - CENTRAL'],
-['340006', 'OK - EAST CENTRAL'],
-['340002', 'OK - NORTH CENTRAL'],
-['340003', 'OK - NORTHEAST'],
-['340001', 'OK - PANHANDLE'],
-['340008', 'OK - SOUTH CENTRAL'],
-['340009', 'OK - SOUTHEAST'],
-['340007', 'OK - SOUTHWEST'],
-['340004', 'OK - WEST CENTRAL'],
-['350001', 'OR - COASTAL AREA'],
-['350005', 'OR - HIGH PLATEAU'],
-['350006', 'OR - NORTH CENTRAL'],
-['350008', 'OR - NORTHEAST'],
-['350004', 'OR - NORTHERN CASCADES'],
-['350007', 'OR - SOUTH CENTRAL'],
-['350009', 'OR - SOUTHEAST'],
-['350003', 'OR - SOUTHWESTERN VALLEYS'],
-['350002', 'OR - WILLAMETTE VALLEY'],
-['360007', 'PA - CENTRAL MOUNTAINS'],
-['360002', 'PA - EAST CENTRAL MOUNTAINS'],
-['360004', 'PA - LOWER SUSQUEHANNA'],
-['360005', 'PA - MIDDLE SUSQUEHANNA'],
-['360010', 'PA - NORTHWEST PLATEAU'],
-['360001', 'PA - POCONO MOUNTAINS'],
-['360008', 'PA - SOUTH CENTRAL MOUNTAINS'],
-['360003', 'PA - SOUTHEASTERN PIEDMONT'],
-['360009', 'PA - SOUTHWEST PLATEAU'],
-['360006', 'PA - UPPER SUSQUEHANNA'],
-['370001', 'RI - ALL'],
-['380006', 'SC - CENTRAL'],
-['380001', 'SC - MOUNTAIN'],
-['380003', 'SC - NORTH CENTRAL'],
-['380004', 'SC - NORTHEAST'],
-['380002', 'SC - NORTHWEST'],
-['380007', 'SC - SOUTHERN'],
-['380005', 'SC - WEST CENTRAL'],
-['390004', 'SD - BLACK HILLS'],
-['390006', 'SD - CENTRAL'],
-['390007', 'SD - EAST CENTRAL'],
-['390002', 'SD - NORTH CENTRAL'],
-['390003', 'SD - NORTHEAST'],
-['390001', 'SD - NORTHWEST'],
-['390008', 'SD - SOUTH CENTRAL'],
-['390009', 'SD - SOUTHEAST'],
-['390005', 'SD - SOUTHWEST'],
-['400002', 'TN - CUMBERLAND PLATEAU'],
-['400001', 'TN - EASTERN'],
-['400003', 'TN - MIDDLE'],
-['400004', 'TN - WESTERN'],
-['410004', 'TX - EAST TEXAS'],
-['410006', 'TX - EDWARDS PLATEAU'],
-['410001', 'TX - HIGH PLAINS'],
-['410002', 'TX - LOW ROLLING PLAINS'],
-['410003', 'TX - NORTH CENTRAL'],
-['410007', 'TX - SOUTH CENTRAL'],
-['410009', 'TX - SOUTHERN'],
-['410005', 'TX - TRANS PECOS'],
-['410008', 'TX - UPPER COAST'],
-['420002', 'UT - DIXIE'],
-['420003', 'UT - NORTH CENTRAL'],
-['420005', 'UT - NORTHERN MOUNTAINS'],
-['420004', 'UT - SOUTH CENTRAL'],
-['420007', 'UT - SOUTHEAST'],
-['420006', 'UT - UINTA BASIN'],
-['420001', 'UT - WESTERN'],
-['440005', 'VA - CENTRAL MOUNTAIN'],
-['440002', 'VA - EASTERN PIEDMONT'],
-['440004', 'VA - NORTHERN'],
-['440006', 'VA - SOUTHWESTERN MOUNTAIN'],
-['440001', 'VA - TIDEWATER'],
-['440003', 'VA - WESTERN PIEDMONT'],
-['430001', 'VT - NORTHEASTERN'],
-['430003', 'VT - SOUTHEASTERN'],
-['430002', 'VT - WESTERN'],
-['450005', 'WA - CASCADE MOUNTAINS WEST'],
-['450008', 'WA - CENTRAL BASIN'],
-['450004', 'WA - E OLYMPIC CASCADE FOOTHLS'],
-['450006', 'WA - EAST SLOPE CASCADES'],
-['450002', 'WA - NE OLYMPIC SAN JUAN'],
-['450009', 'WA - NORTHEASTERN'],
-['450007', 'WA - OKANOGAN BIG BEND'],
-['450010', 'WA - PALOUSE BLUE MOUNTAINS'],
-['450003', 'WA - PUGET SOUND LOWLANDS'],
-['450001', 'WA - WEST OLYMPIC COASTAL'],
-['470005', 'WI - CENTRAL'],
-['470006', 'WI - EAST CENTRAL'],
-['470002', 'WI - NORTH CENTRAL'],
-['470003', 'WI - NORTHEAST'],
-['470001', 'WI - NORTHWEST'],
-['470008', 'WI - SOUTH CENTRAL'],
-['470009', 'WI - SOUTHEAST'],
-['470007', 'WI - SOUTHWEST'],
-['470004', 'WI - WEST CENTRAL'],
-['460004', 'WV - CENTRAL'],
-['460002', 'WV - NORTH CENTRAL'],
-['460006', 'WV - NORTHEASTERN'],
-['460001', 'WV - NORTHWESTERN'],
-['460005', 'WV - SOUTHERN'],
-['460003', 'WV - SOUTHWESTERN'],
-['480006', 'WY - BELLE FOURCHE DRAINAGE'],
-['480004', 'WY - BIG HORN'],
-['480007', 'WY - CHEYENNE & NIOBRARA DRNG.'],
-['480003', 'WY - GREEN AND BEAR DRAINAGE'],
-['480008', 'WY - LOWER PLATTE'],
-['480005', 'WY - POWDR'],
-['480002', 'WY - SNAKE DRAINAGE'],
-['480010', 'WY - UPPER PLATTE'],
-['480009', 'WY - WIND RIVER'],
-['480001', 'WY - YELLOWSTONE DRAINAGE'],
-]
+        ['10002', 'AL - APPALACHIAN MOUNTAIN'],
+        ['10007', 'AL - COASTAL PLAIN'],
+        ['10004', 'AL - EASTERN VALLEY'],
+        ['10008', 'AL - GULF'],
+        ['10001', 'AL - NORTHERN VALLEY'],
+        ['10005', 'AL - PIEDMONT PLATEAU'],
+        ['10006', 'AL - PRAIRIE'],
+        ['10003', 'AL - UPPER PLAINS'],
+        ['30005', 'AR - CENTRAL'],
+        ['30006', 'AR - EAST CENTRAL'],
+        ['30002', 'AR - NORTH CENTRAL'],
+        ['30003', 'AR - NORTHEAST'],
+        ['30001', 'AR - NORTHWEST'],
+        ['30008', 'AR - SOUTH CENTRAL'],
+        ['30009', 'AR - SOUTHEAST'],
+        ['30007', 'AR - SOUTHWEST'],
+        ['30004', 'AR - WEST CENTRAL'],
+        ['20004', 'AZ - EAST CENTRAL'],
+        ['20003', 'AZ - NORTH CENTRAL'],
+        ['20002', 'AZ - NORTHEAST'],
+        ['20001', 'AZ - NORTHWEST'],
+        ['20006', 'AZ - SOUTH CENTRAL'],
+        ['20007', 'AZ - SOUTHEAST'],
+        ['20005', 'AZ - SOUTHWEST'],
+        ['40004', 'CA - CENTRAL COAST DRNG.'],
+        ['40001', 'CA - NORTH COAST DRNG.'],
+        ['40003', 'CA - NORTHEAST INTER. BASINS'],
+        ['40002', 'CA - SACRAMENTO DRNG.'],
+        ['40005', 'CA - SAN JOAQUIN DRNG.'],
+        ['40006', 'CA - SOUTH COAST DRNG.'],
+        ['40007', 'CA - SOUTHEAST DESERT BASINS'],
+        ['50001', 'CO - AR DRAINAGE BASIN'],
+        ['50002', 'CO - CO DRAINAGE BASIN'],
+        ['50003', 'CO - KS DRAINAGE BASIN'],
+        ['50004', 'CO - PLATTE DRAINAGE BASIN'],
+        ['50005', 'CO - RIO GRANDE DRNG. BASIN'],
+        ['60002', 'CT - CENTRAL'],
+        ['60003', 'CT - COASTAL'],
+        ['60001', 'CT - NORTHWEST'],
+        ['70001', 'DE - NORTHERN'],
+        ['70002', 'DE - SOUTHERN'],
+        ['80005', 'FL - EVERGLADES & SW COAST'],
+        ['80006', 'FL - LOWER EAST COAST'],
+        ['80002', 'FL - NORTH'],
+        ['80003', 'FL - NORTH CENTRAL'],
+        ['80001', 'FL - NORTHWEST'],
+        ['80004', 'FL - SOUTH CENTRAL'],
+        ['90005', 'GA - CENTRAL'],
+        ['90006', 'GA - EAST CENTRAL'],
+        ['90002', 'GA - NORTH CENTRAL'],
+        ['90003', 'GA - NORTHEAST'],
+        ['90001', 'GA - NORTHWEST'],
+        ['90008', 'GA - SOUTH CENTRAL'],
+        ['90009', 'GA - SOUTHEAST'],
+        ['90007', 'GA - SOUTHWEST'],
+        ['90004', 'GA - WEST CENTRAL'],
+        ['130005', 'IA - CENTRAL'],
+        ['130006', 'IA - EAST CENTRAL'],
+        ['130002', 'IA - NORTH CENTRAL'],
+        ['130003', 'IA - NORTHEAST'],
+        ['130001', 'IA - NORTHWEST'],
+        ['130008', 'IA - SOUTH CENTRAL'],
+        ['130009', 'IA - SOUTHEAST'],
+        ['130007', 'IA - SOUTHWEST'],
+        ['130004', 'IA - WEST CENTRAL'],
+        ['100004', 'ID - CENTRAL MOUNTAINS'],
+        ['100007', 'ID - CENTRAL PLAINS'],
+        ['100010', 'ID - EASTERN HIGHLANDS'],
+        ['100003', 'ID - NORTH CENTRAL CANYONS'],
+        ['100002', 'ID - NORTH CENTRAL PRAIRIES'],
+        ['100008', 'ID - NORTHEASTERN VALLEYS'],
+        ['100001', 'ID - PANHANDLE'],
+        ['100006', 'ID - SOUTHWESTERN HIGHLANDS'],
+        ['100005', 'ID - SOUTHWESTERN VALLEYS'],
+        ['100009', 'ID - UPPER SNAKE RIVER PLAINS'],
+        ['110004', 'IL - CENTRAL'],
+        ['110005', 'IL - EAST'],
+        ['110007', 'IL - EAST SOUTHEAST'],
+        ['110002', 'IL - NORTHEAST'],
+        ['110001', 'IL - NORTHWEST'],
+        ['110009', 'IL - SOUTHEAST'],
+        ['110008', 'IL - SOUTHWEST'],
+        ['110003', 'IL - WEST'],
+        ['110006', 'IL - WEST SOUTHWEST'],
+        ['120005', 'IN - CENTRAL'],
+        ['120006', 'IN - EAST CENTRAL'],
+        ['120002', 'IN - NORTH CENTRAL'],
+        ['120003', 'IN - NORTHEAST'],
+        ['120001', 'IN - NORTHWEST'],
+        ['120008', 'IN - SOUTH CENTRAL'],
+        ['120009', 'IN - SOUTHEAST'],
+        ['120007', 'IN - SOUTHWEST'],
+        ['120004', 'IN - WEST CENTRAL'],
+        ['140005', 'KS - CENTRAL'],
+        ['140006', 'KS - EAST CENTRAL'],
+        ['140002', 'KS - NORTH CENTRAL'],
+        ['140003', 'KS - NORTHEAST'],
+        ['140001', 'KS - NORTHWEST'],
+        ['140008', 'KS - SOUTH CENTRAL'],
+        ['140009', 'KS - SOUTHEAST'],
+        ['140007', 'KS - SOUTHWEST'],
+        ['140004', 'KS - WEST CENTRAL'],
+        ['150003', 'KY - BLUE GRASS'],
+        ['150002', 'KY - CENTRAL'],
+        ['150004', 'KY - EASTERN'],
+        ['150001', 'KY - WESTERN'],
+        ['160005', 'LA - CENTRAL'],
+        ['160006', 'LA - EAST CENTRAL'],
+        ['160002', 'LA - NORTH CENTRAL'],
+        ['160003', 'LA - NORTHEAST'],
+        ['160001', 'LA - NORTHWEST'],
+        ['160008', 'LA - SOUTH CENTRAL'],
+        ['160009', 'LA - SOUTHEAST'],
+        ['160007', 'LA - SOUTHWEST'],
+        ['160004', 'LA - WEST CENTRAL'],
+        ['190002', 'MA - CENTRAL'],
+        ['190003', 'MA - COASTAL'],
+        ['190001', 'MA - WESTERN'],
+        ['180008', 'MD - ALLEGHENY PLATEAU'],
+        ['180007', 'MD - APPALACHIAN MOUNTAIN'],
+        ['180002', 'MD - CENTRAL EASTERN SHORE'],
+        ['180003', 'MD - LOWER SOUTHERN'],
+        ['180005', 'MD - NORTHEASTERN SHORE'],
+        ['180006', 'MD - NORTHERN CENTRAL'],
+        ['180001', 'MD - SOUTHEASTERN SHORE'],
+        ['180004', 'MD - UPPER SOUTHERN'],
+        ['170003', 'ME - COASTAL'],
+        ['170001', 'ME - NORTHERN'],
+        ['170002', 'ME - SOUTHERN INTERIOR'],
+        ['200006', 'MI - CENTRAL LOWER'],
+        ['200007', 'MI - EAST CENTRAL LOWER'],
+        ['200002', 'MI - EAST UPPER'],
+        ['200004', 'MI - NORTHEAST LOWER'],
+        ['200003', 'MI - NORTHWEST LOWER'],
+        ['200009', 'MI - SOUTH CENTRAL LOWER'],
+        ['200010', 'MI - SOUTHEAST LOWER'],
+        ['200008', 'MI - SOUTHWEST LOWER'],
+        ['200005', 'MI - WEST CENTRAL LOWER'],
+        ['200001', 'MI - WEST UPPER'],
+        ['210005', 'MN - CENTRAL'],
+        ['210006', 'MN - EAST CENTRAL'],
+        ['210002', 'MN - NORTH CENTRAL'],
+        ['210003', 'MN - NORTHEAST'],
+        ['210001', 'MN - NORTHWEST'],
+        ['210008', 'MN - SOUTH CENTRAL'],
+        ['210009', 'MN - SOUTHEAST'],
+        ['210007', 'MN - SOUTHWEST'],
+        ['210004', 'MN - WEST CENTRAL'],
+        ['230006', 'MO - BOOTHEEL'],
+        ['230005', 'MO - EAST OZARKS'],
+        ['230002', 'MO - NORTHEAST PRAIRIE'],
+        ['230001', 'MO - NORTHWEST PRAIRIE'],
+        ['230003', 'MO - WEST CENTRAL PLAINS'],
+        ['230004', 'MO - WEST OZARKS'],
+        ['220005', 'MS - CENTRAL'],
+        ['220010', 'MS - COASTAL'],
+        ['220006', 'MS - EAST CENTRAL'],
+        ['220004', 'MS - LOWER DELTA'],
+        ['220002', 'MS - NORTH CENTRAL'],
+        ['220003', 'MS - NORTHEAST'],
+        ['220008', 'MS - SOUTH CENTRAL'],
+        ['220009', 'MS - SOUTHEAST'],
+        ['220007', 'MS - SOUTHWEST'],
+        ['220001', 'MS - UPPER DELTA'],
+        ['240004', 'MT - CENTRAL'],
+        ['240003', 'MT - NORTH CENTRAL'],
+        ['240006', 'MT - NORTHEASTERN'],
+        ['240005', 'MT - SOUTH CENTRAL'],
+        ['240007', 'MT - SOUTHEASTERN'],
+        ['240002', 'MT - SOUTHWESTERN'],
+        ['240001', 'MT - WESTERN'],
+        ['310007', 'NC - CENTRAL COASTAL PLAIN'],
+        ['310004', 'NC - CENTRAL PIEDMONT'],
+        ['310008', 'NC - NORTHERN COASTAL PLAIN'],
+        ['310002', 'NC - NORTHERN MOUNTAINS'],
+        ['310003', 'NC - NORTHERN PIEDMONT'],
+        ['310006', 'NC - SOUTHERN COASTAL PLAIN'],
+        ['310001', 'NC - SOUTHERN MOUNTAINS'],
+        ['310005', 'NC - SOUTHERN PIEDMONT'],
+        ['320005', 'ND - CENTRAL'],
+        ['320006', 'ND - EAST CENTRAL'],
+        ['320002', 'ND - NORTH CENTRAL'],
+        ['320003', 'ND - NORTHEAST'],
+        ['320001', 'ND - NORTHWEST'],
+        ['320008', 'ND - SOUTH CENTRAL'],
+        ['320009', 'ND - SOUTHEAST'],
+        ['320007', 'ND - SOUTHWEST'],
+        ['320004', 'ND - WEST CENTRAL'],
+        ['250005', 'NE - CENTRAL'],
+        ['250006', 'NE - EAST CENTRAL'],
+        ['250002', 'NE - NORTH CENTRAL'],
+        ['250003', 'NE - NORTHEAST'],
+        ['250001', 'NE - PANHANDLE'],
+        ['250008', 'NE - SOUTH CENTRAL'],
+        ['250009', 'NE - SOUTHEAST'],
+        ['250007', 'NE - SOUTHWEST'],
+        ['270001', 'NH - NORTHERN'],
+        ['270002', 'NH - SOUTHERN'],
+        ['280003', 'NJ - COASTAL'],
+        ['280001', 'NJ - NORTHERN'],
+        ['280002', 'NJ - SOUTHERN'],
+        ['290006', 'NM - CENTRAL HIGHLANDS'],
+        ['290005', 'NM - CENTRAL VALLEY'],
+        ['290003', 'NM - NORTHEASTERN PLAINS'],
+        ['290002', 'NM - NORTHERN MOUNTAINS'],
+        ['290001', 'NM - NORTHWESTERN PLATEAU'],
+        ['290007', 'NM - SOUTHEASTERN PLAINS'],
+        ['290008', 'NM - SOUTHERN DESERT'],
+        ['290004', 'NM - SOUTHWESTERN MOUNTAINS'],
+        ['260004', 'NV - EXTREME SOUTHERN'],
+        ['260002', 'NV - NORTHEASTERN'],
+        ['260001', 'NV - NORTHWESTERN'],
+        ['260003', 'NV - SOUTH CENTRAL'],
+        ['300010', 'NY - CENTRAL LAKES'],
+        ['300007', 'NY - CHAMPLAIN VALLEY'],
+        ['300004', 'NY - COASTAL'],
+        ['300002', 'NY - EASTERN PLATEAU'],
+        ['300009', 'NY - GREAT LAKES'],
+        ['300005', 'NY - HUDSON VALLEY'],
+        ['300006', 'NY - MOHAWK VALLEY'],
+        ['300003', 'NY - NORTHERN PLATEAU'],
+        ['300008', 'NY - ST. LAWRENCE VALLEY'],
+        ['300001', 'NY - WESTERN PLATEAU'],
+        ['330005', 'OH - CENTRAL'],
+        ['330006', 'OH - CENTRAL HILLS'],
+        ['330002', 'OH - NORTH CENTRAL'],
+        ['330003', 'OH - NORTHEAST'],
+        ['330007', 'OH - NORTHEAST HILLS'],
+        ['330001', 'OH - NORTHWEST'],
+        ['330009', 'OH - SOUTH CENTRAL'],
+        ['330010', 'OH - SOUTHEAST'],
+        ['330008', 'OH - SOUTHWEST'],
+        ['330004', 'OH - WEST CENTRAL'],
+        ['340005', 'OK - CENTRAL'],
+        ['340006', 'OK - EAST CENTRAL'],
+        ['340002', 'OK - NORTH CENTRAL'],
+        ['340003', 'OK - NORTHEAST'],
+        ['340001', 'OK - PANHANDLE'],
+        ['340008', 'OK - SOUTH CENTRAL'],
+        ['340009', 'OK - SOUTHEAST'],
+        ['340007', 'OK - SOUTHWEST'],
+        ['340004', 'OK - WEST CENTRAL'],
+        ['350001', 'OR - COASTAL AREA'],
+        ['350005', 'OR - HIGH PLATEAU'],
+        ['350006', 'OR - NORTH CENTRAL'],
+        ['350008', 'OR - NORTHEAST'],
+        ['350004', 'OR - NORTHERN CASCADES'],
+        ['350007', 'OR - SOUTH CENTRAL'],
+        ['350009', 'OR - SOUTHEAST'],
+        ['350003', 'OR - SOUTHWESTERN VALLEYS'],
+        ['350002', 'OR - WILLAMETTE VALLEY'],
+        ['360007', 'PA - CENTRAL MOUNTAINS'],
+        ['360002', 'PA - EAST CENTRAL MOUNTAINS'],
+        ['360004', 'PA - LOWER SUSQUEHANNA'],
+        ['360005', 'PA - MIDDLE SUSQUEHANNA'],
+        ['360010', 'PA - NORTHWEST PLATEAU'],
+        ['360001', 'PA - POCONO MOUNTAINS'],
+        ['360008', 'PA - SOUTH CENTRAL MOUNTAINS'],
+        ['360003', 'PA - SOUTHEASTERN PIEDMONT'],
+        ['360009', 'PA - SOUTHWEST PLATEAU'],
+        ['360006', 'PA - UPPER SUSQUEHANNA'],
+        ['370001', 'RI - ALL'],
+        ['380006', 'SC - CENTRAL'],
+        ['380001', 'SC - MOUNTAIN'],
+        ['380003', 'SC - NORTH CENTRAL'],
+        ['380004', 'SC - NORTHEAST'],
+        ['380002', 'SC - NORTHWEST'],
+        ['380007', 'SC - SOUTHERN'],
+        ['380005', 'SC - WEST CENTRAL'],
+        ['390004', 'SD - BLACK HILLS'],
+        ['390006', 'SD - CENTRAL'],
+        ['390007', 'SD - EAST CENTRAL'],
+        ['390002', 'SD - NORTH CENTRAL'],
+        ['390003', 'SD - NORTHEAST'],
+        ['390001', 'SD - NORTHWEST'],
+        ['390008', 'SD - SOUTH CENTRAL'],
+        ['390009', 'SD - SOUTHEAST'],
+        ['390005', 'SD - SOUTHWEST'],
+        ['400002', 'TN - CUMBERLAND PLATEAU'],
+        ['400001', 'TN - EASTERN'],
+        ['400003', 'TN - MIDDLE'],
+        ['400004', 'TN - WESTERN'],
+        ['410004', 'TX - EAST TEXAS'],
+        ['410006', 'TX - EDWARDS PLATEAU'],
+        ['410001', 'TX - HIGH PLAINS'],
+        ['410002', 'TX - LOW ROLLING PLAINS'],
+        ['410003', 'TX - NORTH CENTRAL'],
+        ['410007', 'TX - SOUTH CENTRAL'],
+        ['410009', 'TX - SOUTHERN'],
+        ['410005', 'TX - TRANS PECOS'],
+        ['410008', 'TX - UPPER COAST'],
+        ['420002', 'UT - DIXIE'],
+        ['420003', 'UT - NORTH CENTRAL'],
+        ['420005', 'UT - NORTHERN MOUNTAINS'],
+        ['420004', 'UT - SOUTH CENTRAL'],
+        ['420007', 'UT - SOUTHEAST'],
+        ['420006', 'UT - UINTA BASIN'],
+        ['420001', 'UT - WESTERN'],
+        ['440005', 'VA - CENTRAL MOUNTAIN'],
+        ['440002', 'VA - EASTERN PIEDMONT'],
+        ['440004', 'VA - NORTHERN'],
+        ['440006', 'VA - SOUTHWESTERN MOUNTAIN'],
+        ['440001', 'VA - TIDEWATER'],
+        ['440003', 'VA - WESTERN PIEDMONT'],
+        ['430001', 'VT - NORTHEASTERN'],
+        ['430003', 'VT - SOUTHEASTERN'],
+        ['430002', 'VT - WESTERN'],
+        ['450005', 'WA - CASCADE MOUNTAINS WEST'],
+        ['450008', 'WA - CENTRAL BASIN'],
+        ['450004', 'WA - E OLYMPIC CASCADE FOOTHLS'],
+        ['450006', 'WA - EAST SLOPE CASCADES'],
+        ['450002', 'WA - NE OLYMPIC SAN JUAN'],
+        ['450009', 'WA - NORTHEASTERN'],
+        ['450007', 'WA - OKANOGAN BIG BEND'],
+        ['450010', 'WA - PALOUSE BLUE MOUNTAINS'],
+        ['450003', 'WA - PUGET SOUND LOWLANDS'],
+        ['450001', 'WA - WEST OLYMPIC COASTAL'],
+        ['470005', 'WI - CENTRAL'],
+        ['470006', 'WI - EAST CENTRAL'],
+        ['470002', 'WI - NORTH CENTRAL'],
+        ['470003', 'WI - NORTHEAST'],
+        ['470001', 'WI - NORTHWEST'],
+        ['470008', 'WI - SOUTH CENTRAL'],
+        ['470009', 'WI - SOUTHEAST'],
+        ['470007', 'WI - SOUTHWEST'],
+        ['470004', 'WI - WEST CENTRAL'],
+        ['460004', 'WV - CENTRAL'],
+        ['460002', 'WV - NORTH CENTRAL'],
+        ['460006', 'WV - NORTHEASTERN'],
+        ['460001', 'WV - NORTHWESTERN'],
+        ['460005', 'WV - SOUTHERN'],
+        ['460003', 'WV - SOUTHWESTERN'],
+        ['480006', 'WY - BELLE FOURCHE DRAINAGE'],
+        ['480004', 'WY - BIG HORN'],
+        ['480007', 'WY - CHEYENNE & NIOBRARA DRNG.'],
+        ['480003', 'WY - GREEN AND BEAR DRAINAGE'],
+        ['480008', 'WY - LOWER PLATTE'],
+        ['480005', 'WY - POWDR'],
+        ['480002', 'WY - SNAKE DRAINAGE'],
+        ['480010', 'WY - UPPER PLATTE'],
+        ['480009', 'WY - WIND RIVER'],
+        ['480001', 'WY - YELLOWSTONE DRAINAGE']
+    ]
 
 
 
@@ -3988,10 +3993,10 @@ Ext.onReady(function () {
         ['530649', 'WB - WB11'],
         ['1851844', 'WB - WB12'],
         ['10794280', 'WB - WB10/WB13'],
-        ['Null', 'Null'],
+        ['Null', 'Null']
 
 
-        ]
+    ]
 
 
 
@@ -5213,7 +5218,8 @@ Ext.onReady(function () {
         ["488995", "WY - TORRINGTON EXP FARM"],
         ["489615", "WY - WHEATLAND 4 N"],
         ["489770", "WY - WORLAND"],
-        ["489905", "WY - YELLOWSTONE PK MAMMOTH"], ]
+        ["489905", "WY - YELLOWSTONE PK MAMMOTH"]
+    ]
 
     formInput = Ext.extend(Ext.form.Field, {});
 
@@ -5235,8 +5241,8 @@ Ext.onReady(function () {
                 } else {
                     // Reload original 12 month span
                     myCombo.store.loadData(spanStore);
-                                    
-                    
+
+
 
                 }
                 if (Ext.getCmp('variable_select13').getValue() == 3 || Ext.getCmp('variable_select13').getValue() == 4) {
@@ -5262,7 +5268,8 @@ Ext.onReady(function () {
             ['4', "SPEI"],
             ['5', "PDSI"],
             ['6', "Palmer Z-Index"],
-            ['7', "Self Calibrated PDSI"], ]
+            ['7', "Self Calibrated PDSI"]
+        ]
     });
 
     monthSelect = Ext.extend(Ext.form.ComboBox, {
@@ -5281,20 +5288,21 @@ Ext.onReady(function () {
             ['9', "September"],
             ['10', "October"],
             ['11', "November"],
-            ['12', "December"], ]
+            ['12', "December"]
+        ]
     });
 
     spanSelect = Ext.extend(Ext.form.ComboBox, {
         width: 125,
         forceSelection: true,
         triggerAction: 'all',
-        store: spanStore,
+        store: spanStore
     });
 
     regionSelect = Ext.extend(Ext.form.ComboBox, {
         width: 125,
         forceSelection: true,
-        triggerAction: 'all',
+        triggerAction: 'all'
 
 
     });
@@ -5313,7 +5321,7 @@ Ext.onReady(function () {
 
     // Current month selector
     var currentMonthArr = currentDateArr.getMonth();
-    
+
     yearSelect = Ext.extend(Ext.form.ComboBox, {
         width: 125,
         forceSelection: true,
@@ -5325,7 +5333,7 @@ Ext.onReady(function () {
 
     // Process when Submit button is pressed
     dataSubmit = Ext.extend(Ext.Button, {
-        
+
         handler: function () {
 
             // Grab current month and year and day
@@ -5559,203 +5567,213 @@ Ext.onReady(function () {
             }
 
 
-            MONTH = Ext.getCmp('span_select31').getValue();
+            if (Ext.getCmp('span_select31').getValue() > currentMonth && Ext.getCmp('start_year3').getValue() == currentYear ) {
+                Ext.MessageBox.alert('Date error', 'Data does not exist - please select an earlier date (month, year).');
+                MONTH = NULL;
+            	YEAR = NULL;
+            } else {
+                      MONTH = Ext.getCmp('span_select31').getValue();
             YEAR = Ext.getCmp('start_year3').getValue();
 
+            }
+
+
+
             if (SPAN == 2 && MONTH <= 2 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 2 months select at least March, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 2 months select at least March, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 3 && MONTH <= 3 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 3 months select at least April, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 3 months select at least April, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 4 && MONTH <= 4 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 4 months select at least May, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 4 months select at least May, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 5 && MONTH <= 5 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 5 months select at least June, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 5 months select at least June, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 6 && MONTH <= 6 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 6 months select at least July, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 6 months select at least July, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 7 && MONTH <= 7 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 7 months select at least August, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 7 months select at least August, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 8 && MONTH <= 8 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 8 months select at least September, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 8 months select at least September, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 9 && MONTH <= 9 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 9 months select at least October, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 9 months select at least October, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 10 && MONTH <= 10 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 10 months select at least November, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
-  
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 10 months select at least November, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
+
             if (SPAN == 11 && MONTH <= 11 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 11 months select at least December, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 11 months select at least December, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 12) {
-    
-                if (YEAR == 1895){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 12 months select at least January, 1896.');
-                MONTH=NULL;
-                SPAN=NULL;
+
+                if (YEAR == 1895) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 12 months select at least January, 1896.');
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
 
-            } 
+            }
 
-           
+
             if (SPAN == 15) {
-    
-                if (YEAR < 1896){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 15 months select at least April, 1896.');
 
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR < 1896) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 15 months select at least April, 1896.');
+
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
-                if (YEAR == 1896 && MONTH < 4){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 15 months select at least April, 1896.');
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR == 1896 && MONTH < 4) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 15 months select at least April, 1896.');
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
-            } 
+            }
 
             if (SPAN == 18) {
-    
-                if (YEAR < 1896){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 18 months select at least July, 1896.');
 
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR < 1896) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 18 months select at least July, 1896.');
+
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
-                if (YEAR == 1896 && MONTH < 7){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 18 months select at least July, 1896.');
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR == 1896 && MONTH < 7) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 18 months select at least July, 1896.');
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
-            } 
+            }
 
             if (SPAN == 24) {
-    
-                if (YEAR < 1897){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 24 months select at least January, 1897.');
 
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR < 1897) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 24 months select at least January, 1897.');
+
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
 
-            } 
+            }
 
 
 
             if (SPAN == 30) {
-    
-                if (YEAR < 1897){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 30 months select at least July, 1897.');
 
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR < 1897) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 30 months select at least July, 1897.');
+
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
-                if (YEAR == 1897 && MONTH < 7){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 30 months select at least July, 1897.');      MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR == 1897 && MONTH < 7) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 30 months select at least July, 1897.');
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
-            } 
+            }
 
             if (SPAN == 36) {
-    
-                if (YEAR < 1898){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 36 months select at least January, 1898.');
 
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR < 1898) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 36 months select at least January, 1898.');
+
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
 
-            } 
+            }
 
             if (SPAN == 48) {
-    
-                if (YEAR < 1898){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 48 months select at least January, 1898.');
 
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR < 1898) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 48 months select at least January, 1898.');
+
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
 
-            } 
+            }
 
-    var monthCheckerArr = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
-    var currentDateChecker = new Date();
-    var currentYearChecker = currentDateChecker.getFullYear();
-    var currentMonthChecker = currentDateChecker.getMonth();
-    var currentDayChecker = currentDateChecker.getDay();
-
-
-
-   
-
-
-            if (YEAR >= currentYearChecker){
-                if (currentDayChecker > 2){
-
-                  if (MONTH >= currentMonthChecker+1){
-                   Ext.MessageBox.alert('Span Error', 'To get recent data select up through '+monthCheckerArr[currentMonthChecker-1]+','+currentYearChecker+'.');
-                  MONTH=NULL;
-                  SPAN=NULL;
-                  }
-             }
-
-                              if (currentDayChecker < 2){
-
-                  if (MONTH > currentMonthChecker){
-                   Ext.MessageBox.alert('Span Error', 'To get recent data select up through '+monthCheckerArr[currentMonthChecker-1]+','+currentYearChecker+'.');
-                  MONTH=NULL;
-                  SPAN=NULL;
-                  }
-             }
- 
+            var monthCheckerArr = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+            var currentDateChecker = new Date();
+            var currentYearChecker = currentDateChecker.getFullYear();
+            var currentMonthChecker = currentDateChecker.getMonth();
+            var currentDayChecker = currentDateChecker.getDay();
 
 
 
-}
+
+
+
+            if (YEAR >= currentYearChecker) {
+                if (currentDayChecker > 2) {
+
+                    if (MONTH >= currentMonthChecker + 1) {
+                        Ext.MessageBox.alert('Span Error', 'To get recent data select up through ' + monthCheckerArr[currentMonthChecker - 1] + ',' + currentYearChecker + '.');
+                        MONTH = NULL;
+                        SPAN = NULL;
+                    }
+                }
+
+                if (currentDayChecker < 2) {
+
+                    if (MONTH > currentMonthChecker) {
+                        Ext.MessageBox.alert('Span Error', 'To get recent data select up through ' + monthCheckerArr[currentMonthChecker - 1] + ',' + currentYearChecker + '.');
+                        MONTH = NULL;
+                        SPAN = NULL;
+                    }
+                }
+
+
+
+
+            }
 
 
 
@@ -5766,7 +5784,7 @@ Ext.onReady(function () {
                 title: parseFloat(LAT).toFixed(2) + "N, " + (Math.abs(LON)).toFixed(2) + "W",
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
-                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/climatology/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/lastmonths/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR + '" height="4500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
+                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/climatology/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH + '&year=' + YEAR + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/lastmonths/?lat=' + LAT + '&lon=' + LON + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH + '&year=' + YEAR + '" height="4500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
                 closable: true
             }).show(); // Set new tab active                
         }
@@ -5787,7 +5805,7 @@ Ext.onReady(function () {
 
 
 
-            if (Ext.getCmp('map_region').getValue() == '' || Ext.getCmp('map_region').getValue() == 'Select State' || Ext.getCmp('map_region').getValue() == 'Select County' || Ext.getCmp('map_region').getValue() == 'Select HUC' || Ext.getCmp('map_region').getValue() == 'Select DIV' || Ext.getCmp('map_region').getValue() == 'Select PSA' || Ext.getCmp('map_region').getValue() == 'Select Station'|| Ext.getCmp('map_region').getValue() == 'Null') {
+            if (Ext.getCmp('map_region').getValue() == '' || Ext.getCmp('map_region').getValue() == 'Select State' || Ext.getCmp('map_region').getValue() == 'Select County' || Ext.getCmp('map_region').getValue() == 'Select HUC' || Ext.getCmp('map_region').getValue() == 'Select DIV' || Ext.getCmp('map_region').getValue() == 'Select PSA' || Ext.getCmp('map_region').getValue() == 'Select Station' || Ext.getCmp('map_region').getValue() == 'Null') {
                 Ext.MessageBox.alert('Region Error', 'Click on a polygon region on the map to autofill in region combobox or simply select a region from region dropdwon combobox menu.');
                 REGION = NULL;
             } else {
@@ -5910,7 +5928,7 @@ Ext.onReady(function () {
             //if (currentDate < 10 && Ext.getCmp('month_select').getValue() >= (currentMonth+1) && Ext.getCmp('end_year').getValue() == currentYear) {
 
 
-            if (Ext.getCmp('map_region2').getValue() == '' || Ext.getCmp('map_region2').getValue() == 'Select State' || Ext.getCmp('map_region2').getValue() == 'Select County' || Ext.getCmp('map_region2').getValue() == 'Select HUC' || Ext.getCmp('map_region2').getValue() == 'Select DIV' || Ext.getCmp('map_region2').getValue() == 'Select PSA'|| Ext.getCmp('map_region2').getValue() == 'Select Station'|| Ext.getCmp('map_region2').getValue() == 'Null') {
+            if (Ext.getCmp('map_region2').getValue() == '' || Ext.getCmp('map_region2').getValue() == 'Select State' || Ext.getCmp('map_region2').getValue() == 'Select County' || Ext.getCmp('map_region2').getValue() == 'Select HUC' || Ext.getCmp('map_region2').getValue() == 'Select DIV' || Ext.getCmp('map_region2').getValue() == 'Select PSA' || Ext.getCmp('map_region2').getValue() == 'Select Station' || Ext.getCmp('map_region2').getValue() == 'Null') {
                 Ext.MessageBox.alert('Region Error', 'Click on a polygon region on the map to autofill in region combobox or simply select a region from region dropdwon combobox menu.');
                 REGION = NULL;
             } else {
@@ -5949,7 +5967,7 @@ Ext.onReady(function () {
 
 
 
-            if (Ext.getCmp('map_region3').getValue() == '' || Ext.getCmp('map_region3').getValue() == 'Select State' || Ext.getCmp('map_region3').getValue() == 'Select County' || Ext.getCmp('map_region3').getValue() == 'Select HUC' || Ext.getCmp('map_region3').getValue() == 'Select DIV' || Ext.getCmp('map_region3').getValue() == 'Select PSA'|| Ext.getCmp('map_region3').getValue() == 'Select Station'|| Ext.getCmp('map_region3').getValue() == 'Null') {
+            if (Ext.getCmp('map_region3').getValue() == '' || Ext.getCmp('map_region3').getValue() == 'Select State' || Ext.getCmp('map_region3').getValue() == 'Select County' || Ext.getCmp('map_region3').getValue() == 'Select HUC' || Ext.getCmp('map_region3').getValue() == 'Select DIV' || Ext.getCmp('map_region3').getValue() == 'Select PSA' || Ext.getCmp('map_region3').getValue() == 'Select Station' || Ext.getCmp('map_region3').getValue() == 'Null') {
                 Ext.MessageBox.alert('Region Error', 'Click on a polygon region on the map to autofill in region combobox or simply select a region from region dropdwon combobox menu.');
                 REGION = NULL;
             } else {
@@ -5973,210 +5991,228 @@ Ext.onReady(function () {
             }
 
 
-            MONTH = Ext.getCmp('span_select34').getValue();
-            YEAR = Ext.getCmp('start_year33').getValue();
+
+
+
+
+            if (Ext.getCmp('span_select34').getValue() > currentMonth && Ext.getCmp('start_year33').getValue() == currentYear ) {
+                Ext.MessageBox.alert('Date error', 'Data does not exist - please select an earlier date (month, year).');
+                MONTH = NULL;
+            	YEAR = NULL;
+            } else {
+                MONTH = Ext.getCmp('span_select34').getValue();
+            	YEAR = Ext.getCmp('start_year33').getValue();
+
+            }
+
+
+
+
+
+            
 
             if (SPAN == 2 && MONTH <= 2 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 2 months select at least March, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 2 months select at least March, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 3 && MONTH <= 3 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 3 months select at least April, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 3 months select at least April, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 4 && MONTH <= 4 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 4 months select at least May, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 4 months select at least May, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 5 && MONTH <= 5 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 5 months select at least June, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 5 months select at least June, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 6 && MONTH <= 6 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 6 months select at least July, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 6 months select at least July, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 7 && MONTH <= 7 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 7 months select at least August, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 7 months select at least August, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 8 && MONTH <= 8 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 8 months select at least September, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 8 months select at least September, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 9 && MONTH <= 9 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 9 months select at least October, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 9 months select at least October, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 10 && MONTH <= 10 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 10 months select at least November, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
-  
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 10 months select at least November, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
+
             if (SPAN == 11 && MONTH <= 11 && YEAR <= 1895) {
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 11 months select at least December, 1895.');
-            MONTH = NULL;
-            SPAN = NULL;
-            } 
+                Ext.MessageBox.alert('Span Error', 'To get earliest prior 11 months select at least December, 1895.');
+                MONTH = NULL;
+                SPAN = NULL;
+            }
 
             if (SPAN == 12) {
-    
-                if (YEAR == 1895){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 12 months select at least January, 1896.');
-                MONTH=NULL;
-                SPAN=NULL;
+
+                if (YEAR == 1895) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 12 months select at least January, 1896.');
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
 
-            } 
+            }
 
-           
+
             if (SPAN == 15) {
-    
-                if (YEAR < 1896){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 15 months select at least April, 1896.');
 
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR < 1896) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 15 months select at least April, 1896.');
+
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
-                if (YEAR == 1896 && MONTH < 4){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 15 months select at least April, 1896.');
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR == 1896 && MONTH < 4) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 15 months select at least April, 1896.');
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
-            } 
+            }
 
             if (SPAN == 18) {
-    
-                if (YEAR < 1896){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 18 months select at least July, 1896.');
 
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR < 1896) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 18 months select at least July, 1896.');
+
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
-                if (YEAR == 1896 && MONTH < 7){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 18 months select at least July, 1896.');
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR == 1896 && MONTH < 7) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 18 months select at least July, 1896.');
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
-            } 
+            }
 
             if (SPAN == 24) {
-    
-                if (YEAR < 1897){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 24 months select at least January, 1897.');
 
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR < 1897) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 24 months select at least January, 1897.');
+
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
 
-            } 
+            }
 
 
 
             if (SPAN == 30) {
-    
-                if (YEAR < 1897){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 30 months select at least July, 1897.');
 
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR < 1897) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 30 months select at least July, 1897.');
+
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
-                if (YEAR == 1897 && MONTH < 7){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 30 months select at least July, 1897.');      MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR == 1897 && MONTH < 7) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 30 months select at least July, 1897.');
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
-            } 
+            }
 
             if (SPAN == 36) {
-    
-                if (YEAR < 1898){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 36 months select at least January, 1898.');
 
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR < 1898) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 36 months select at least January, 1898.');
+
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
 
-            } 
+            }
 
             if (SPAN == 48) {
-    
-                if (YEAR < 1898){
-            Ext.MessageBox.alert('Span Error', 'To get earliest prior 48 months select at least January, 1898.');
 
-                MONTH=NULL;
-                SPAN=NULL;
+                if (YEAR < 1898) {
+                    Ext.MessageBox.alert('Span Error', 'To get earliest prior 48 months select at least January, 1898.');
+
+                    MONTH = NULL;
+                    SPAN = NULL;
                 }
 
 
-            } 
+            }
 
-    var monthCheckerArr = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
-    var currentDateChecker = new Date();
-    var currentYearChecker = currentDateChecker.getFullYear();
-    var currentMonthChecker = currentDateChecker.getMonth();
-    var currentDayChecker = currentDateChecker.getDay();
-
-
-
-   
-
-
-            if (YEAR >= currentYearChecker){
-                if (currentDayChecker > 2){
-
-                  if (MONTH >= currentMonthChecker+1){
-                   Ext.MessageBox.alert('Span Error', 'To get recent data select up through '+monthCheckerArr[currentMonthChecker-1]+','+currentYearChecker+'.');
-                  MONTH=NULL;
-                  SPAN=NULL;
-                  }
-             }
-
-                              if (currentDayChecker < 2){
-
-                  if (MONTH > currentMonthChecker){
-                   Ext.MessageBox.alert('Span Error', 'To get recent data select up through '+monthCheckerArr[currentMonthChecker-1]+','+currentYearChecker+'.');
-                  MONTH=NULL;
-                  SPAN=NULL;
-                  }
-             }
- 
+            var monthCheckerArr = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+            var currentDateChecker = new Date();
+            var currentYearChecker = currentDateChecker.getFullYear();
+            var currentMonthChecker = currentDateChecker.getMonth();
+            var currentDayChecker = currentDateChecker.getDay();
 
 
 
-}
+
+
+
+            if (YEAR >= currentYearChecker) {
+                if (currentDayChecker > 2) {
+
+                    if (MONTH >= currentMonthChecker + 1) {
+                        Ext.MessageBox.alert('Span Error', 'To get recent data select up through ' + monthCheckerArr[currentMonthChecker - 1] + ',' + currentYearChecker + '.');
+                        MONTH = NULL;
+                        SPAN = NULL;
+                    }
+                }
+
+                if (currentDayChecker < 2) {
+
+                    if (MONTH > currentMonthChecker) {
+                        Ext.MessageBox.alert('Span Error', 'To get recent data select up through ' + monthCheckerArr[currentMonthChecker - 1] + ',' + currentYearChecker + '.');
+                        MONTH = NULL;
+                        SPAN = NULL;
+                    }
+                }
+
+
+
+
+            }
             //alert('works');
             // Render new tabbed panel 
             Ext.getCmp('tabPanel').add({
                 title: "Region",
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
-                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/climatologyRegions/?region=' + REGION + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/lastmonthsRegions/?region=' + REGION + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH +'&year=' + YEAR +  '" height="4500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
+                html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/climatologyRegions/?region=' + REGION + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH + '&year=' + YEAR + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/lastmonthsRegions/?region=' + REGION + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH + '&year=' + YEAR + '" height="4500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
 
 
                 closable: true
@@ -6210,18 +6246,18 @@ Ext.onReady(function () {
     helpVideo = Ext.extend(Ext.Button, {
         handler: function () {
 
-var win = new Ext.Window({
-    title: "Help Video",
-    width :750,
-    height : 750,
-    maximizable: true,
-	id:'autoload-win',
+            var win = new Ext.Window({
+                title: "Help Video",
+                width: 750,
+                height: 750,
+                maximizable: true,
+                id: 'autoload-win',
 
-	autoScroll:true,
-	html: '<iframe src="' + URL + '/media/video/help.mp4" height="100%" width="100%" scrolling="no"</iframe>',
-});
+                autoScroll: true,
+                html: '<iframe src="' + URL + '/media/video/help.mp4" height="100%" width="100%" scrolling="no"</iframe>'
+            });
 
-          win.show()              
+            win.show()
         }
     });
 
@@ -6249,9 +6285,9 @@ var win = new Ext.Window({
                 checked: true,
                 onClick: function () {
 
-                Ext.MessageBox.alert('Point Data', 'Click anywhere on the map to add a marker.');
+                    Ext.MessageBox.alert('Point Data', 'Click anywhere on the map to add a marker.');
 
-                panel.setActiveTab(0);
+                    panel.setActiveTab(0);
 
 
 
@@ -6270,18 +6306,24 @@ var win = new Ext.Window({
                 id: 'state_radio',
                 onClick: function () {
 
-                Ext.MessageBox.alert('State Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
+                    Ext.MessageBox.alert('State Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
 
-                panel.setActiveTab(0);
+                    panel.setActiveTab(0);
 
                     var stateRegionCombo = Ext.getCmp('map_region');
                     var stateRegionCombo2 = Ext.getCmp('map_region2');
                     var stateRegionCombo3 = Ext.getCmp('map_region3');
 
-                    Ext.apply(Ext.getCmp('map_region'), {listWidth: 150});
-                    Ext.apply(Ext.getCmp('map_region2'), {listWidth: 150});
-                    Ext.apply(Ext.getCmp('map_region3'), {listWidth: 150});
-                    
+                    Ext.apply(Ext.getCmp('map_region'), {
+                        listWidth: 150
+                    });
+                    Ext.apply(Ext.getCmp('map_region2'), {
+                        listWidth: 150
+                    });
+                    Ext.apply(Ext.getCmp('map_region3'), {
+                        listWidth: 150
+                    });
+
 
                     stateRegionCombo.setValue('Select State');
                     stateRegionCombo2.setValue('Select State');
@@ -6297,7 +6339,7 @@ var win = new Ext.Window({
 
 
 
-                    
+
 
 
 
@@ -6317,18 +6359,24 @@ var win = new Ext.Window({
                 inputValue: '3',
                 id: 'county_radio',
                 onClick: function () {
-                Ext.MessageBox.alert('County Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
+                    Ext.MessageBox.alert('County Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
 
-                panel.setActiveTab(0);
+                    panel.setActiveTab(0);
 
 
                     var countyRegionCombo = Ext.getCmp('map_region');
                     var countyRegionCombo2 = Ext.getCmp('map_region2');
                     var countyRegionCombo3 = Ext.getCmp('map_region3');
 
-                    Ext.apply(Ext.getCmp('map_region'), {listWidth: 200});
-                    Ext.apply(Ext.getCmp('map_region2'), {listWidth: 200});
-                    Ext.apply(Ext.getCmp('map_region3'), {listWidth: 200});
+                    Ext.apply(Ext.getCmp('map_region'), {
+                        listWidth: 200
+                    });
+                    Ext.apply(Ext.getCmp('map_region2'), {
+                        listWidth: 200
+                    });
+                    Ext.apply(Ext.getCmp('map_region3'), {
+                        listWidth: 200
+                    });
 
                     countyRegionCombo.setValue('Select County');
                     countyRegionCombo2.setValue('Select County');
@@ -6358,18 +6406,24 @@ var win = new Ext.Window({
                 inputValue: '4',
                 id: 'huc_radio',
                 onClick: function () {
-                Ext.MessageBox.alert('Hydrologic Unit Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
+                    Ext.MessageBox.alert('Hydrologic Unit Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
 
-                panel.setActiveTab(0);
+                    panel.setActiveTab(0);
 
 
                     var hucRegionCombo = Ext.getCmp('map_region');
                     var hucRegionCombo2 = Ext.getCmp('map_region2');
                     var hucRegionCombo3 = Ext.getCmp('map_region3');
 
-                    Ext.apply(Ext.getCmp('map_region'), {listWidth: 330});
-                    Ext.apply(Ext.getCmp('map_region2'), {listWidth: 330});
-                    Ext.apply(Ext.getCmp('map_region3'), {listWidth: 330});
+                    Ext.apply(Ext.getCmp('map_region'), {
+                        listWidth: 330
+                    });
+                    Ext.apply(Ext.getCmp('map_region2'), {
+                        listWidth: 330
+                    });
+                    Ext.apply(Ext.getCmp('map_region3'), {
+                        listWidth: 330
+                    });
 
                     hucRegionCombo.setValue('Select HUC');
                     hucRegionCombo2.setValue('Select HUC');
@@ -6396,18 +6450,24 @@ var win = new Ext.Window({
                 inputValue: '5',
                 id: 'div_radio',
                 onClick: function () {
-                Ext.MessageBox.alert('Climate Division Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
+                    Ext.MessageBox.alert('Climate Division Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
 
-                panel.setActiveTab(0);
+                    panel.setActiveTab(0);
 
 
                     var divRegionCombo = Ext.getCmp('map_region');
                     var divRegionCombo2 = Ext.getCmp('map_region2');
                     var divRegionCombo3 = Ext.getCmp('map_region3');
 
-                    Ext.apply(Ext.getCmp('map_region'), {listWidth: 250});
-                    Ext.apply(Ext.getCmp('map_region2'), {listWidth: 250});
-                    Ext.apply(Ext.getCmp('map_region3'), {listWidth: 250});
+                    Ext.apply(Ext.getCmp('map_region'), {
+                        listWidth: 250
+                    });
+                    Ext.apply(Ext.getCmp('map_region2'), {
+                        listWidth: 250
+                    });
+                    Ext.apply(Ext.getCmp('map_region3'), {
+                        listWidth: 250
+                    });
 
                     divRegionCombo.setValue('Select DIV');
                     divRegionCombo2.setValue('Select DIV');
@@ -6435,18 +6495,24 @@ var win = new Ext.Window({
                 id: 'psa_radio',
                 onClick: function () {
 
-                Ext.MessageBox.alert('Predictive Services Area Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
+                    Ext.MessageBox.alert('Predictive Services Area Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
 
-                panel.setActiveTab(0);
+                    panel.setActiveTab(0);
 
 
                     var psaRegionCombo = Ext.getCmp('map_region');
                     var psaRegionCombo2 = Ext.getCmp('map_region2');
                     var psaRegionCombo3 = Ext.getCmp('map_region3');
 
-                    Ext.apply(Ext.getCmp('map_region'), {listWidth: 350});
-                    Ext.apply(Ext.getCmp('map_region2'), {listWidth: 350});
-                    Ext.apply(Ext.getCmp('map_region3'), {listWidth: 350});
+                    Ext.apply(Ext.getCmp('map_region'), {
+                        listWidth: 350
+                    });
+                    Ext.apply(Ext.getCmp('map_region2'), {
+                        listWidth: 350
+                    });
+                    Ext.apply(Ext.getCmp('map_region3'), {
+                        listWidth: 350
+                    });
 
                     psaRegionCombo.setValue('Select PSA');
                     psaRegionCombo2.setValue('Select PSA');
@@ -6475,17 +6541,23 @@ var win = new Ext.Window({
                 inputValue: '6',
                 id: 'station_radio',
                 onClick: function () {
-                Ext.MessageBox.alert('Station Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
-                panel.setActiveTab(0);
+                    Ext.MessageBox.alert('Station Data', 'Data layer is loading onto map. May take several minutes to please be patient. Try zooming in and out on the map if layer appears segmented.');
+                    panel.setActiveTab(0);
 
 
                     var stationRegionCombo = Ext.getCmp('map_region');
                     var stationRegionCombo2 = Ext.getCmp('map_region2');
                     var stationRegionCombo3 = Ext.getCmp('map_region3');
 
-                    Ext.apply(Ext.getCmp('map_region'), {listWidth: 250});
-                    Ext.apply(Ext.getCmp('map_region2'), {listWidth: 250});
-                    Ext.apply(Ext.getCmp('map_region3'), {listWidth: 250});
+                    Ext.apply(Ext.getCmp('map_region'), {
+                        listWidth: 250
+                    });
+                    Ext.apply(Ext.getCmp('map_region2'), {
+                        listWidth: 250
+                    });
+                    Ext.apply(Ext.getCmp('map_region3'), {
+                        listWidth: 250
+                    });
 
                     stationRegionCombo.setValue('Select Station');
                     stationRegionCombo2.setValue('Select Station');
@@ -6506,7 +6578,7 @@ var win = new Ext.Window({
                     item23.show();
                     accordion.doLayout()
                 }
-            },
+            }
 
 
             ]
@@ -6568,7 +6640,7 @@ var win = new Ext.Window({
             name: 'endyear',
             editable: false,
             fieldLabel: 'End Year',
-            value: 1895+(yearArr.length-1),
+            value: 1895 + (yearArr.length - 1),
             id: 'end_year',
             width: 135
         }), new monthSelect({
@@ -6591,12 +6663,12 @@ var win = new Ext.Window({
             id: 'run_avg',
             width: 135
         }), new dataSubmit({ // must be last
-            text: 'Submit!',
-            
-        }),
+            text: 'Submit!'
 
-],
-            contentEl: 'time_series'
+        })
+
+        ],
+        contentEl: 'time_series'
     });
 
 
@@ -6625,9 +6697,9 @@ var win = new Ext.Window({
             id: 'variable_select2',
             width: 135
         }), new dataSubmit2({ // must be last
-            text: 'Submit!',
+            text: 'Submit!'
         })],
-            contentEl: 'all_data'
+        contentEl: 'all_data'
     });
 
 
@@ -6652,7 +6724,7 @@ var win = new Ext.Window({
             value: '1',
             id: 'variable_select3',
             width: 135
-        }),  new spanSelect({
+        }), new spanSelect({
             name: 'MONTHS',
             editable: false,
             store: monthStore,
@@ -6664,10 +6736,10 @@ var win = new Ext.Window({
             name: 'startyear',
             fieldLabel: 'Year',
             editable: false,
-            value: 1895+(yearArr.length-1),
+            value: 1895 + (yearArr.length - 1),
             id: 'start_year3',
             width: 135
-        }),new spanSelect({
+        }), new spanSelect({
             name: 'span',
             editable: false,
             store: climatologySpanStore,
@@ -6675,10 +6747,10 @@ var win = new Ext.Window({
             value: '12',
             id: 'span_select3',
             width: 135
-        }),new dataSubmit3({ // must be last
-            text: 'Submit!',
+        }), new dataSubmit3({ // must be last
+            text: 'Submit!'
         })],
-            contentEl: 'climatology'
+        contentEl: 'climatology'
     });
 
 
@@ -6687,7 +6759,7 @@ var win = new Ext.Window({
     var item11 = new Ext.Panel({
         title: 'How To Use',
         contentEl: 'use',
-        cls: 'empty',
+        cls: 'empty'
         /*items: [new helpVideo({ // must be last
             text: 'Help',
             align: 'center',
@@ -6702,18 +6774,18 @@ var win = new Ext.Window({
         cls: 'empty',
         items: [new feedbackSubmit({ // must be last
             text: 'Feedback',
-            align: 'center',
+            align: 'center'
 
         })],
-        contentEl: 'contact',
+        contentEl: 'contact'
     });
 
     // About Panel
     var item13 = new Ext.FormPanel({
         title: 'Step 1',
-    collapsible : false,
-//collapseMode: 'mini',
-hideCollapseTool:true,
+        collapsible: false,
+        //collapseMode: 'mini',
+        hideCollapseTool: true
 
 
 
@@ -6751,9 +6823,9 @@ hideCollapseTool:true,
             store: stateStore,
             editable: false,
             value: 'Select Region',
-            id: 'map_region', 
-            width: 135,
-           // listWidth: 350,
+            id: 'map_region',
+            width: 135
+            // listWidth: 350,
 
 
         }), new variableSelect({
@@ -6774,7 +6846,7 @@ hideCollapseTool:true,
             name: 'endyear',
             fieldLabel: 'End Year',
             editable: false,
-            value: 1895+(yearArr.length-1),
+            value: 1895 + (yearArr.length - 1),
             id: 'end_year13',
             width: 135
         }), new monthSelect({
@@ -6797,9 +6869,9 @@ hideCollapseTool:true,
             id: 'run_avg13',
             width: 135
         }), new dataSubmit4({ // must be last
-            text: 'Submit!',
+            text: 'Submit!'
         })],
-            contentEl: 'time_series2'
+        contentEl: 'time_series2'
     });
 
 
@@ -6827,9 +6899,9 @@ hideCollapseTool:true,
             id: 'variable_select23',
             width: 135
         }), new dataSubmit5({ // must be last
-            text: 'Submit!',
+            text: 'Submit!'
         })],
-            contentEl: 'all_data2'
+        contentEl: 'all_data2'
     });
 
 
@@ -6864,10 +6936,10 @@ hideCollapseTool:true,
             name: 'startyear',
             fieldLabel: 'Year',
             editable: false,
-            value: 1895+(yearArr.length-1),
+            value: 1895 + (yearArr.length - 1),
             id: 'start_year33',
             width: 135
-        }),new spanSelect({
+        }), new spanSelect({
             name: 'span',
             editable: false,
             store: climatologySpanStore,
@@ -6876,9 +6948,9 @@ hideCollapseTool:true,
             id: 'span_select33',
             width: 135
         }), new dataSubmit6({ // must be last
-            text: 'Submit!',
+            text: 'Submit!'
         })],
-            contentEl: 'climatology2'
+        contentEl: 'climatology2'
     });
 
 
@@ -6897,7 +6969,7 @@ hideCollapseTool:true,
         items: [radioPanel, item1, item3, item2]
     });
 
-    accordion.add( item21, item23, item22);
+    accordion.add(item21, item23, item22);
     item21.hide();
     item23.hide();
     item22.hide();
@@ -6909,7 +6981,7 @@ hideCollapseTool:true,
         split: true,
         width: 200,
         layout: 'accordion',
-        items: [item11, item12,  item14]
+        items: [item11, item12, item14]
     });
 
 
@@ -6954,18 +7026,18 @@ hideCollapseTool:true,
         margins: '45 0 5 0',
         id: 'nested',
         border: true,
-	autoScroll: true,
+        autoScroll: true,
         items: [radioPanel, panel]
-        
+
     });
 
     var viewport = new Ext.Viewport({
         layout: 'border',
         items: [
         accordion, accordion1, {
-            bodyStyle: 'background:#f1f1f1',
+            bodyStyle: 'background:#f1f1f1'
         },
-        nestedPanel, ]
+        nestedPanel]
     });
 
     //
@@ -6973,18 +7045,18 @@ hideCollapseTool:true,
     if (currentDateArr.getMonth() == 0) {
         Ext.getCmp('month_select').setValue(12);
         Ext.getCmp('month_select13').setValue(12);
-        
+
 
         currentMonthArr = 12;
-        var yearValue = currentDateArr.getFullYear()-1;
-        Ext.getCmp('end_year').setValue(yearValue);   
-        Ext.getCmp('end_year13').setValue(yearValue); 
+        var yearValue = currentDateArr.getFullYear() - 1;
+        Ext.getCmp('end_year').setValue(yearValue);
+        Ext.getCmp('end_year13').setValue(yearValue);
 
         // Set monthy sequence month to Jan
         Ext.getCmp('span_select31').setValue(1);
         Ext.getCmp('span_select34').setValue(1);
 
-  
+
     }
 
 
