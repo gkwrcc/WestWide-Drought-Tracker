@@ -464,7 +464,7 @@ class Climatology:
         ax.fill_between(x, percLine, perc2Line, facecolor=perc_colors[0], edgecolor='w', interpolate=True)
         ax.fill_between(x, perc2Line, perc3Line, facecolor=perc_colors[1], edgecolor='w', interpolate=True)
         ax.fill_between(x, perc3Line, perc4Line, facecolor=perc_colors[2], edgecolor='w', interpolate=True)
-        ax.fill_between(x, perc4Line, perc5Line, facecolor=perc_colors[2], edgecolor='w', interpolate=True)
+        ax.fill_between(x, perc4Line, perc5Line, facecolor=perc_colors[2], edgecolor='black', interpolate=True)
         ax.fill_between(x, perc5Line, perc6Line, facecolor=perc_colors[1], edgecolor='w', interpolate=True)
         ax.fill_between(x, perc6Line, perc7Line, facecolor=perc_colors[0], edgecolor='w', interpolate=True)
 
