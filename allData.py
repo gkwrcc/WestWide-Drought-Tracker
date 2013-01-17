@@ -321,7 +321,94 @@ def getAll(lat, lon, variable):
             dataDec = dataDec/25.4
         dataDec = np.append(dataDec,-9999)
 
+        # Determine max length of the years for monthly data
+        maxValues = max(len(dataJan), len(dataFeb), len(dataMar), len(dataApr), len(dataMay), len(dataJun), len(dataJul), len(dataAug), len(dataSep), len(dataOct), len(dataNov), len(dataDec)) 
+         
+        # Force all months of data to be the same length by adding -9999.0
+        if len(dataJan) < maxValues:
 
+            # Add extra Data if needed
+            while len(dataJan) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataJan = np.concatenate((dataJan,noDataFiller))
+
+        if len(dataFeb) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataFeb) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataFeb = np.concatenate((dataFeb,noDataFiller))
+
+        if len(dataMar) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataMar) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataMar = np.concatenate((dataMar,noDataFiller))
+
+        if len(dataApr) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataApr) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataApr = np.concatenate((dataApr,noDataFiller))
+
+        if len(dataMay) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataMay) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataMay = np.concatenate((dataMay,noDataFiller))
+
+        if len(dataJun) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataJun) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataJun = np.concatenate((dataJun,noDataFiller))
+
+
+        if len(dataJul) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataJul) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataJul = np.concatenate((dataJul,noDataFiller))
+
+        if len(dataAug) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataAug) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataAug = np.concatenate((dataAug,noDataFiller))
+
+        if len(dataSep) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataSep) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataSep = np.concatenate((dataSep,noDataFiller))
+
+        if len(dataOct) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataOct) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataOct = np.concatenate((dataOct,noDataFiller))
+
+        if len(dataNov) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataNov) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataNov = np.concatenate((dataNov,noDataFiller))
+
+        if len(dataDec) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataDec) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataDec = np.concatenate((dataDec,noDataFiller))
 
 
 

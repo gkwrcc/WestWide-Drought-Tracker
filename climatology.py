@@ -327,8 +327,9 @@ class Climatology:
         # Add y-axis data
         # Use y = monthSpanListData[:-1] when all data present
        
-        lastMonthY = monthSpanListData[:-1]
-
+        #print monthSpanListData[:]
+        lastMonthY = monthSpanListData[1:]
+        #print lastMonthY
 
 
         
@@ -351,6 +352,11 @@ class Climatology:
         # List to hold the month span
         spanList = []
 
+
+        # Needed after update to tool that includes the selected month to go back from
+        startMonth+=1
+        
+        
         # Grab months in order
         while len(spanList) < span:
             if startMonth < 13:
@@ -360,6 +366,8 @@ class Climatology:
             else:
                 startMonth=0
             startMonth+=1
+
+        #print spanList[:]
 
         # Combine the spanlist with the percentage lines
         combiner = [perc,perc2,perc3,perc4,perc5,perc6,perc7,perc8,perc9,perc10,perc11,perc12]
@@ -397,9 +405,9 @@ class Climatology:
         ax = fig.add_axes([0.08, 0.15, .70, 0.78])
         
         # Eliminate extra month from dateList
-        x = dateList[:-1]
+        x = dateList[1:]
 
-
+        dateList[-1].year
 
         # Plot percentage lines
         #ax.plot_date(x, percLine, color='white')
@@ -453,38 +461,38 @@ class Climatology:
 
 
         # Sets the correct year for use in plot header
-        oneYear = int(yearDates[-2])
+        oneYear = dateList[-1].year
 
         # Used to set month name in plots based on month index
         monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
         # Setup plots based on Variable    
         if self.variable == 'pdsi':
-            ax.set_title(u'Palmer Drought Severity Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
+            ax.set_title(u'Palmer Drought Severity Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)], oneYear, self.lat, abs(self.lon)))
             ax.set_ylabel("PDSI")
 
         if self.variable == 'scpdsi':
-            ax.set_title(u' Self Calibrated Palmer Drought Severity Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
+            ax.set_title(u' Self Calibrated Palmer Drought Severity Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)], oneYear, self.lat, abs(self.lon)))
             ax.set_ylabel("SCPDSI")
  
         if self.variable == 'pzi':
-            ax.set_title(u' Palmer Z-Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
+            ax.set_title(u' Palmer Z-Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)], oneYear, self.lat, abs(self.lon)))
             ax.set_ylabel("PZI")   
             
         if self.variable == 'mdn':
-            ax.set_title(u'Mean Temperature, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
+            ax.set_title(u'Mean Temperature, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)], oneYear, self.lat, abs(self.lon)))
             ax.set_ylabel(u"Temperature \u00b0F")
             
         if self.variable == 'spi':
-            ax.set_title(u'Standardized Precipitation Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
+            ax.set_title(u'Standardized Precipitation Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)], oneYear, self.lat, abs(self.lon)))
             ax.set_ylabel(u"SPI")
 
         if self.variable == 'spei':
-            ax.set_title(u'Standardized Precipitation-Evapotranspiration Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)), fontsize=12)
+            ax.set_title(u'Standardized Precipitation-Evapotranspiration Index, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)], oneYear, self.lat, abs(self.lon)), fontsize=12)
             ax.set_ylabel(u"SPEI")
             
         if self.variable == 'pon':
-            ax.set_title(u'Precipitation, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)-1], oneYear, self.lat, abs(self.lon)))
+            ax.set_title(u'Precipitation, %s-Months Ending in %s,%4.0f \n %4.2f\u00b0N, %4.2f\u00b0W' % (span, monthList[(oneMonth-1)], oneYear, self.lat, abs(self.lon)))
             ax.set_ylabel("Inches")
 
 
@@ -735,6 +743,7 @@ class Climatology:
         monthDates = []
         yearDates = [] 
 
+        
         while startDate <= endDate:
             #print 'Month: ', startDate.month, startDate.year
   
@@ -784,7 +793,7 @@ class Climatology:
         # Use y = monthSpanListData[:-1] when all data present
         lastMonthY = monthSpanListData[:]
 
-
+        #print lastMonthY
         
 
         # Set back a month if data has not been made for last month
@@ -805,6 +814,7 @@ class Climatology:
         # List to hold the month span
         spanList = []
 
+        #startMonth-=1
         # Grab months in order
         while len(spanList) < span:
             if startMonth < 13:
@@ -829,6 +839,7 @@ class Climatology:
         perc6Line = []
         perc7Line = []
 
+        #print spanList[:]
         # Collect for all 7 lines
         for x in spanList:
             index = x-1
@@ -867,9 +878,11 @@ class Climatology:
         newList = ['Month,Year,Value,Mean,5th,95th,10th,90th,25th,75th']
 
         # Loop through data and send it to screen in a csv format
-        zeroValue =0
+        zeroValue =1
+        #print len(perLine)
         while zeroValue < len(monthDates):  
             newList.append(monthDates[zeroValue]+','+yearDates[zeroValue]+','+'%4.2f'%lastMonthY[zeroValue]+','+'%4.2f'%meanLine[zeroValue]+','+'%4.2f'%percLine[zeroValue]+','+'%4.2f'%perc7Line[zeroValue]+','+'%4.2f'%perc2Line[zeroValue]+','+'%4.2f'%perc6Line[zeroValue]+','+'%4.2f'%perc3Line[zeroValue]+','+'%4.2f'%perc4Line[zeroValue])
+            
             zeroValue+=1    
             
-        return newList[:-1]
+        return newList[:]

@@ -354,7 +354,7 @@ class Climatology:
 
         # Add y-axis data
         # Use y = monthSpanListData[:-1] when all data present
-        lastMonthY = monthSpanListData[:-1]
+        lastMonthY = monthSpanListData[1:]
 
 
         
@@ -379,7 +379,8 @@ class Climatology:
 
         # List to hold the month span
         spanList = []
-
+        # Needed after update to tool that includes the selected month to go back from
+        startMonth+=1
         # Grab months in order
         while len(spanList) < span:
             if startMonth < 13:
@@ -435,7 +436,7 @@ class Climatology:
         ax = fig.add_axes([0.08, 0.15, .70, 0.78])
         
         # Eliminate extra month from dateList
-        x = dateList[:-1]
+        x = dateList[1:]
 
 
 
@@ -503,36 +504,36 @@ class Climatology:
            regionName = regionName + " Climate Division"
         
         # Sets the correct year for use in plot header
-        oneYear = int(yearDates[-2])
+        oneYear = oneYear = dateList[-1].year
 
 
         # Setup plots based on Variable    
         if self.variable == 'pdsi':
-            ax.set_title(u'Palmer Drought Severity Index, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)-1], oneYear, regionName))
+            ax.set_title(u'Palmer Drought Severity Index, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)], oneYear, regionName))
             ax.set_ylabel("PDSI")
 
         if self.variable == 'scpdsi':
-            ax.set_title(u' Self Calibrated Palmer Drought Severity Index, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)-1], oneYear, regionName))
+            ax.set_title(u' Self Calibrated Palmer Drought Severity Index, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)], oneYear, regionName))
             ax.set_ylabel("SCPDSI")
  
         if self.variable == 'pzi':
-            ax.set_title(u' Palmer Z-Index, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)-1], oneYear, regionName))
+            ax.set_title(u' Palmer Z-Index, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)], oneYear, regionName))
             ax.set_ylabel("PZI")   
             
         if self.variable == 'mdn':
-            ax.set_title(u'Mean Temperature, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)-1], oneYear, regionName))
+            ax.set_title(u'Mean Temperature, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)], oneYear, regionName))
             ax.set_ylabel(u"Temperature \u00b0F")
             
         if self.variable == 'spi':
-            ax.set_title(u'Standardized Precipitation Index, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)-1], oneYear, regionName))
+            ax.set_title(u'Standardized Precipitation Index, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)], oneYear, regionName))
             ax.set_ylabel(u"SPI")
 
         if self.variable == 'spei':
-            ax.set_title(u'Standardized Precipitation-Evapotranspiration Index, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)-1], oneYear, regionName), fontsize=12)
+            ax.set_title(u'Standardized Precipitation-Evapotranspiration Index, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)], oneYear, regionName), fontsize=12)
             ax.set_ylabel(u"SPEI")
             
         if self.variable == 'pon':
-            ax.set_title(u'Precipitation, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)-1], oneYear, regionName))
+            ax.set_title(u'Precipitation, %s-Months Ending in %s,%4.0f \n %s' % (span, monthList[(oneMonth-1)], oneYear, regionName))
             ax.set_ylabel("Inches")
 
         # Set axes
@@ -892,18 +893,41 @@ class Climatology:
             perc6Line.append(adder[5])
             perc7Line.append(adder[6])
 
+        # Collect for all 7 lines
+        for x in spanList:
+            index = x-1
+            adder = combiner[index]
+            meanAdder = meanCombiner[index]
+            meanLine.append(meanAdder)
+            percLine.append(adder[0])
+            perc2Line.append(adder[1])
+            perc3Line.append(adder[2])
+            perc4Line.append(adder[3])
+            perc5Line.append(adder[4])
+            perc6Line.append(adder[5])
+            perc7Line.append(adder[6])
 
         # Start a list to send to Django template
         newList = ['Month,Year,Value,Mean,5th,95th,10th,90th,25th,75th']
 
         # Loop through data and send it to screen in a csv format
-        zeroValue =0
-        while zeroValue < len(meanLine):  
+        zeroValue =1
+        #print monthDates
+        #print yearDates
+        #print lastMonthY
+        #print len(percLine)
+        #print len(perc2Line)
+        #print len(perc3Line)
+        #print len(perc4Line)
+        #print len(perc5Line)
+        #print len(perc6Line)
+        while zeroValue < len(monthDates):  
             #print monthDates[zeroValue], yearDates[zeroValue], lastMonthY[zeroValue], meanLine[zeroValue]
             newList.append(monthDates[zeroValue]+','+yearDates[zeroValue]+','+'%4.2f'%lastMonthY[zeroValue]+','+'%4.2f'%meanLine[zeroValue]+','+'%4.2f'%percLine[zeroValue]+','+'%4.2f'%perc7Line[zeroValue]+','+'%4.2f'%perc2Line[zeroValue]+','+'%4.2f'%perc6Line[zeroValue]+','+'%4.2f'%perc3Line[zeroValue]+','+'%4.2f'%perc4Line[zeroValue])
+            #newList.append(monthDates[zeroValue]+','+yearDates[zeroValue]+','+'%4.2f'%lastMonthY[zeroValue])
             zeroValue+=1    
         
-        return newList
+        return newList[:]
 
 
 
@@ -1625,6 +1649,8 @@ class AllData:
         # Set year (currentYear-1 = prior year and only current year data is opened if month has passed)
         years = np.arange(1895, currentYear, 1)
 
+
+
         # Open currentYear data, else append -9999
         if currentMonth > 1 and currentDay > 2:
             dataJan = np.array(dataJan.variables['data'][:len(years)+1,closestRegion])
@@ -1868,11 +1894,105 @@ class AllData:
 
 
 
+        # Determine max length of the years for monthly data
+        maxValues = max(len(dataJan), len(dataFeb), len(dataMar), len(dataApr), len(dataMay), len(dataJun), len(dataJul), len(dataAug), len(dataSep), len(dataOct), len(dataNov), len(dataDec)) 
+         
+        # Force all months of data to be the same length by adding -9999.0
+        if len(dataJan) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataJan) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataJan = np.concatenate((dataJan,noDataFiller))
+
+        if len(dataFeb) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataFeb) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataFeb = np.concatenate((dataFeb,noDataFiller))
+
+        if len(dataMar) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataMar) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataMar = np.concatenate((dataMar,noDataFiller))
+
+        if len(dataApr) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataApr) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataApr = np.concatenate((dataApr,noDataFiller))
+
+        if len(dataMay) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataMay) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataMay = np.concatenate((dataMay,noDataFiller))
+
+        if len(dataJun) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataJun) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataJun = np.concatenate((dataJun,noDataFiller))
+
+
+        if len(dataJul) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataJul) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataJul = np.concatenate((dataJul,noDataFiller))
+
+        if len(dataAug) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataAug) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataAug = np.concatenate((dataAug,noDataFiller))
+
+        if len(dataSep) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataSep) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataSep = np.concatenate((dataSep,noDataFiller))
+
+        if len(dataOct) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataOct) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataOct = np.concatenate((dataOct,noDataFiller))
+
+        if len(dataNov) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataNov) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataNov = np.concatenate((dataNov,noDataFiller))
+
+        if len(dataDec) < maxValues:
+
+            # Add extra Data if needed
+            while len(dataDec) < maxValues:
+                    noDataFiller = np.array([-9999.0])
+                    dataDec = np.concatenate((dataDec,noDataFiller))
+
+
+
+
+
+
 
 
         #Set year to current year
         years = np.arange(1895, currentYear+1, 1)
-
+        #print len(years)
 
         # Print out index of years and all months - should all be the same
         #print len(years),len(dataJan),len(dataFeb),len(dataMar),len(dataApr),len(dataMay),len(dataJun),len(dataJul),len(dataAug),len(dataSep),len(dataOct),len(dataNov),len(dataDec)
@@ -1880,7 +2000,7 @@ class AllData:
         # Make a list of Data to return to the screen
         dataList = []
         v = 0
-        while v < len(dataJan):
+        while v < len(years):
             dataString = []
             dataString.append(years[v])
             dataString.append(dataJan[v])

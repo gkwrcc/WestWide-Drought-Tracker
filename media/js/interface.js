@@ -5231,11 +5231,11 @@ Ext.onReady(function () {
         triggerAction: 'all',
         listeners: {
             change: function () {
-                var myCombo = Ext.getCmp('span_select');
-                var myCombo2 = Ext.getCmp('span_select13');
+                var myCombo = Ext.getCmp('latLon_timeseries_span');
+                var myCombo2 = Ext.getCmp('region_timeseries_span');
 
 
-                if (Ext.getCmp('variable_select').getValue() == 3 || Ext.getCmp('variable_select').getValue() == 4) {
+                if (Ext.getCmp('latLon_timeseries_variable').getValue() == 3 || Ext.getCmp('latLon_timeseries_variable').getValue() == 4) {
                     // If SPI is chosen more month spans are populated
                     myCombo.store.loadData(spiSpanStore);
                 } else {
@@ -5245,7 +5245,7 @@ Ext.onReady(function () {
 
 
                 }
-                if (Ext.getCmp('variable_select13').getValue() == 3 || Ext.getCmp('variable_select13').getValue() == 4) {
+                if (Ext.getCmp('region_timeseries_variable').getValue() == 3 || Ext.getCmp('region_timeseries_variable').getValue() == 4) {
                     // If SPI is chosen more month spans are populated
                     myCombo2.store.loadData(spiSpanStore);
                 } else {
@@ -5345,9 +5345,9 @@ Ext.onReady(function () {
 
 
             // Latitude Form Checker
-            if (Ext.getCmp('map_lat').getValue() > 24.0625 && Ext.getCmp('map_lat').getValue() < 49.89659882) {
+            if (Ext.getCmp('latLon_timeseries_lat').getValue() > 24.0625 && Ext.getCmp('latLon_timeseries_lat').getValue() < 49.89659882) {
 
-                LAT = Ext.getCmp('map_lat').getValue()
+                LAT = Ext.getCmp('latLon_timeseries_lat').getValue()
 
 
 
@@ -5358,8 +5358,8 @@ Ext.onReady(function () {
             }
 
             // Longitude Form Checker
-            if (Ext.getCmp('map_lon').getValue() > -125.02083588 && Ext.getCmp('map_lon').getValue() < -66.52440643) {
-                LON = Ext.getCmp('map_lon').getValue()
+            if (Ext.getCmp('latLon_timeseries_lon').getValue() > -125.02083588 && Ext.getCmp('latLon_timeseries_lon').getValue() < -66.52440643) {
+                LON = Ext.getCmp('latLon_timeseries_lon').getValue()
 
 
             } else {
@@ -5370,7 +5370,7 @@ Ext.onReady(function () {
 
 
             // Use when data needs
-            if (Ext.getCmp('month_select').getValue() >= currentMonth + 1 && Ext.getCmp('end_year').getValue() == currentYear) {
+            if (Ext.getCmp('latLon_timeseries_monthselect').getValue() >= currentMonth + 1 && Ext.getCmp('latLon_timeseries_endyear').getValue() == currentYear) {
                 if (currentDate <= 10) {
                     Ext.MessageBox.alert('Date Error', 'Data for ' + currentMonth + '/' + currentYear + ' should be available by ' + (currentMonth + 1) + '/' + currentDate + '/' + currentYear);
 
@@ -5383,12 +5383,12 @@ Ext.onReady(function () {
                 ENDYEAR = NULL;
 
             } else {
-                MONTH = Ext.getCmp('month_select').getValue()
-                ENDYEAR = Ext.getCmp('end_year').getValue()
+                MONTH = Ext.getCmp('latLon_timeseries_monthselect').getValue()
+                ENDYEAR = Ext.getCmp('latLon_timeseries_endyear').getValue()
             }
 
             // Years need to be different and end year needs to be greater than start year
-            if (Ext.getCmp('start_year').getValue() >= Ext.getCmp('end_year').getValue()) {
+            if (Ext.getCmp('latLon_timeseries_startyear').getValue() >= Ext.getCmp('latLon_timeseries_endyear').getValue()) {
                 Ext.MessageBox.alert('Date Error', 'Ending year needs to be greater than the starting year.');
                 ENDYEAR = NULL;
                 STARTYEAR = NULL;
@@ -5399,7 +5399,7 @@ Ext.onReady(function () {
             }
 
             // Year span should be at least 5 years
-            if (Ext.getCmp('end_year').getValue() - Ext.getCmp('start_year').getValue() < 5) {
+            if (Ext.getCmp('latLon_timeseries_endyear').getValue() - Ext.getCmp('latLon_timeseries_startyear').getValue() < 5) {
                 Ext.MessageBox.alert('Date Error', 'Select a time span greater than 5 years.');
                 ENDYEAR = NULL;
                 STARTYEAR = NULL;
@@ -5411,35 +5411,35 @@ Ext.onReady(function () {
 
 
             // Variable Checker
-            if (Ext.getCmp('variable_select').getValue() == 1 || Ext.getCmp('variable_select').getValue() == 2 || Ext.getCmp('variable_select').getValue() == 3 || Ext.getCmp('variable_select').getValue() == 4 || Ext.getCmp('variable_select').getValue() == 5 || Ext.getCmp('variable_select').getValue() == 6 || Ext.getCmp('variable_select').getValue() == 7) {
-                VARIABLE = Ext.getCmp('variable_select').getValue()
+            if (Ext.getCmp('latLon_timeseries_variable').getValue() == 1 || Ext.getCmp('latLon_timeseries_variable').getValue() == 2 || Ext.getCmp('latLon_timeseries_variable').getValue() == 3 || Ext.getCmp('latLon_timeseries_variable').getValue() == 4 || Ext.getCmp('latLon_timeseries_variable').getValue() == 5 || Ext.getCmp('latLon_timeseries_variable').getValue() == 6 || Ext.getCmp('latLon_timeseries_variable').getValue() == 7) {
+                VARIABLE = Ext.getCmp('latLon_timeseries_variable').getValue()
             } else {
                 VARIABLE = NULL;
             }
 
             // Span Checker
-            if (Ext.getCmp('span_select').getValue() >= 13 && Ext.getCmp('variable_select').getValue() < 3 || Ext.getCmp('span_select').getValue() >= 13 && Ext.getCmp('variable_select').getValue() > 4) {
+            if (Ext.getCmp('latLon_timeseries_span').getValue() >= 13 && Ext.getCmp('latLon_timeseries_variable').getValue() < 3 || Ext.getCmp('latLon_timeseries_span').getValue() >= 13 && Ext.getCmp('latLon_timeseries_variable').getValue() > 4) {
                 Ext.MessageBox.alert('Span Error', 'Month spans greater than 12 are only for SPI and SPEI datasets, please chose a month span of 12 or less months.');
                 SPAN = NULL;
             } else {
-                SPAN = Ext.getCmp('span_select').getValue()
+                SPAN = Ext.getCmp('latLon_timeseries_span').getValue()
 
             }
-            if (Ext.getCmp('span_select').getValue() > 72) {
+            if (Ext.getCmp('latLon_timeseries_span').getValue() > 72) {
                 SPAN = NULL;
             } else {
-                SPAN = Ext.getCmp('span_select').getValue()
+                SPAN = Ext.getCmp('latLon_timeseries_span').getValue()
             }
 
             // Start Year Checker
-            if (Ext.getCmp('start_year').getValue() < 1895 || Ext.getCmp('start_year').getValue() > currentYear) {
+            if (Ext.getCmp('latLon_timeseries_startyear').getValue() < 1895 || Ext.getCmp('latLon_timeseries_startyear').getValue() > currentYear) {
                 STARTYEAR = NULL;
             } else {
-                STARTYEAR = Ext.getCmp('start_year').getValue()
+                STARTYEAR = Ext.getCmp('latLon_timeseries_startyear').getValue()
             }
 
             // Force running average to be an integer in order to work
-            RUNAVG = Ext.getCmp('run_avg').getValue();
+            RUNAVG = Ext.getCmp('latLon_timeseries_runavg').getValue();
             if (RUNAVG < 2 || RUNAVG / RUNAVG != 1 || RUNAVG > (ENDYEAR - STARTYEAR)) {
                 RUNAVG = 0;
             } else {
@@ -5467,9 +5467,9 @@ Ext.onReady(function () {
             //var currentDate = new Date().getDate();
 
             // Latitude Form Checker
-            if (Ext.getCmp('map_lat2').getValue() > 24.0625 && Ext.getCmp('map_lat2').getValue() < 49.89659882) {
+            if (Ext.getCmp('latLon_allmonths_lat').getValue() > 24.0625 && Ext.getCmp('latLon_allmonths_lat').getValue() < 49.89659882) {
 
-                LAT = Ext.getCmp('map_lat2').getValue()
+                LAT = Ext.getCmp('latLon_allmonths_lat').getValue()
 
 
 
@@ -5480,8 +5480,8 @@ Ext.onReady(function () {
             }
 
             // Longitude Form Checker
-            if (Ext.getCmp('map_lon2').getValue() > -125.02083588 && Ext.getCmp('map_lon2').getValue() < -66.52440643) {
-                LON = Ext.getCmp('map_lon2').getValue()
+            if (Ext.getCmp('latLon_allmonths_lon').getValue() > -125.02083588 && Ext.getCmp('latLon_allmonths_lon').getValue() < -66.52440643) {
+                LON = Ext.getCmp('latLon_allmonths_lon').getValue()
 
 
             } else {
@@ -5490,13 +5490,13 @@ Ext.onReady(function () {
 
             }
             // Data Date Checker - Month and EndYear
-            //if (currentDate < 10 && Ext.getCmp('month_select').getValue() >= (currentMonth+1) && Ext.getCmp('end_year').getValue() == currentYear) {
+            //if (currentDate < 10 && Ext.getCmp('latLon_timeseries_monthselect').getValue() >= (currentMonth+1) && Ext.getCmp('latLon_timeseries_endyear').getValue() == currentYear) {
 
 
 
             // Variable Checker
-            if (Ext.getCmp('variable_select2').getValue() == 1 || Ext.getCmp('variable_select2').getValue() == 2 || Ext.getCmp('variable_select2').getValue() == 3 || Ext.getCmp('variable_select2').getValue() == 4 || Ext.getCmp('variable_select2').getValue() == 5 || Ext.getCmp('variable_select2').getValue() == 6 || Ext.getCmp('variable_select2').getValue() == 7) {
-                VARIABLE = Ext.getCmp('variable_select2').getValue()
+            if (Ext.getCmp('latLon_allmonths_variable').getValue() == 1 || Ext.getCmp('latLon_allmonths_variable').getValue() == 2 || Ext.getCmp('latLon_allmonths_variable').getValue() == 3 || Ext.getCmp('latLon_allmonths_variable').getValue() == 4 || Ext.getCmp('latLon_allmonths_variable').getValue() == 5 || Ext.getCmp('latLon_allmonths_variable').getValue() == 6 || Ext.getCmp('latLon_allmonths_variable').getValue() == 7) {
+                VARIABLE = Ext.getCmp('latLon_allmonths_variable').getValue()
             } else {
                 VARIABLE = NULL;
             }
@@ -5524,9 +5524,9 @@ Ext.onReady(function () {
             var currentDate = new Date().getDate();
 
             // Latitude Form Checker
-            if (Ext.getCmp('map_lat3').getValue() > 24.0625 && Ext.getCmp('map_lat3').getValue() < 49.89659882) {
+            if (Ext.getCmp('latLon_monthlysequences_lat').getValue() > 24.0625 && Ext.getCmp('latLon_monthlysequences_lat').getValue() < 49.89659882) {
 
-                LAT = Ext.getCmp('map_lat3').getValue()
+                LAT = Ext.getCmp('latLon_monthlysequences_lat').getValue()
 
 
 
@@ -5537,8 +5537,8 @@ Ext.onReady(function () {
             }
 
             // Longitude Form Checker
-            if (Ext.getCmp('map_lon3').getValue() > -125.02083588 && Ext.getCmp('map_lon3').getValue() < -66.52440643) {
-                LON = Ext.getCmp('map_lon3').getValue()
+            if (Ext.getCmp('latLon_monthlysequences_lon').getValue() > -125.02083588 && Ext.getCmp('latLon_monthlysequences_lon').getValue() < -66.52440643) {
+                LON = Ext.getCmp('latLon_monthlysequences_lon').getValue()
 
 
             } else {
@@ -5549,31 +5549,31 @@ Ext.onReady(function () {
 
 
             // Variable Checker
-            if (Ext.getCmp('variable_select3').getValue() == 1 || Ext.getCmp('variable_select3').getValue() == 2 || Ext.getCmp('variable_select3').getValue() == 3 || Ext.getCmp('variable_select3').getValue() == 4 || Ext.getCmp('variable_select3').getValue() == 5 || Ext.getCmp('variable_select3').getValue() == 6 || Ext.getCmp('variable_select3').getValue() == 7) {
-                VARIABLE = Ext.getCmp('variable_select3').getValue()
+            if (Ext.getCmp('latLon_monthylsequences_variable').getValue() == 1 || Ext.getCmp('latLon_monthylsequences_variable').getValue() == 2 || Ext.getCmp('latLon_monthylsequences_variable').getValue() == 3 || Ext.getCmp('latLon_monthylsequences_variable').getValue() == 4 || Ext.getCmp('latLon_monthylsequences_variable').getValue() == 5 || Ext.getCmp('latLon_monthylsequences_variable').getValue() == 6 || Ext.getCmp('latLon_monthylsequences_variable').getValue() == 7) {
+                VARIABLE = Ext.getCmp('latLon_monthylsequences_variable').getValue()
 
             } else {
                 VARIABLE = NULL;
             }
 
             // Span Checker
-            if (Ext.getCmp('span_select3').getValue() > 72 || Ext.getCmp('variable_select3').getValue() < 1) {
+            if (Ext.getCmp('latLon_monthylsequences_priorspan').getValue() > 72 || Ext.getCmp('latLon_monthylsequences_variable').getValue() < 1) {
                 Ext.MessageBox.alert('Span Error', 'Select a prior month span from 1 to 72 months.');
                 SPAN = NULL;
             } else {
-                SPAN = Ext.getCmp('span_select3').getValue()
+                SPAN = Ext.getCmp('latLon_monthylsequences_priorspan').getValue()
 
 
             }
 
 
-            if (Ext.getCmp('span_select31').getValue() > currentMonth && Ext.getCmp('start_year3').getValue() == currentYear ) {
+            if (Ext.getCmp('latLon_monthylsequences_month').getValue() > currentMonth && Ext.getCmp('latLon_monthylsequences_year').getValue() == currentYear ) {
                 Ext.MessageBox.alert('Date error', 'Data does not exist - please select an earlier date (month, year).');
                 MONTH = NULL;
             	YEAR = NULL;
             } else {
-                      MONTH = Ext.getCmp('span_select31').getValue();
-            YEAR = Ext.getCmp('start_year3').getValue();
+                      MONTH = Ext.getCmp('latLon_monthylsequences_month').getValue();
+            YEAR = Ext.getCmp('latLon_monthylsequences_year').getValue();
 
             }
 
@@ -5805,11 +5805,11 @@ Ext.onReady(function () {
 
 
 
-            if (Ext.getCmp('map_region').getValue() == '' || Ext.getCmp('map_region').getValue() == 'Select State' || Ext.getCmp('map_region').getValue() == 'Select County' || Ext.getCmp('map_region').getValue() == 'Select HUC' || Ext.getCmp('map_region').getValue() == 'Select DIV' || Ext.getCmp('map_region').getValue() == 'Select PSA' || Ext.getCmp('map_region').getValue() == 'Select Station' || Ext.getCmp('map_region').getValue() == 'Null') {
+            if (Ext.getCmp('region_timeseries_map').getValue() == '' || Ext.getCmp('region_timeseries_map').getValue() == 'Select State' || Ext.getCmp('region_timeseries_map').getValue() == 'Select County' || Ext.getCmp('region_timeseries_map').getValue() == 'Select HUC' || Ext.getCmp('region_timeseries_map').getValue() == 'Select DIV' || Ext.getCmp('region_timeseries_map').getValue() == 'Select PSA' || Ext.getCmp('region_timeseries_map').getValue() == 'Select Station' || Ext.getCmp('region_timeseries_map').getValue() == 'Null') {
                 Ext.MessageBox.alert('Region Error', 'Click on a polygon region on the map to autofill in region combobox or simply select a region from region dropdwon combobox menu.');
                 REGION = NULL;
             } else {
-                REGION = Ext.getCmp('map_region').getValue();
+                REGION = Ext.getCmp('region_timeseries_map').getValue();
             }
 
 
@@ -5818,10 +5818,10 @@ Ext.onReady(function () {
 
 
             // Data Date Checker - Month and EndYear
-            //if (currentDate < 10 && Ext.getCmp('month_select').getValue() >= (currentMonth+1) && Ext.getCmp('end_year').getValue() == currentYear) {
+            //if (currentDate < 10 && Ext.getCmp('latLon_timeseries_monthselect').getValue() >= (currentMonth+1) && Ext.getCmp('latLon_timeseries_endyear').getValue() == currentYear) {
 
             // Use when data needs
-            if (Ext.getCmp('month_select13').getValue() >= currentMonth + 1 && Ext.getCmp('end_year13').getValue() == currentYear) {
+            if (Ext.getCmp('region_timeseries_monthselect').getValue() >= currentMonth + 1 && Ext.getCmp('region_timeseries_endyear').getValue() == currentYear) {
                 if (currentDate <= 10) {
                     Ext.MessageBox.alert('Date Error', 'Data for ' + currentMonth + '/' + currentYear + ' should be available by ' + (currentMonth + 1) + '/' + currentDate + '/' + currentYear);
 
@@ -5834,12 +5834,12 @@ Ext.onReady(function () {
                 ENDYEAR = NULL;
 
             } else {
-                MONTH = Ext.getCmp('month_select13').getValue()
-                ENDYEAR = Ext.getCmp('end_year13').getValue()
+                MONTH = Ext.getCmp('region_timeseries_monthselect').getValue()
+                ENDYEAR = Ext.getCmp('region_timeseries_endyear').getValue()
             }
 
             // Years need to be different and end year needs to be greater than start year
-            if (Ext.getCmp('start_year13').getValue() >= Ext.getCmp('end_year13').getValue()) {
+            if (Ext.getCmp('region_timeseries_startyear').getValue() >= Ext.getCmp('region_timeseries_endyear').getValue()) {
                 Ext.MessageBox.alert('Date Error', 'Ending year needs to be greater than the starting year.');
                 ENDYEAR = NULL;
                 STARTYEAR = NULL;
@@ -5850,7 +5850,7 @@ Ext.onReady(function () {
             }
 
             // Year span should be at least 5 years
-            if (Ext.getCmp('end_year13').getValue() - Ext.getCmp('start_year13').getValue() < 5) {
+            if (Ext.getCmp('region_timeseries_endyear').getValue() - Ext.getCmp('region_timeseries_startyear').getValue() < 5) {
                 Ext.MessageBox.alert('Date Error', 'Select a time span greater than 5 years.');
                 ENDYEAR = NULL;
                 STARTYEAR = NULL;
@@ -5862,35 +5862,35 @@ Ext.onReady(function () {
 
 
             // Variable Checker
-            if (Ext.getCmp('variable_select13').getValue() == 1 || Ext.getCmp('variable_select13').getValue() == 2 || Ext.getCmp('variable_select13').getValue() == 3 || Ext.getCmp('variable_select13').getValue() == 4 || Ext.getCmp('variable_select13').getValue() == 5 || Ext.getCmp('variable_select13').getValue() == 6 || Ext.getCmp('variable_select13').getValue() == 7) {
-                VARIABLE = Ext.getCmp('variable_select13').getValue()
+            if (Ext.getCmp('region_timeseries_variable').getValue() == 1 || Ext.getCmp('region_timeseries_variable').getValue() == 2 || Ext.getCmp('region_timeseries_variable').getValue() == 3 || Ext.getCmp('region_timeseries_variable').getValue() == 4 || Ext.getCmp('region_timeseries_variable').getValue() == 5 || Ext.getCmp('region_timeseries_variable').getValue() == 6 || Ext.getCmp('region_timeseries_variable').getValue() == 7) {
+                VARIABLE = Ext.getCmp('region_timeseries_variable').getValue()
             } else {
                 VARIABLE = NULL;
             }
 
             // Span Checker
-            if (Ext.getCmp('span_select13').getValue() >= 13 && Ext.getCmp('variable_select13').getValue() < 3 || Ext.getCmp('span_select13').getValue() >= 13 && Ext.getCmp('variable_select13').getValue() > 4) {
+            if (Ext.getCmp('region_timeseries_span').getValue() >= 13 && Ext.getCmp('region_timeseries_variable').getValue() < 3 || Ext.getCmp('region_timeseries_span').getValue() >= 13 && Ext.getCmp('region_timeseries_variable').getValue() > 4) {
                 Ext.MessageBox.alert('Span Error', 'Month spans greater than 12 are only for SPI and SPEI datasets, please chose a month span of 12 or less months.');
                 SPAN = NULL;
             } else {
-                SPAN = Ext.getCmp('span_select13').getValue()
+                SPAN = Ext.getCmp('region_timeseries_span').getValue()
 
             }
-            if (Ext.getCmp('span_select13').getValue() > 72) {
+            if (Ext.getCmp('region_timeseries_span').getValue() > 72) {
                 SPAN = NULL;
             } else {
-                SPAN = Ext.getCmp('span_select13').getValue()
+                SPAN = Ext.getCmp('region_timeseries_span').getValue()
             }
 
             // Start Year Checker
-            if (Ext.getCmp('start_year13').getValue() < 1895 || Ext.getCmp('start_year13').getValue() > currentYear) {
+            if (Ext.getCmp('region_timeseries_startyear').getValue() < 1895 || Ext.getCmp('region_timeseries_startyear').getValue() > currentYear) {
                 STARTYEAR = NULL;
             } else {
-                STARTYEAR = Ext.getCmp('start_year13').getValue()
+                STARTYEAR = Ext.getCmp('region_timeseries_startyear').getValue()
             }
 
             // Force running average to be an integer in order to work
-            RUNAVG = Ext.getCmp('run_avg13').getValue();
+            RUNAVG = Ext.getCmp('region_timeseries_runavg').getValue();
             if (RUNAVG < 2 || RUNAVG / RUNAVG != 1 || RUNAVG > (ENDYEAR - STARTYEAR)) {
                 RUNAVG = 0;
             } else {
@@ -5905,8 +5905,6 @@ Ext.onReady(function () {
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
                 html: '<iframe src="' + URL + '/regionsBargraph/?region=' + REGION + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/regionText/?region=' + REGION + '&variable=' + VARIABLE + '&start_year=' + STARTYEAR + '&end_year=' + ENDYEAR + '&month=' + MONTH + '&span=' + SPAN + '&run_avg=' + RUNAVG + '" height="4500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
-
-
                 closable: true
             }).show(); // Set new tab active                
         }
@@ -5925,18 +5923,18 @@ Ext.onReady(function () {
 
 
             // Data Date Checker - Month and EndYear
-            //if (currentDate < 10 && Ext.getCmp('month_select').getValue() >= (currentMonth+1) && Ext.getCmp('end_year').getValue() == currentYear) {
+            //if (currentDate < 10 && Ext.getCmp('latLon_timeseries_monthselect').getValue() >= (currentMonth+1) && Ext.getCmp('latLon_timeseries_endyear').getValue() == currentYear) {
 
 
-            if (Ext.getCmp('map_region2').getValue() == '' || Ext.getCmp('map_region2').getValue() == 'Select State' || Ext.getCmp('map_region2').getValue() == 'Select County' || Ext.getCmp('map_region2').getValue() == 'Select HUC' || Ext.getCmp('map_region2').getValue() == 'Select DIV' || Ext.getCmp('map_region2').getValue() == 'Select PSA' || Ext.getCmp('map_region2').getValue() == 'Select Station' || Ext.getCmp('map_region2').getValue() == 'Null') {
+            if (Ext.getCmp('region_allmonths_map').getValue() == '' || Ext.getCmp('region_allmonths_map').getValue() == 'Select State' || Ext.getCmp('region_allmonths_map').getValue() == 'Select County' || Ext.getCmp('region_allmonths_map').getValue() == 'Select HUC' || Ext.getCmp('region_allmonths_map').getValue() == 'Select DIV' || Ext.getCmp('region_allmonths_map').getValue() == 'Select PSA' || Ext.getCmp('region_allmonths_map').getValue() == 'Select Station' || Ext.getCmp('region_allmonths_map').getValue() == 'Null') {
                 Ext.MessageBox.alert('Region Error', 'Click on a polygon region on the map to autofill in region combobox or simply select a region from region dropdwon combobox menu.');
                 REGION = NULL;
             } else {
-                REGION = Ext.getCmp('map_region2').getValue();
+                REGION = Ext.getCmp('region_allmonths_map').getValue();
             }
             // Variable Checker
-            if (Ext.getCmp('variable_select23').getValue() == 1 || Ext.getCmp('variable_select23').getValue() == 2 || Ext.getCmp('variable_select23').getValue() == 3 || Ext.getCmp('variable_select23').getValue() == 4 || Ext.getCmp('variable_select23').getValue() == 5 || Ext.getCmp('variable_select23').getValue() == 6 || Ext.getCmp('variable_select23').getValue() == 7) {
-                VARIABLE = Ext.getCmp('variable_select23').getValue()
+            if (Ext.getCmp('region_allmonths_variable').getValue() == 1 || Ext.getCmp('region_allmonths_variable').getValue() == 2 || Ext.getCmp('region_allmonths_variable').getValue() == 3 || Ext.getCmp('region_allmonths_variable').getValue() == 4 || Ext.getCmp('region_allmonths_variable').getValue() == 5 || Ext.getCmp('region_allmonths_variable').getValue() == 6 || Ext.getCmp('region_allmonths_variable').getValue() == 7) {
+                VARIABLE = Ext.getCmp('region_allmonths_variable').getValue()
             } else {
                 VARIABLE = NULL;
             }
@@ -5967,26 +5965,26 @@ Ext.onReady(function () {
 
 
 
-            if (Ext.getCmp('map_region3').getValue() == '' || Ext.getCmp('map_region3').getValue() == 'Select State' || Ext.getCmp('map_region3').getValue() == 'Select County' || Ext.getCmp('map_region3').getValue() == 'Select HUC' || Ext.getCmp('map_region3').getValue() == 'Select DIV' || Ext.getCmp('map_region3').getValue() == 'Select PSA' || Ext.getCmp('map_region3').getValue() == 'Select Station' || Ext.getCmp('map_region3').getValue() == 'Null') {
+            if (Ext.getCmp('region_monthylsequences_map').getValue() == '' || Ext.getCmp('region_monthylsequences_map').getValue() == 'Select State' || Ext.getCmp('region_monthylsequences_map').getValue() == 'Select County' || Ext.getCmp('region_monthylsequences_map').getValue() == 'Select HUC' || Ext.getCmp('region_monthylsequences_map').getValue() == 'Select DIV' || Ext.getCmp('region_monthylsequences_map').getValue() == 'Select PSA' || Ext.getCmp('region_monthylsequences_map').getValue() == 'Select Station' || Ext.getCmp('region_monthylsequences_map').getValue() == 'Null') {
                 Ext.MessageBox.alert('Region Error', 'Click on a polygon region on the map to autofill in region combobox or simply select a region from region dropdwon combobox menu.');
                 REGION = NULL;
             } else {
-                REGION = Ext.getCmp('map_region3').getValue();
+                REGION = Ext.getCmp('region_monthylsequences_map').getValue();
             }
             // Variable Checker
-            if (Ext.getCmp('variable_select33').getValue() == 1 || Ext.getCmp('variable_select33').getValue() == 2 || Ext.getCmp('variable_select33').getValue() == 3 || Ext.getCmp('variable_select33').getValue() == 4 || Ext.getCmp('variable_select33').getValue() == 5 || Ext.getCmp('variable_select33').getValue() == 6 || Ext.getCmp('variable_select33').getValue() == 7) {
-                VARIABLE = Ext.getCmp('variable_select33').getValue()
+            if (Ext.getCmp('region_monthylsequences_variable').getValue() == 1 || Ext.getCmp('region_monthylsequences_variable').getValue() == 2 || Ext.getCmp('region_monthylsequences_variable').getValue() == 3 || Ext.getCmp('region_monthylsequences_variable').getValue() == 4 || Ext.getCmp('region_monthylsequences_variable').getValue() == 5 || Ext.getCmp('region_monthylsequences_variable').getValue() == 6 || Ext.getCmp('region_monthylsequences_variable').getValue() == 7) {
+                VARIABLE = Ext.getCmp('region_monthylsequences_variable').getValue()
 
             } else {
                 VARIABLE = NULL;
             }
 
             // Span Checker
-            if (Ext.getCmp('span_select33').getValue() > 72 || Ext.getCmp('variable_select33').getValue() < 1) {
+            if (Ext.getCmp('region_monthylsequences_priorspan').getValue() > 72 || Ext.getCmp('region_monthylsequences_variable').getValue() < 1) {
                 Ext.MessageBox.alert('Span Error', 'Select a prior month span from 1 to 72 months.');
                 SPAN = NULL;
             } else {
-                SPAN = Ext.getCmp('span_select33').getValue()
+                SPAN = Ext.getCmp('region_monthylsequences_priorspan').getValue()
 
             }
 
@@ -5995,13 +5993,13 @@ Ext.onReady(function () {
 
 
 
-            if (Ext.getCmp('span_select34').getValue() > currentMonth && Ext.getCmp('start_year33').getValue() == currentYear ) {
+            if (Ext.getCmp('region_monthylsequences_month').getValue() > currentMonth && Ext.getCmp('region_monthylsequences_year').getValue() == currentYear ) {
                 Ext.MessageBox.alert('Date error', 'Data does not exist - please select an earlier date (month, year).');
                 MONTH = NULL;
             	YEAR = NULL;
             } else {
-                MONTH = Ext.getCmp('span_select34').getValue();
-            	YEAR = Ext.getCmp('start_year33').getValue();
+                MONTH = Ext.getCmp('region_monthylsequences_month').getValue();
+            	YEAR = Ext.getCmp('region_monthylsequences_year').getValue();
 
             }
 
@@ -6213,8 +6211,6 @@ Ext.onReady(function () {
                 autoScroll: true,
                 //////Set this to active when text is rendered with plots
                 html: '<iframe src="' + URL + '/wait/" height="50px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/climatologyRegions/?region=' + REGION + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH + '&year=' + YEAR + '" height="600px" width="100%" scrolling="no" frameborder="0"></iframe><br><iframe src="' + URL + '/lastmonthsRegions/?region=' + REGION + '&variable=' + VARIABLE + '&span=' + SPAN + '&month=' + MONTH + '&year=' + YEAR + '" height="4500px" width="99%" scrolling="no" frameborder="0" "></iframe>',
-
-
                 closable: true
             }).show(); // Set new tab active                
         }
@@ -6291,13 +6287,13 @@ Ext.onReady(function () {
 
 
 
-                    item1.expand();
-                    item1.show();
-                    item2.show();
-                    item3.show();
-                    item21.hide();
-                    item22.hide();
-                    item23.hide();
+                    latLon_timeseries_panel.expand();
+                    latLon_timeseries_panel.show();
+                    latLon_allmonths_panel.show();
+                    latLon_monthlysequences_panel.show();
+                    region_timeseries_panel.hide();
+                    region_allmonths_panel.hide();
+                    region_monthylsequences_panel.hide();
                 }
             }, {
                 boxLabel: 'Contiguous United States including DC',
@@ -6310,17 +6306,17 @@ Ext.onReady(function () {
 
                     panel.setActiveTab(0);
 
-                    var stateRegionCombo = Ext.getCmp('map_region');
-                    var stateRegionCombo2 = Ext.getCmp('map_region2');
-                    var stateRegionCombo3 = Ext.getCmp('map_region3');
+                    var stateRegionCombo = Ext.getCmp('region_timeseries_map');
+                    var stateRegionCombo2 = Ext.getCmp('region_allmonths_map');
+                    var stateRegionCombo3 = Ext.getCmp('region_monthylsequences_map');
 
-                    Ext.apply(Ext.getCmp('map_region'), {
+                    Ext.apply(Ext.getCmp('region_timeseries_map'), {
                         listWidth: 150
                     });
-                    Ext.apply(Ext.getCmp('map_region2'), {
+                    Ext.apply(Ext.getCmp('region_allmonths_map'), {
                         listWidth: 150
                     });
-                    Ext.apply(Ext.getCmp('map_region3'), {
+                    Ext.apply(Ext.getCmp('region_monthylsequences_map'), {
                         listWidth: 150
                     });
 
@@ -6343,15 +6339,15 @@ Ext.onReady(function () {
 
 
 
-                    item1.hide();
-                    item2.hide();
-                    item3.hide();
+                    latLon_timeseries_panel.hide();
+                    latLon_allmonths_panel.hide();
+                    latLon_monthlysequences_panel.hide();
 
-                    item21.expand();
-                    item21.show();
-                    item22.show();
-                    item23.show();
-                    accordion.doLayout()
+                    region_timeseries_panel.expand();
+                    region_timeseries_panel.show();
+                    region_allmonths_panel.show();
+                    region_monthylsequences_panel.show();
+                    accordionEast.doLayout()
                 }
             }, {
                 boxLabel: 'Contiguous United States County and Equivalent Areas',
@@ -6364,17 +6360,17 @@ Ext.onReady(function () {
                     panel.setActiveTab(0);
 
 
-                    var countyRegionCombo = Ext.getCmp('map_region');
-                    var countyRegionCombo2 = Ext.getCmp('map_region2');
-                    var countyRegionCombo3 = Ext.getCmp('map_region3');
+                    var countyRegionCombo = Ext.getCmp('region_timeseries_map');
+                    var countyRegionCombo2 = Ext.getCmp('region_allmonths_map');
+                    var countyRegionCombo3 = Ext.getCmp('region_monthylsequences_map');
 
-                    Ext.apply(Ext.getCmp('map_region'), {
+                    Ext.apply(Ext.getCmp('region_timeseries_map'), {
                         listWidth: 200
                     });
-                    Ext.apply(Ext.getCmp('map_region2'), {
+                    Ext.apply(Ext.getCmp('region_allmonths_map'), {
                         listWidth: 200
                     });
-                    Ext.apply(Ext.getCmp('map_region3'), {
+                    Ext.apply(Ext.getCmp('region_monthylsequences_map'), {
                         listWidth: 200
                     });
 
@@ -6387,18 +6383,18 @@ Ext.onReady(function () {
                     countyRegionCombo2.store.loadData(countyStore);
                     countyRegionCombo3.store.loadData(countyStore);
 
-                    if (item21)
+                    if (region_timeseries_panel)
 
 
-                    item1.hide();
-                    item2.hide();
-                    item3.hide();
+                    latLon_timeseries_panel.hide();
+                    latLon_allmonths_panel.hide();
+                    latLon_monthlysequences_panel.hide();
 
-                    item21.expand();
-                    item21.show();
-                    item22.show();
-                    item23.show();
-                    accordion.doLayout()
+                    region_timeseries_panel.expand();
+                    region_timeseries_panel.show();
+                    region_allmonths_panel.show();
+                    region_monthylsequences_panel.show();
+                    accordionEast.doLayout()
                 }
             }, {
                 boxLabel: 'Hydrologic Units',
@@ -6411,17 +6407,17 @@ Ext.onReady(function () {
                     panel.setActiveTab(0);
 
 
-                    var hucRegionCombo = Ext.getCmp('map_region');
-                    var hucRegionCombo2 = Ext.getCmp('map_region2');
-                    var hucRegionCombo3 = Ext.getCmp('map_region3');
+                    var hucRegionCombo = Ext.getCmp('region_timeseries_map');
+                    var hucRegionCombo2 = Ext.getCmp('region_allmonths_map');
+                    var hucRegionCombo3 = Ext.getCmp('region_monthylsequences_map');
 
-                    Ext.apply(Ext.getCmp('map_region'), {
+                    Ext.apply(Ext.getCmp('region_timeseries_map'), {
                         listWidth: 330
                     });
-                    Ext.apply(Ext.getCmp('map_region2'), {
+                    Ext.apply(Ext.getCmp('region_allmonths_map'), {
                         listWidth: 330
                     });
-                    Ext.apply(Ext.getCmp('map_region3'), {
+                    Ext.apply(Ext.getCmp('region_monthylsequences_map'), {
                         listWidth: 330
                     });
 
@@ -6435,14 +6431,14 @@ Ext.onReady(function () {
                     hucRegionCombo3.store.loadData(hucStore);
 
 
-                    item1.hide();
-                    item2.hide();
-                    item3.hide();
-                    item21.expand();
-                    item21.show();
-                    item22.show();
-                    item23.show();
-                    accordion.doLayout()
+                    latLon_timeseries_panel.hide();
+                    latLon_allmonths_panel.hide();
+                    latLon_monthlysequences_panel.hide();
+                    region_timeseries_panel.expand();
+                    region_timeseries_panel.show();
+                    region_allmonths_panel.show();
+                    region_monthylsequences_panel.show();
+                    accordionEast.doLayout()
                 }
             }, {
                 boxLabel: 'U.S. Climatological Divisions',
@@ -6455,17 +6451,17 @@ Ext.onReady(function () {
                     panel.setActiveTab(0);
 
 
-                    var divRegionCombo = Ext.getCmp('map_region');
-                    var divRegionCombo2 = Ext.getCmp('map_region2');
-                    var divRegionCombo3 = Ext.getCmp('map_region3');
+                    var divRegionCombo = Ext.getCmp('region_timeseries_map');
+                    var divRegionCombo2 = Ext.getCmp('region_allmonths_map');
+                    var divRegionCombo3 = Ext.getCmp('region_monthylsequences_map');
 
-                    Ext.apply(Ext.getCmp('map_region'), {
+                    Ext.apply(Ext.getCmp('region_timeseries_map'), {
                         listWidth: 250
                     });
-                    Ext.apply(Ext.getCmp('map_region2'), {
+                    Ext.apply(Ext.getCmp('region_allmonths_map'), {
                         listWidth: 250
                     });
-                    Ext.apply(Ext.getCmp('map_region3'), {
+                    Ext.apply(Ext.getCmp('region_monthylsequences_map'), {
                         listWidth: 250
                     });
 
@@ -6479,14 +6475,14 @@ Ext.onReady(function () {
                     divRegionCombo3.store.loadData(divStore);
 
 
-                    item1.hide();
-                    item2.hide();
-                    item3.hide();
-                    item21.expand();
-                    item21.show();
-                    item22.show();
-                    item23.show();
-                    accordion.doLayout()
+                    latLon_timeseries_panel.hide();
+                    latLon_allmonths_panel.hide();
+                    latLon_monthlysequences_panel.hide();
+                    region_timeseries_panel.expand();
+                    region_timeseries_panel.show();
+                    region_allmonths_panel.show();
+                    region_monthylsequences_panel.show();
+                    accordionEast.doLayout()
                 }
             }, {
                 boxLabel: 'Predictive Services Areas',
@@ -6500,17 +6496,17 @@ Ext.onReady(function () {
                     panel.setActiveTab(0);
 
 
-                    var psaRegionCombo = Ext.getCmp('map_region');
-                    var psaRegionCombo2 = Ext.getCmp('map_region2');
-                    var psaRegionCombo3 = Ext.getCmp('map_region3');
+                    var psaRegionCombo = Ext.getCmp('region_timeseries_map');
+                    var psaRegionCombo2 = Ext.getCmp('region_allmonths_map');
+                    var psaRegionCombo3 = Ext.getCmp('region_monthylsequences_map');
 
-                    Ext.apply(Ext.getCmp('map_region'), {
+                    Ext.apply(Ext.getCmp('region_timeseries_map'), {
                         listWidth: 350
                     });
-                    Ext.apply(Ext.getCmp('map_region2'), {
+                    Ext.apply(Ext.getCmp('region_allmonths_map'), {
                         listWidth: 350
                     });
-                    Ext.apply(Ext.getCmp('map_region3'), {
+                    Ext.apply(Ext.getCmp('region_monthylsequences_map'), {
                         listWidth: 350
                     });
 
@@ -6523,14 +6519,14 @@ Ext.onReady(function () {
                     psaRegionCombo2.store.loadData(psaStore);
                     psaRegionCombo3.store.loadData(psaStore);
 
-                    item1.hide();
-                    item2.hide();
-                    item3.hide();
-                    item21.expand();
-                    item21.show();
-                    item22.show();
-                    item23.show();
-                    accordion.doLayout()
+                    latLon_timeseries_panel.hide();
+                    latLon_allmonths_panel.hide();
+                    latLon_monthlysequences_panel.hide();
+                    region_timeseries_panel.expand();
+                    region_timeseries_panel.show();
+                    region_allmonths_panel.show();
+                    region_monthylsequences_panel.show();
+                    accordionEast.doLayout()
                 }
             },
 
@@ -6545,17 +6541,17 @@ Ext.onReady(function () {
                     panel.setActiveTab(0);
 
 
-                    var stationRegionCombo = Ext.getCmp('map_region');
-                    var stationRegionCombo2 = Ext.getCmp('map_region2');
-                    var stationRegionCombo3 = Ext.getCmp('map_region3');
+                    var stationRegionCombo = Ext.getCmp('region_timeseries_map');
+                    var stationRegionCombo2 = Ext.getCmp('region_allmonths_map');
+                    var stationRegionCombo3 = Ext.getCmp('region_monthylsequences_map');
 
-                    Ext.apply(Ext.getCmp('map_region'), {
+                    Ext.apply(Ext.getCmp('region_timeseries_map'), {
                         listWidth: 250
                     });
-                    Ext.apply(Ext.getCmp('map_region2'), {
+                    Ext.apply(Ext.getCmp('region_allmonths_map'), {
                         listWidth: 250
                     });
-                    Ext.apply(Ext.getCmp('map_region3'), {
+                    Ext.apply(Ext.getCmp('region_monthylsequences_map'), {
                         listWidth: 250
                     });
 
@@ -6569,14 +6565,14 @@ Ext.onReady(function () {
                     stationRegionCombo3.store.loadData(stationStore);
 
 
-                    item1.hide();
-                    item2.hide();
-                    item3.hide();
-                    item21.expand();
-                    item21.show();
-                    item22.show();
-                    item23.show();
-                    accordion.doLayout()
+                    latLon_timeseries_panel.hide();
+                    latLon_allmonths_panel.hide();
+                    latLon_monthlysequences_panel.hide();
+                    region_timeseries_panel.expand();
+                    region_timeseries_panel.show();
+                    region_allmonths_panel.show();
+                    region_monthylsequences_panel.show();
+                    accordionEast.doLayout()
                 }
             }
 
@@ -6605,62 +6601,60 @@ Ext.onReady(function () {
     };
 
     // Setup forms and comboboxes for point selection
-    var item1 = new Ext.FormPanel({
+    var latLon_timeseries_panel = new Ext.FormPanel({
         title: "Time Series",
         labelWidth: 55,
         collapsible: true,
 
-
-
         items: [item0, new formInput({
             name: 'lat',
             fieldLabel: 'Latitude',
-            id: 'map_lat',
+            id: 'latLon_timeseries_lat',
             width: 135
         }), new formInput({
             name: 'lon',
             fieldLabel: 'Longitude',
-            id: 'map_lon',
+            id: 'latLon_timeseries_lon',
             width: 135
         }), new variableSelect({
             name: 'variable',
             editable: false,
             fieldLabel: 'Variable',
             value: '1',
-            id: 'variable_select',
+            id: 'latLon_timeseries_variable',
             width: 135
         }), new yearSelect({
             name: 'startyear',
             editable: false,
             fieldLabel: 'Start Year',
             value: 1895,
-            id: 'start_year',
+            id: 'latLon_timeseries_startyear',
             width: 135
         }), new yearSelect({
             name: 'endyear',
             editable: false,
             fieldLabel: 'End Year',
             value: 1895 + (yearArr.length - 1),
-            id: 'end_year',
+            id: 'latLon_timeseries_endyear',
             width: 135
         }), new monthSelect({
             name: 'month',
             editable: false,
             fieldLabel: 'Month',
             value: currentMonthArr,
-            id: 'month_select',
+            id: 'latLon_timeseries_monthselect',
             width: 135
         }), new spanSelect({
             name: 'span',
             editable: false,
             fieldLabel: 'Span',
             value: '1',
-            id: 'span_select',
+            id: 'latLon_timeseries_span',
             width: 135
         }), new formInput({
             name: 'runavg',
             fieldLabel: 'Running Average (Years)',
-            id: 'run_avg',
+            id: 'latLon_timeseries_runavg',
             width: 135
         }), new dataSubmit({ // must be last
             text: 'Submit!'
@@ -6674,7 +6668,7 @@ Ext.onReady(function () {
 
 
     // Setup forms and comboboxes for all point data
-    var item2 = new Ext.FormPanel({
+    var latLon_allmonths_panel = new Ext.FormPanel({
         title: "All Months",
         labelWidth: 55,
         //cls: 'empty',
@@ -6682,19 +6676,19 @@ Ext.onReady(function () {
         new formInput({
             name: 'lat',
             fieldLabel: 'Latitude',
-            id: 'map_lat2',
+            id: 'latLon_allmonths_lat',
             width: 135
         }), new formInput({
             name: 'lon',
             fieldLabel: 'Longitude',
-            id: 'map_lon2',
+            id: 'latLon_allmonths_lon',
             width: 135
         }), new variableSelect({
             editable: false,
             name: 'variable2',
             fieldLabel: 'Variable',
             value: '1',
-            id: 'variable_select2',
+            id: 'latLon_allmonths_variable',
             width: 135
         }), new dataSubmit2({ // must be last
             text: 'Submit!'
@@ -6704,25 +6698,25 @@ Ext.onReady(function () {
 
 
     // Setup forms and comboboxes for point selection
-    var item3 = new Ext.FormPanel({
+    var latLon_monthlysequences_panel = new Ext.FormPanel({
         title: "Monthly Sequences",
         labelWidth: 55,
         items: [new formInput({
             name: 'lat',
             fieldLabel: 'Latitude',
-            id: 'map_lat3',
+            id: 'latLon_monthlysequences_lat',
             width: 135
         }), new formInput({
             name: 'lon',
             fieldLabel: 'Longitude',
-            id: 'map_lon3',
+            id: 'latLon_monthlysequences_lon',
             width: 135
         }), new variableSelect({
             name: 'variable',
             editable: false,
             fieldLabel: 'Variable',
             value: '1',
-            id: 'variable_select3',
+            id: 'latLon_monthylsequences_variable',
             width: 135
         }), new spanSelect({
             name: 'MONTHS',
@@ -6730,14 +6724,14 @@ Ext.onReady(function () {
             store: monthStore,
             fieldLabel: 'Month',
             value: currentMonthArr.toString(),
-            id: 'span_select31',
+            id: 'latLon_monthylsequences_month',
             width: 135
         }), new yearSelect({
             name: 'startyear',
             fieldLabel: 'Year',
-            editable: false,
+            editable: false,  
             value: 1895 + (yearArr.length - 1),
-            id: 'start_year3',
+            id: 'latLon_monthylsequences_year',
             width: 135
         }), new spanSelect({
             name: 'span',
@@ -6745,7 +6739,7 @@ Ext.onReady(function () {
             store: climatologySpanStore,
             fieldLabel: 'Prior Months',
             value: '12',
-            id: 'span_select3',
+            id: 'latLon_monthylsequences_priorspan',
             width: 135
         }), new dataSubmit3({ // must be last
             text: 'Submit!'
@@ -6756,7 +6750,7 @@ Ext.onReady(function () {
 
 
     // Usage Panel
-    var item11 = new Ext.Panel({
+    var how_to_panel = new Ext.Panel({
         title: 'How To Use',
         contentEl: 'use',
         cls: 'empty'
@@ -6769,7 +6763,7 @@ Ext.onReady(function () {
 
 
     // Contact Panel
-    var item12 = new Ext.Panel({
+    var contact_panel = new Ext.Panel({
         title: 'Contact',
         cls: 'empty',
         items: [new feedbackSubmit({ // must be last
@@ -6780,40 +6774,20 @@ Ext.onReady(function () {
         contentEl: 'contact'
     });
 
-    // About Panel
-    var item13 = new Ext.FormPanel({
-        title: 'Step 1',
-        collapsible: false,
-        //collapseMode: 'mini',
-        hideCollapseTool: true
 
-
-
-
-        //collapsed: true,
-
-    });
-
-    // Contact Panel
-    var item14 = new Ext.Panel({
+    // Disclaimer Panel
+    var disclaimer_panel = new Ext.Panel({
         title: 'Disclaimer',
         cls: 'empty',
         contentEl: 'disclaimer'
     });
 
 
-    // template for additional option
-    var item15 = new Ext.Panel({
-        title: 'Additinoal Option',
-        html: 'Check back for more features',
-        cls: 'empty'
-    });
 
 
 
-
-    // Setup forms and comboboxes for point selection
-    var item21 = new Ext.FormPanel({
+    // Setup forms and comboboxes for locations
+    var region_timeseries_panel = new Ext.FormPanel({
         title: "Time Series",
         labelWidth: 55,
         collapsible: true,
@@ -6823,7 +6797,7 @@ Ext.onReady(function () {
             store: stateStore,
             editable: false,
             value: 'Select Region',
-            id: 'map_region',
+            id: 'region_timeseries_map',
             width: 135
             // listWidth: 350,
 
@@ -6833,40 +6807,40 @@ Ext.onReady(function () {
             fieldLabel: 'Variable',
             editable: false,
             value: '1',
-            id: 'variable_select13',
+            id: 'region_timeseries_variable',
             width: 135
         }), new yearSelect({
             name: 'startyear',
             fieldLabel: 'Start Year',
             editable: false,
             value: 1895,
-            id: 'start_year13',
+            id: 'region_timeseries_startyear',
             width: 135
         }), new yearSelect({
             name: 'endyear',
             fieldLabel: 'End Year',
             editable: false,
             value: 1895 + (yearArr.length - 1),
-            id: 'end_year13',
+            id: 'region_timeseries_endyear',
             width: 135
         }), new monthSelect({
             name: 'month',
             fieldLabel: 'Month',
             value: currentMonthArr,
             editable: false,
-            id: 'month_select13',
+            id: 'region_timeseries_monthselect',
             width: 135
         }), new spanSelect({
             name: 'span',
             fieldLabel: 'Span',
             value: '1',
             editable: false,
-            id: 'span_select13',
+            id: 'region_timeseries_span',
             width: 135
         }), new formInput({
             name: 'runavg',
             fieldLabel: 'Running Average (Years)',
-            id: 'run_avg13',
+            id: 'region_timeseries_runavg',
             width: 135
         }), new dataSubmit4({ // must be last
             text: 'Submit!'
@@ -6877,7 +6851,7 @@ Ext.onReady(function () {
 
 
     // Setup forms and comboboxes for all point data
-    var item22 = new Ext.FormPanel({
+    var region_allmonths_panel = new Ext.FormPanel({
         title: "All Months",
 
         labelWidth: 55,
@@ -6889,14 +6863,14 @@ Ext.onReady(function () {
             editable: false,
             store: stateStore,
             //value: 131170803712,
-            id: 'map_region2',
+            id: 'region_allmonths_map',
             width: 135
         }), new variableSelect({
             name: 'variable23',
             fieldLabel: 'Variable',
             editable: false,
             value: 1,
-            id: 'variable_select23',
+            id: 'region_allmonths_variable',
             width: 135
         }), new dataSubmit5({ // must be last
             text: 'Submit!'
@@ -6906,7 +6880,7 @@ Ext.onReady(function () {
 
 
     // Setup forms and comboboxes for point selection
-    var item23 = new Ext.FormPanel({
+    var region_monthylsequences_panel = new Ext.FormPanel({
         title: "Monthly Sequences",
         labelWidth: 55,
         items: [new regionSelect({
@@ -6915,14 +6889,14 @@ Ext.onReady(function () {
             editable: false,
             store: stateStore,
             value: 'Select Region',
-            id: 'map_region3',
+            id: 'region_monthylsequences_map',
             width: 135
         }), new variableSelect({
             name: 'variable',
             fieldLabel: 'Variable',
             editable: false,
             value: '1',
-            id: 'variable_select33',
+            id: 'region_monthylsequences_variable',
             width: 135
         }), new spanSelect({
             name: 'MONTHS',
@@ -6930,14 +6904,14 @@ Ext.onReady(function () {
             store: monthStore,
             fieldLabel: 'Month',
             value: currentMonthArr,
-            id: 'span_select34',
+            id: 'region_monthylsequences_month',
             width: 135
         }), new yearSelect({
             name: 'startyear',
             fieldLabel: 'Year',
             editable: false,
             value: 1895 + (yearArr.length - 1),
-            id: 'start_year33',
+            id: 'region_monthylsequences_year',
             width: 135
         }), new spanSelect({
             name: 'span',
@@ -6945,7 +6919,7 @@ Ext.onReady(function () {
             store: climatologySpanStore,
             fieldLabel: 'Prior Span',
             value: '12',
-            id: 'span_select33',
+            id: 'region_monthylsequences_priorspan',
             width: 135
         }), new dataSubmit6({ // must be last
             text: 'Submit!'
@@ -6959,29 +6933,29 @@ Ext.onReady(function () {
 
 
 
-    var accordion = new Ext.Panel({
+    var accordionEast = new Ext.Panel({
         region: 'east',
         id: 'id_product_tabs',
         margins: '45 0 5 5',
         split: true,
         width: 200,
         layout: 'accordion',
-        items: [radioPanel, item1, item3, item2]
+        items: [radioPanel, latLon_timeseries_panel, latLon_monthlysequences_panel, latLon_allmonths_panel]
     });
 
-    accordion.add(item21, item23, item22);
-    item21.hide();
-    item23.hide();
-    item22.hide();
+    accordionEast.add(region_timeseries_panel, region_monthylsequences_panel, region_allmonths_panel);
+    region_timeseries_panel.hide();
+    region_monthylsequences_panel.hide();
+    region_allmonths_panel.hide();
 
-    var accordion1 = new Ext.Panel({
+    var accordionEastWest = new Ext.Panel({
         region: 'west',
 
         margins: '45 5 5 0',
         split: true,
         width: 200,
         layout: 'accordion',
-        items: [item11, item12, item14]
+        items: [how_to_panel, contact_panel, disclaimer_panel]
     });
 
 
@@ -7034,7 +7008,7 @@ Ext.onReady(function () {
     var viewport = new Ext.Viewport({
         layout: 'border',
         items: [
-        accordion, accordion1, {
+        accordionEast, accordionEastWest, {
             bodyStyle: 'background:#f1f1f1'
         },
         nestedPanel]
@@ -7043,18 +7017,23 @@ Ext.onReady(function () {
     //
     // Set month and year back if January of new year
     if (currentDateArr.getMonth() == 0) {
-        Ext.getCmp('month_select').setValue(12);
-        Ext.getCmp('month_select13').setValue(12);
+        Ext.getCmp('latLon_timeseries_monthselect').setValue(12);
+        Ext.getCmp('region_timeseries_monthselect').setValue(12);
 
+
+        // Set monthy sequence month to Jan
+        Ext.getCmp('latLon_monthylsequences_month').setValue(12);
+        Ext.getCmp('region_monthylsequences_month').setValue(12);
 
         currentMonthArr = 12;
         var yearValue = currentDateArr.getFullYear() - 1;
-        Ext.getCmp('end_year').setValue(yearValue);
-        Ext.getCmp('end_year13').setValue(yearValue);
+        Ext.getCmp('latLon_timeseries_endyear').setValue(yearValue);
+        Ext.getCmp('region_timeseries_endyear').setValue(yearValue);
 
-        // Set monthy sequence month to Jan
-        Ext.getCmp('span_select31').setValue(1);
-        Ext.getCmp('span_select34').setValue(1);
+        
+        //Set sequence year back while in Jan
+        Ext.getCmp('latLon_monthylsequences_year').setValue(yearValue);
+        Ext.getCmp('region_monthylsequences_year').setValue(yearValue);
 
 
     }

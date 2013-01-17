@@ -387,27 +387,27 @@ markers: [{
                             markersArray.push(marker);
                             //alert('here'+event.latLng);
                             //pos = marker.getPosition();
-                            Ext.getCmp('map_lat').setValue(event.latLng.lat().toFixed(5));
-                            Ext.getCmp('map_lon').setValue(event.latLng.lng().toFixed(5));
+                            Ext.getCmp('latLon_timeseries_lat').setValue(event.latLng.lat().toFixed(5));
+                            Ext.getCmp('latLon_timeseries_lon').setValue(event.latLng.lng().toFixed(5));
 
-                            Ext.getCmp('map_lat2').setValue(event.latLng.lat().toFixed(5));
-                            Ext.getCmp('map_lon2').setValue(event.latLng.lng().toFixed(5));
+                            Ext.getCmp('latLon_allmonths_lat').setValue(event.latLng.lat().toFixed(5));
+                            Ext.getCmp('latLon_allmonths_lon').setValue(event.latLng.lng().toFixed(5));
 
-                            Ext.getCmp('map_lat3').setValue(event.latLng.lat().toFixed(5));
-                            Ext.getCmp('map_lon3').setValue(event.latLng.lng().toFixed(5));
+                            Ext.getCmp('latLon_monthlysequences_lat').setValue(event.latLng.lat().toFixed(5));
+                            Ext.getCmp('latLon_monthlysequences_lon').setValue(event.latLng.lng().toFixed(5));
 
 
 
                             google.maps.event.addListener(marker, 'drag', function (event) {
                                 
-                            Ext.getCmp('map_lat').setValue(event.latLng.lat().toFixed(5));
-                            Ext.getCmp('map_lon').setValue(event.latLng.lng().toFixed(5));
+                            Ext.getCmp('latLon_timeseries_lat').setValue(event.latLng.lat().toFixed(5));
+                            Ext.getCmp('latLon_timeseries_lon').setValue(event.latLng.lng().toFixed(5));
 
-                            Ext.getCmp('map_lat2').setValue(event.latLng.lat().toFixed(5));
-                            Ext.getCmp('map_lon2').setValue(event.latLng.lng().toFixed(5));
+                            Ext.getCmp('latLon_allmonths_lat').setValue(event.latLng.lat().toFixed(5));
+                            Ext.getCmp('latLon_allmonths_lon').setValue(event.latLng.lng().toFixed(5));
 
-                            Ext.getCmp('map_lat3').setValue(event.latLng.lat().toFixed(5));
-                            Ext.getCmp('map_lon3').setValue(event.latLng.lng().toFixed(5));
+                            Ext.getCmp('latLon_monthlysequences_lat').setValue(event.latLng.lat().toFixed(5));
+                            Ext.getCmp('latLon_monthlysequences_lon').setValue(event.latLng.lng().toFixed(5));
 
 
 	
@@ -499,10 +499,10 @@ markers: [{
                             stateID['ID_00000'] = '251470102528';
 
                             //alert(stateID[stateKmlID]);
-                            //Ext.getCmp('map_region3').setValue('294207291392')
-                            Ext.getCmp('map_region').setValue(stateID[stateKmlID]);
-                            Ext.getCmp('map_region2').setValue(stateID[stateKmlID]);
-                            Ext.getCmp('map_region3').setValue(stateID[stateKmlID]);
+                            //Ext.getCmp('region_monthylsequences_map').setValue('294207291392')
+                            Ext.getCmp('region_timeseries_map').setValue(stateID[stateKmlID]);
+                            Ext.getCmp('region_allmonths_map').setValue(stateID[stateKmlID]);
+                            Ext.getCmp('region_monthylsequences_map').setValue(stateID[stateKmlID]);
 
                         });
 
@@ -3651,9 +3651,9 @@ markers: [{
                             //alert(countyID[countyKmlID]);
                             //alert(text);
 
-                            Ext.getCmp('map_region').setValue(countyID[countyKmlID]);
-                            Ext.getCmp('map_region2').setValue(countyID[countyKmlID]);
-                            Ext.getCmp('map_region3').setValue(countyID[countyKmlID]);
+                            Ext.getCmp('region_timeseries_map').setValue(countyID[countyKmlID]);
+                            Ext.getCmp('region_allmonths_map').setValue(countyID[countyKmlID]);
+                            Ext.getCmp('region_monthylsequences_map').setValue(countyID[countyKmlID]);
 
                         });
 
@@ -3887,9 +3887,9 @@ markers: [{
                             //alert(text);
 
 
-                            Ext.getCmp('map_region').setValue(hucID[hucKmlID]);
-                            Ext.getCmp('map_region2').setValue(hucID[hucKmlID]);
-                            Ext.getCmp('map_region3').setValue(hucID[hucKmlID]);
+                            Ext.getCmp('region_timeseries_map').setValue(hucID[hucKmlID]);
+                            Ext.getCmp('region_allmonths_map').setValue(hucID[hucKmlID]);
+                            Ext.getCmp('region_monthylsequences_map').setValue(hucID[hucKmlID]);
                         });
 
                     }
@@ -4275,9 +4275,9 @@ markers: [{
 
 
 
-                            Ext.getCmp('map_region').setValue(divID[divKmlID]);
-                            Ext.getCmp('map_region2').setValue(divID[divKmlID]);
-                            Ext.getCmp('map_region3').setValue(divID[divKmlID]);
+                            Ext.getCmp('region_timeseries_map').setValue(divID[divKmlID]);
+                            Ext.getCmp('region_allmonths_map').setValue(divID[divKmlID]);
+                            Ext.getCmp('region_monthylsequences_map').setValue(divID[divKmlID]);
                             //alert(divID[divKmlID]);
                             //alert(text);
 
@@ -4514,9 +4514,9 @@ markers: [{
 
 
 
-                            Ext.getCmp('map_region').setValue(psaID[psaKmlID]);
-                            Ext.getCmp('map_region2').setValue(psaID[psaKmlID]);
-                            Ext.getCmp('map_region3').setValue(psaID[psaKmlID]);
+                            Ext.getCmp('region_timeseries_map').setValue(psaID[psaKmlID]);
+                            Ext.getCmp('region_allmonths_map').setValue(psaID[psaKmlID]);
+                            Ext.getCmp('region_monthylsequences_map').setValue(psaID[psaKmlID]);
 
                         });
 
@@ -4547,9 +4547,9 @@ markers: [{
                             // Code to get ran on kml click if radio button remains the same
                             var stationKmlID = kmlEvent.featureData.name;
 
-                            Ext.getCmp('map_region').setValue(stationKmlID);
-                            Ext.getCmp('map_region2').setValue(stationKmlID);
-                            Ext.getCmp('map_region3').setValue(stationKmlID);
+                            Ext.getCmp('region_timeseries_map').setValue(stationKmlID);
+                            Ext.getCmp('region_allmonths_map').setValue(stationKmlID);
+                            Ext.getCmp('region_monthylsequences_map').setValue(stationKmlID);
 
 
                         });
