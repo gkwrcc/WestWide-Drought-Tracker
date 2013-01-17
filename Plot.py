@@ -290,7 +290,7 @@ class Plot():
         inv_data = data - normal    
 
         # Create a figure for plots
-        fig = Figure(figsize=(20,10), facecolor='w')
+        fig = Figure(figsize=(11,8), facecolor='w')
         ax = fig.add_axes([0.08, 0.15, .90, 0.78])
     
         # Used to set month name in plots based on month index

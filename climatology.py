@@ -401,7 +401,7 @@ class Climatology:
         x = range(0,span, 1)
 
         # Create Figure
-        fig = Figure(figsize=(20,10), facecolor='w')
+        fig = Figure(figsize=(11,8), facecolor='w')
         ax = fig.add_axes([0.08, 0.15, .70, 0.78])
         
         # Eliminate extra month from dateList
@@ -457,7 +457,9 @@ class Climatology:
         ax.xaxis.set_minor_locator(months)
         ax.autoscale_view()
         ax.grid(True)
+        ax.tick_params(axis='both', which='major', labelsize=8)
         fig.autofmt_xdate()
+            
 
 
         # Sets the correct year for use in plot header
@@ -508,12 +510,12 @@ class Climatology:
         labels = ( r"$5-95^{th}$", r"$10-90^{th}$", r"$25-75^{th}$", r"$Median$", r"$Monthly$", r"$Values$")
 
         # Set legend outside of plot axes
-        ax.legend([Rectangle((0,0),1,1, facecolor=c, edgecolor='w') for c in perc_colors ], labels, bbox_to_anchor=(1.02, 1.), loc=2, borderaxespad=0., shadow=True)
+        ax.legend([Rectangle((0,0),1,1, facecolor=c, edgecolor='w') for c in perc_colors ], labels, bbox_to_anchor=(1.01, 1.), loc=2, borderaxespad=0., shadow=True)
 
  
         currentYear = today.year
-        ax.set_xlabel("Data Source: WRCC/UI, Created: %s-%s-%s" % (currentMonth,currentDay,currentYear))
-        ax.xaxis.set_label_coords(0.99, -.152, transform=None)
+        ax.set_xlabel("Data Source: WRCC/UI\n Created: %s-%s-%s" % (currentMonth,currentDay,currentYear), fontsize=9)
+        ax.xaxis.set_label_coords(1.106, .59, transform=None)
 
 
         # Mock x,y for testing
