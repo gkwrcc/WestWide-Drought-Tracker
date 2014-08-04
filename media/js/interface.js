@@ -5354,7 +5354,7 @@ Ext.onReady(function () {
             } else {
                 LAT = NULL;
 
-                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the lower contiguous 48');
+                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the Contiguous US.');
             }
 
             // Longitude Form Checker
@@ -5364,7 +5364,7 @@ Ext.onReady(function () {
 
             } else {
                 LON = NULL;
-                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the lower contiguous 48');
+                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the Contiguous US.');
 
             }
 
@@ -5476,7 +5476,7 @@ Ext.onReady(function () {
             } else {
                 LAT = NULL;
 
-                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the lower contiguous 48');
+                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the Contiguous US.');
             }
 
             // Longitude Form Checker
@@ -5486,7 +5486,7 @@ Ext.onReady(function () {
 
             } else {
                 LON = NULL;
-                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the lower contiguous 48');
+                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the Contiguous US.');
 
             }
             // Data Date Checker - Month and EndYear
@@ -5533,7 +5533,7 @@ Ext.onReady(function () {
             } else {
                 LAT = NULL;
 
-                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the lower contiguous 48');
+                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the Contiguous US.');
             }
 
             // Longitude Form Checker
@@ -5543,7 +5543,7 @@ Ext.onReady(function () {
 
             } else {
                 LON = NULL;
-                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the lower contiguous 48');
+                Ext.MessageBox.alert('Coordinate Input Error!', 'Click and drag red marker to a point inside the Contiguous US.');
 
             }
 
@@ -6274,7 +6274,7 @@ Ext.onReady(function () {
             columns: 1,
             vertical: true,
             items: [{
-                boxLabel: 'Single 4x4km pixel from gridded dataset',
+                boxLabel: 'Points (nearest 4x4-km pixel)',
                 name: 'rb',
                 inputValue: '1',
                 id: 'point_radio',
@@ -6296,7 +6296,7 @@ Ext.onReady(function () {
                     region_monthylsequences_panel.hide();
                 }
             }, {
-                boxLabel: 'Contiguous United States including DC',
+                boxLabel: 'States',
                 name: 'rb',
                 inputValue: '2',
                 id: 'state_radio',
@@ -6350,7 +6350,7 @@ Ext.onReady(function () {
                     accordionEast.doLayout()
                 }
             }, {
-                boxLabel: 'Contiguous United States County and Equivalent Areas',
+                boxLabel: 'Counties',
                 name: 'rb',
                 inputValue: '3',
                 id: 'county_radio',
@@ -6441,7 +6441,7 @@ Ext.onReady(function () {
                     accordionEast.doLayout()
                 }
             }, {
-                boxLabel: 'U.S. Climatological Divisions',
+                boxLabel: 'Climate Divisions',
                 name: 'rb',
                 inputValue: '5',
                 id: 'div_radio',
@@ -6532,7 +6532,7 @@ Ext.onReady(function () {
 
 
             {
-                boxLabel: 'United States Historical Climatology Network Stations',
+                boxLabel: 'US Historical Climatology Network (USHCN) Stations',
                 name: 'rb',
                 inputValue: '6',
                 id: 'station_radio',
